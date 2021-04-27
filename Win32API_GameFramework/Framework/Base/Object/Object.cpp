@@ -5,9 +5,5 @@ CObject::~CObject() { }
 
 tstring CObject::ToString() const
 {
-	tstring str;
-	string typeString = typeid(*this).name();
-	str.assign(typeString.begin(), typeString.end());
-
-	return str;
+	return ToTString(typeid(*this).name());
 }

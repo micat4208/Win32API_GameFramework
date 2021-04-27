@@ -15,7 +15,7 @@ public :
 	FORCEINLINE virtual void InitializeManagerClass() override { }
 	FORCEINLINE virtual void ReleaseManagerClass() override { }
 
-	FORCEINLINE static ManagerClassType* Instance() const
+	FORCEINLINE static ManagerClassType* Instance()
 	{
 		static ManagerClassType* managerInstance = nullptr;
 

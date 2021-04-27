@@ -1,4 +1,5 @@
 #include "GameInstance.h"
+#include "Framework/Single/SceneManager/SceneManager.h"
 
 CGameInstance::CGameInstance()
 {
@@ -7,6 +8,9 @@ CGameInstance::CGameInstance()
 void CGameInstance::Initialize()
 {
 	super::Initialize();
+
+	// SceneManager µî·Ï
+	RegisterManagerClass<CSceneManager>();
 
 }
 
@@ -19,7 +23,11 @@ void CGameInstance::Release()
 		iter != ManagerClasses.end(); ++iter)
 	{
 		iter->second->ReleaseManagerClass();
-		CObject::DeleteObject(iter->second);
+
+		delete iter->second;
+		iter->second = nullptr;
+		//CObject* managerInstance = Cast<CObject>(iter->second);
+		//CObject::DeleteObject(managerInstance);
 	}
 
 	ManagerClasses.clear();

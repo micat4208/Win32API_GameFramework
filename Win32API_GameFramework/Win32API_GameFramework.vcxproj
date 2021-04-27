@@ -91,7 +91,7 @@
       <AdditionalIncludeDirectories>C:\Users\SBSGAME\Desktop\Share\GameProgramming\GameProgramming6\Win32API\Game\Win32API_GameFramework\Win32API_GameFramework;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
@@ -106,7 +106,7 @@
       <AdditionalIncludeDirectories>C:\Users\SBSGAME\Desktop\Share\GameProgramming\GameProgramming6\Win32API\Game\Win32API_GameFramework\Win32API_GameFramework;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -121,7 +121,7 @@
       <AdditionalIncludeDirectories>C:\Users\SBSGAME\Desktop\Share\GameProgramming\GameProgramming6\Win32API\Game\Win32API_GameFramework\Win32API_GameFramework;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
@@ -136,22 +136,28 @@
       <AdditionalIncludeDirectories>C:\Users\SBSGAME\Desktop\Share\GameProgramming\GameProgramming6\Win32API\Game\Win32API_GameFramework\Win32API_GameFramework;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Framework\Base\GameObject\GameObject.cpp" />
     <ClCompile Include="Framework\Base\Object\Object.cpp" />
+    <ClCompile Include="Framework\Base\Scene\Scene.cpp" />
     <ClCompile Include="Framework\Entry\Entry.cpp" />
     <ClCompile Include="Framework\Single\GameInstance\GameInstance.cpp" />
+    <ClCompile Include="Framework\Single\SceneManager\SceneManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Framework\Base\GameObject\GameObject.h" />
     <ClInclude Include="Framework\Base\Object\Object.h" />
+    <ClInclude Include="Framework\Base\Scene\Scene.h" />
     <ClInclude Include="Framework\Interface\ManagerClass.h" />
     <ClInclude Include="Framework\Single\GameInstance\GameInstance.h" />
     <ClInclude Include="Framework\Single\ManagerClassBase\ManagerClassBase.h" />
+    <ClInclude Include="Framework\Single\SceneManager\SceneManager.h" />
     <ClInclude Include="Include\CharDefine.h" />
     <ClInclude Include="Include\DefaultInclude.h" />
     <ClInclude Include="Include\GameDefine.h" />

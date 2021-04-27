@@ -27,7 +27,7 @@ public :
 
 	// T * 형식의 객체를 TargetType * 형식으로 변환하여 반환합니다.
 	template<typename TargetType, typename T>
-	FORCEINLINE static TargetType* Cast(const T* instance)
+	FORCEINLINE static TargetType* Cast(T* instance)
 	{ return dynamic_cast<TargetType*>(instance); }
 
 	template<typename T>
@@ -42,6 +42,8 @@ public :
 	template<typename T>
 	FORCEINLINE static void DeleteObject(T*& object)
 	{
+		if (object == nullptr) return;
+
 		object->Release();
 		delete object;
 		object = nullptr;

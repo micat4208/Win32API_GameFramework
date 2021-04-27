@@ -34,7 +34,7 @@ protected :
 
 public :
     template<typename ManagerClassType>
-    FORCEINLINE ManagerClassType* GetManagerClass() const
+    FORCEINLINE ManagerClassType* GetManagerClass()
     { return Cast<ManagerClassType>(ManagerClasses[string(typeid(ManagerClassType).name())]); }
 
 };
