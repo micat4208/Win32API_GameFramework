@@ -10,6 +10,7 @@
 #include <map>
 #include <list>
 
+#include "TypeDefine.h"
 #include "GameDefine.h"
 #include "Log.h"
 

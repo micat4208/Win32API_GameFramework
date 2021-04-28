@@ -15,6 +15,8 @@ int APIENTRY wWinMain(
 	LPTSTR		lpszCmdParam,
 	int			nCmdShow)
 {
+	srand(GetTickCount64());
+
 	HWND hWnd;
 	WNDCLASS wndClass;
 
