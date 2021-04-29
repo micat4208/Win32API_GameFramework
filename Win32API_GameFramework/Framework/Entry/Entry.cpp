@@ -3,6 +3,8 @@
 #include "Framework/Single/GameInstance/GameInstance.h"
 #include "Framework/Single/SceneManager/SceneManager.h"
 
+HWND Hwnd;
+
 // GameInstance
 DEF_GAMEINSTANCECLASS* GameInstance;
 
@@ -17,7 +19,6 @@ int APIENTRY wWinMain(
 {
 	srand(GetTickCount64());
 
-	HWND hWnd;
 	WNDCLASS wndClass;
 
 	wndClass.style = CS_HREDRAW | CS_VREDRAW;
@@ -31,7 +32,7 @@ int APIENTRY wWinMain(
 	wndClass.lpszMenuName = NULL;
 
 	RegisterClass(&wndClass);
-	hWnd = CreateWindow(
+	Hwnd = CreateWindow(
 		wndClass.lpszClassName,
 		WND_DEFAULT_TITLE,
 		WS_OVERLAPPEDWINDOW,
@@ -41,7 +42,7 @@ int APIENTRY wWinMain(
 		wndClass.hInstance,
 		NULL);
 
-	ShowWindow(hWnd, nCmdShow);
+	ShowWindow(Hwnd, nCmdShow);
 
 	// GameInstance 생성
 	GameInstance = CObject::NewObject<DEF_GAMEINSTANCECLASS>();
@@ -92,6 +93,7 @@ int APIENTRY wWinMain(
 			{
 				// Tick 메서드 호출
 				CSceneManager::Instance()->Tick(totalDS);
+				CSceneManager::Instance()->Render(GameInstance->GetDC());
 
 				totalDS = 0.0f;
 			}

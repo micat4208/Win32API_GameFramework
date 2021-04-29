@@ -9,6 +9,9 @@ protected :
     // IManagerClass 인터페이스를 구현하는 객체들을 저장합니다.
     map <string, IManagerClass*> ManagerClasses;
 
+private :
+    HDC Hdc;
+
 public :
     CGameInstance();
 
@@ -37,5 +40,7 @@ public :
     FORCEINLINE ManagerClassType* GetManagerClass()
     { return Cast<ManagerClassType>(ManagerClasses[string(typeid(ManagerClassType).name())]); }
 
+    FORCEINLINE HDC & GetDC()
+    { return Hdc; }
 };
 

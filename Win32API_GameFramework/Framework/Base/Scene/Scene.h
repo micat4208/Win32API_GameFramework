@@ -16,6 +16,15 @@ private :
     // 제거될 GameObject 들을 나타냅니다.
     list<CGameObject*> DestroyedGameObjectList;
 
+    // 생성된 RenderComponent 들을 나타냅니다.
+    list<class CRenderComponent*> CreatedRenderComponents;
+
+    // 그리기 작업이 진행되는 RenderComponent 들을 나타냅니다.
+    list<class CRenderComponent*> UsedRenderComponents;
+
+    // 제거된 RenerComponent 들을 나타냅니다.
+    list<class CRenderComponent*> DestroyedRenderComponents;
+
 
 
 public :
@@ -52,6 +61,12 @@ public :
     // 오브젝트를 제거합니다.
     void Destroy(CGameObject* gameObject);
 
+    FORCEINLINE void RegisterNewRenderComponent(
+        class CRenderComponent * newRenderComponent)
+    { CreatedRenderComponents.push_back(newRenderComponent); }
 
+    FORCEINLINE void UnRegisterRenderComponent(
+        class CRenderComponent* renderComponent)
+    { DestroyedRenderComponents.push_back(renderComponent); }
 };
 

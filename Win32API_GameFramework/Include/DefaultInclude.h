@@ -29,7 +29,7 @@ using namespace std;
 #define WND_HEIGHT				600
 
 
-
+extern HWND Hwnd;
 
 
 

@@ -144,9 +144,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Framework\Base\Component\Component.cpp" />
+    <ClCompile Include="Framework\Base\Component\RenderComponent\RenderComponent.cpp" />
     <ClCompile Include="Framework\Base\GameObject\GameObject.cpp" />
     <ClCompile Include="Framework\Base\Object\Object.cpp" />
     <ClCompile Include="Framework\Base\Scene\Scene.cpp" />
+    <ClCompile Include="Framework\Bitmap\Bitmap.cpp" />
     <ClCompile Include="Framework\Entry\Entry.cpp" />
     <ClCompile Include="Framework\Single\GameInstance\GameInstance.cpp" />
     <ClCompile Include="Framework\Single\SceneManager\SceneManager.cpp" />
@@ -154,9 +156,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\Base\Component\Component.h" />
+    <ClInclude Include="Framework\Base\Component\RenderComponent\RenderComponent.h" />
     <ClInclude Include="Framework\Base\GameObject\GameObject.h" />
     <ClInclude Include="Framework\Base\Object\Object.h" />
     <ClInclude Include="Framework\Base\Scene\Scene.h" />
+    <ClInclude Include="Framework\Bitmap\Bitmap.h" />
     <ClInclude Include="Framework\Interface\ManagerClass.h" />
     <ClInclude Include="Framework\Single\GameInstance\GameInstance.h" />
     <ClInclude Include="Framework\Single\ManagerClassBase\ManagerClassBase.h" />

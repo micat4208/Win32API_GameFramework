@@ -1,4 +1,11 @@
-﻿  SceneManager.cpp
+﻿  Component.cpp
+  GameObject.cpp
+  Scene.cpp
+C:\Users\SBSGAME\Desktop\Share\GameProgramming\GameProgramming6\Win32API\Game\Win32API_GameFramework\Win32API_GameFramework\Framework\Base\Scene\Scene.cpp(43,8): error C2059: 구문 오류: ')'
+  Entry.cpp
+C:\Users\SBSGAME\Desktop\Share\GameProgramming\GameProgramming6\Win32API\Game\Win32API_GameFramework\Win32API_GameFramework\Framework\Entry\Entry.cpp(18,22): warning C4244: '인수': 'ULONGLONG'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  GameInstance.cpp
+  SceneManager.cpp
 C:\Users\SBSGAME\Desktop\Share\GameProgramming\GameProgramming6\Win32API\Game\Win32API_GameFramework\Win32API_GameFramework\Framework\Base\Object\Object.h(36): error C3622: 'CScene': 'abstract'(으)로 선언된 클래스를 인스턴스화할 수 없습니다.
 C:\Users\SBSGAME\Desktop\Share\GameProgramming\GameProgramming6\Win32API\Game\Win32API_GameFramework\Win32API_GameFramework\Framework\Base\Scene\Scene.h(5): message : 'CScene' 선언을 참조하십시오.
 C:\Users\SBSGAME\Desktop\Share\GameProgramming\GameProgramming6\Win32API\Game\Win32API_GameFramework\Win32API_GameFramework\Framework\Single\SceneManager\SceneManager.h(42): message : 컴파일되는 함수 템플릿 인스턴스화 'T *CObject::NewObject<SceneType>(void)'에 대한 참조를 확인하세요.
@@ -10,17 +17,4 @@ C:\Users\SBSGAME\Desktop\Share\GameProgramming\GameProgramming6\Win32API\Game\Wi
 C:\Users\SBSGAME\Desktop\Share\GameProgramming\GameProgramming6\Win32API\Game\Win32API_GameFramework\Win32API_GameFramework\Framework\Single\SceneManager\SceneManager.cpp(8): message : 컴파일되는 함수 템플릿 인스턴스화 'void CSceneManager::LoadScene<CScene>(void)'에 대한 참조를 확인하세요.
 C:\Users\SBSGAME\Desktop\Share\GameProgramming\GameProgramming6\Win32API\Game\Win32API_GameFramework\Win32API_GameFramework\Framework\Base\Object\Object.h(36,23): error C3622: 'CScene': 'abstract'(으)로 선언된 클래스를 인스턴스화할 수 없습니다.
 C:\Users\SBSGAME\Desktop\Share\GameProgramming\GameProgramming6\Win32API\Game\Win32API_GameFramework\Win32API_GameFramework\Framework\Base\Scene\Scene.h(5): message : 'CScene' 선언을 참조하십시오.
-  Vector.cpp
-C:\Users\SBSGAME\Desktop\Share\GameProgramming\GameProgramming6\Win32API\Game\Win32API_GameFramework\Win32API_GameFramework\Framework\Struct\Vector\Vector.cpp(8,14): warning C4244: 'return': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\SBSGAME\Desktop\Share\GameProgramming\GameProgramming6\Win32API\Game\Win32API_GameFramework\Win32API_GameFramework\Framework\Struct\Vector\Vector.cpp(14,14): warning C4244: 'return': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\SBSGAME\Desktop\Share\GameProgramming\GameProgramming6\Win32API\Game\Win32API_GameFramework\Win32API_GameFramework\Framework\Struct\Vector\Vector.cpp(42,9): warning C4244: '인수': 'const float'에서 '_Elem'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-          with
-          [
-              _Elem=wchar_t
-          ]
-C:\Users\SBSGAME\Desktop\Share\GameProgramming\GameProgramming6\Win32API\Game\Win32API_GameFramework\Win32API_GameFramework\Framework\Struct\Vector\Vector.cpp(44,9): warning C4244: '인수': 'const float'에서 '_Elem'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-          with
-          [
-              _Elem=wchar_t
-          ]
   코드를 생성하고 있습니다...

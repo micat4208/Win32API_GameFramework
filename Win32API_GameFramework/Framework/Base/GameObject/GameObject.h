@@ -2,7 +2,7 @@
 #include "Framework/Base/Object/Object.h"
 #include "Framework/Struct/Vector/Vector.h"
 
-#include "Framework/Base/Component/Component.h"
+#include "Framework/Base/Component/RenderComponent/RenderComponent.h"
 
 class CGameObject :
     public CObject
@@ -56,6 +56,9 @@ public :
 	// GameObject 가 메모리 해제될 때 호출되는 메서드
 	virtual void Release() override;
 
+private :
+	void RegisterNewRenderComponent(CRenderComponent* newRenderComponent);
+
 public :
 	template<typename T>
 	FORCEINLINE static T* NewObject(class CScene * ownerScene, tstring objName)
@@ -68,6 +71,34 @@ public :
 
 		return newObject;
 	}
+
+	// 컴포넌트를 추가합니다.
+	template<typename ComponentClassType>
+	ComponentClassType* AddComponent()
+	{
+		// CComponent 클래스를 상속받지 않는다면 컴포넌트 추가를 중단합니다.
+		if (!IsA<CComponent, ComponentClassType>())
+		{
+			LOG(ToTString(typeid(ComponentClassType).name()) << TEXT("은 CComponent 와 상속 관계가 아닙니다."));
+			return nullptr;
+		}
+
+		// 컴포넌트를 생성합니다.
+		CComponent* newComponent = CComponent::NewComponent<ComponentClassType>(this);
+		CreatedComponents.push_back(newComponent);
+
+		// 만약 추가하는 컴포넌트가 RenderComponent 라면
+		if (IsA<CRenderComponent, ComponentClassType>())
+			RegisterNewRenderComponent(Cast<CRenderComponent>(newComponent));
+
+		return Cast<ComponentClassType>(newComponent);
+	}
+
+	// 컴포넌트를 제거합니다.
+	void RemoveComponent(CComponent* component);
+
+	
+
 
 };
 

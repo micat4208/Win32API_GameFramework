@@ -18,11 +18,29 @@ public :
     // Start() 메서드가 호출되었음을 나타냅니다.
     bool bIsStarted;
 
+    // 이 컴포넌트가 제거 대상임을 나타냅니다.
+    bool bBeDestroy;
+
 public :
     CComponent();
 
 public :
     virtual void Start();
     FORCEINLINE virtual void Tick(float deltaSeconds) {};
+
+public :
+
+    // T 형식의 Component 를 생성합니다.
+    template<typename T>
+    FORCEINLINE static T* NewComponent(class CGameObject * ownerGameObject)
+    {
+        if (!IsA<CComponent, T>()) return nullptr;
+
+        T* newComponent = new T();
+        newComponent->Owner = ownerGameObject;
+        newComponent->Initialize();
+
+        return newComponent;
+    }
 };
 
