@@ -15,5 +15,7 @@ extern class DEF_GAMEINSTANCECLASS* GameInstance;
 
 /* ~~ GAME DEFINE ~~ */
 // 처음에 실행될 씬 설정
-#define DEF_SCENE class CScene
+// - 추가된 Scene Header 는 SceneManager.cpp 에 추가합니다.
+//#define DEF_SCENE class CScene
+#define DEF_SCENE class CGameScene
 

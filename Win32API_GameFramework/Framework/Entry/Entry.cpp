@@ -115,6 +115,15 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 	{
 		RECT wndRC = { 0, 0, WND_WIDTH, WND_HEIGHT };
 		AdjustWindowRect(&wndRC, WS_OVERLAPPEDWINDOW, FALSE);
+
+		float wndLeft = SCREEN_CENTER_X - (WND_WIDTH * 0.5f);
+		float wndTop = SCREEN_CENTER_Y - (WND_HEIGHT * 0.5f);
+		MoveWindow(hwnd, 
+			wndLeft, wndTop, 
+			wndRC.right - wndRC.left, 
+			wndRC.bottom - wndRC.top, 
+			false);
+
 		return 0;
 	}
 

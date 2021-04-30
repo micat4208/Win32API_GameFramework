@@ -25,6 +25,8 @@ private :
     // 제거된 RenerComponent 들을 나타냅니다.
     list<class CRenderComponent*> DestroyedRenderComponents;
 
+    class CBitmap* BackBuffer, *Eraser;
+
 
 
 public :

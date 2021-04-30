@@ -62,6 +62,9 @@ public :
 	FORCEINLINE static FVector RightVector()
 	{ return FVector(1.0f, 0.0f); }
 
+	FORCEINLINE static FVector ScreenCenter()
+	{ return FVector(WND_WIDTH * 0.5f, WND_HEIGHT * 0.5f); }
+
 	static FVector VRand(float _min = 0.0f, float _max = 1.0f);
 
 

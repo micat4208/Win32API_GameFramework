@@ -1,9 +1,13 @@
 #include "Scene.h"
 
+#include "Framework/Bitmap/Bitmap.h"
+
 void CScene::Initialize()
 {
 	super::Initialize();
 
+	BackBuffer = CBitmap::LoadBmp(NewObject<CBitmap>(), TEXT("Resources/Default/Black.bmp"));
+	Eraser = CBitmap::LoadBmp(NewObject<CBitmap>(), TEXT("Resources/Default/Black.bmp"));
 }
 
 void CScene::Tick(float deltaSecond)
@@ -52,7 +56,7 @@ void CScene::Tick(float deltaSecond)
 		for (auto gameObject : UsedGameObjectList)
 		{
 			// 삭제 대상이라면 작업을 중단합니다.
-			if (!gameObject->bBeDestroy) continue;
+			if (gameObject->bBeDestroy) continue;
 
 			// Start() 메서드 호출
 			if (!gameObject->bIsStarted)
@@ -67,6 +71,8 @@ void CScene::Tick(float deltaSecond)
 
 void CScene::Render(HDC hdc)
 {
+	BitBlt(BackBuffer->GetDC(), 0, 0, WND_WIDTH, WND_HEIGHT, Eraser->GetDC(), 0, 0, SRCCOPY);
+	
 	for (auto renderComponent : UsedRenderComponents)
 	{
 		if (renderComponent->bBeDestroy) continue;
@@ -74,8 +80,10 @@ void CScene::Render(HDC hdc)
 		if (!renderComponent->bUseRender) continue;
 		if (!renderComponent->bIsStarted) continue;
 
-		renderComponent->Render(hdc);
+		renderComponent->Render(BackBuffer->GetDC());
 	}
+
+	BitBlt(hdc, 0, 0, WND_WIDTH, WND_HEIGHT, BackBuffer->GetDC(), 0, 0, SRCCOPY);
 }
 
 void CScene::Release()
@@ -107,6 +115,10 @@ void CScene::Release()
 	CreatedGameObjectList.clear();
 	UsedGameObjectList.clear();
 	DestroyedGameObjectList.clear();
+
+	// Bitmap 객체 해제
+	CObject::DeleteObject(BackBuffer);
+	CObject::DeleteObject(Eraser);
 }
 
 void CScene::Destroy(CGameObject* gameObject)

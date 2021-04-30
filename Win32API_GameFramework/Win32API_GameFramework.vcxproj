@@ -153,6 +153,11 @@
     <ClCompile Include="Framework\Single\GameInstance\GameInstance.cpp" />
     <ClCompile Include="Framework\Single\SceneManager\SceneManager.cpp" />
     <ClCompile Include="Framework\Struct\Vector\Vector.cpp" />
+    <ClCompile Include="Game\Components\CharacterMovement\CharacterMovementComponent.cpp" />
+    <ClCompile Include="Game\Components\PlayerCharacterRenderer\PlayerCharacterRenderer.cpp" />
+    <ClCompile Include="Game\GameObject\Character\Character.cpp" />
+    <ClCompile Include="Game\GameObject\Character\PlayerCharacter\PlayerCharacter.cpp" />
+    <ClCompile Include="Game\Scene\GameScene\GameScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\Base\Component\Component.h" />
@@ -167,6 +172,11 @@
     <ClInclude Include="Framework\Single\SceneManager\SceneManager.h" />
     <ClInclude Include="Framework\Struct\Math\Math.h" />
     <ClInclude Include="Framework\Struct\Vector\Vector.h" />
+    <ClInclude Include="Game\Components\CharacterMovement\CharacterMovementComponent.h" />
+    <ClInclude Include="Game\Components\PlayerCharacterRenderer\PlayerCharacterRenderer.h" />
+    <ClInclude Include="Game\GameObject\Character\Character.h" />
+    <ClInclude Include="Game\GameObject\Character\PlayerCharacter\PlayerCharacter.h" />
+    <ClInclude Include="Game\Scene\GameScene\GameScene.h" />
     <ClInclude Include="Include\CharDefine.h" />
     <ClInclude Include="Include\DefaultInclude.h" />
     <ClInclude Include="Include\GameDefine.h" />

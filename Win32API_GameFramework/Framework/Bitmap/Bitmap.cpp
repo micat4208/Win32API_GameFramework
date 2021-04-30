@@ -6,7 +6,7 @@ CBitmap::CBitmap()
 	Bmp = OldBmp = NULL;
 }
 
-CBitmap* CBitmap::LoadBmp(CBitmap*& bitmap, tstring path)
+CBitmap* CBitmap::LoadBmp(CBitmap* bitmap, tstring path)
 {
 	bitmap->Hdc = ::GetDC(Hwnd);
 	bitmap->MemDC = ::CreateCompatibleDC(bitmap->Hdc);

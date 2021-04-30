@@ -15,7 +15,7 @@ public :
 
 public :
     // 비트맵 이미지를 로드합니다.
-    static CBitmap* LoadBmp(CBitmap*& bitmap, tstring path);
+    static CBitmap* LoadBmp(CBitmap* bitmap, tstring path);
 
 public :
     virtual void Release() override;

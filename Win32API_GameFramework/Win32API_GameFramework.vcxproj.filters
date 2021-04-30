@@ -45,6 +45,21 @@
     <ClCompile Include="Framework\Base\Component\RenderComponent\RenderComponent.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Game\Scene\GameScene\GameScene.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\GameObject\Character\Character.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\GameObject\Character\PlayerCharacter\PlayerCharacter.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Components\PlayerCharacterRenderer\PlayerCharacterRenderer.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Components\CharacterMovement\CharacterMovementComponent.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Include\DefaultInclude.h">
@@ -96,6 +111,21 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Framework\Base\Component\RenderComponent\RenderComponent.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Scene\GameScene\GameScene.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameObject\Character\Character.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameObject\Character\PlayerCharacter\PlayerCharacter.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Components\PlayerCharacterRenderer\PlayerCharacterRenderer.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Components\CharacterMovement\CharacterMovementComponent.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

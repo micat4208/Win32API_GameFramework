@@ -1,5 +1,7 @@
 #include "SceneManager.h"
 
+#include "Game/Scene/GameScene/GameScene.h"
+
 CSceneManager::CSceneManager()
 {
 	CurrentScene = NextScene = nullptr;

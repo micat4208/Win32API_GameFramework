@@ -28,6 +28,9 @@ using namespace std;
 #define WND_WIDTH				800
 #define WND_HEIGHT				600
 
+#define SCREEN_CENTER_X			(1920 * 0.5f)
+#define SCREEN_CENTER_Y			(1080 * 0.5f)
+
 
 extern HWND Hwnd;
 
