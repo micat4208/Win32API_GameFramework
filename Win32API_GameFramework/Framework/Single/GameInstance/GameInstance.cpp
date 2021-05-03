@@ -1,5 +1,6 @@
 #include "GameInstance.h"
 #include "Framework/Single/SceneManager/SceneManager.h"
+#include "Framework/Single/InputManager/InputManager.h"
 
 CGameInstance::CGameInstance()
 {
@@ -12,6 +13,8 @@ void CGameInstance::Initialize()
 	Hdc = ::GetDC(Hwnd);
 	GameInstance = this;
 
+	// InputManager 등록
+	RegisterManagerClass<CInputManager>();
 	// SceneManager 등록
 	RegisterManagerClass<CSceneManager>();
 }

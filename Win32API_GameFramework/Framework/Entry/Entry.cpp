@@ -2,6 +2,7 @@
 
 #include "Framework/Single/GameInstance/GameInstance.h"
 #include "Framework/Single/SceneManager/SceneManager.h"
+#include "Framework/Single/InputManager/InputManager.h"
 
 HWND Hwnd;
 
@@ -91,8 +92,11 @@ int APIENTRY wWinMain(
 
 			if (totalDS >= targetDS)
 			{
+				CInputManager::Instance()->UpdateInputValue();
+
 				// Tick 메서드 호출
 				CSceneManager::Instance()->Tick(totalDS);
+				// Render 메서드 호출
 				CSceneManager::Instance()->Render(GameInstance->GetDC());
 
 				totalDS = 0.0f;

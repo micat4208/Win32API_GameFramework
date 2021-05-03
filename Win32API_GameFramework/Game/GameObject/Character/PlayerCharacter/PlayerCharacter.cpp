@@ -1,7 +1,8 @@
 #include "PlayerCharacter.h"
 
-#include "Game/Components/PlayerCharacterRenderer/PlayerCharacterRenderer.h"
+#include "Framework/Single/InputManager/InputManager.h"
 
+#include "Game/Components/PlayerCharacterRenderer/PlayerCharacterRenderer.h"
 #include "Game/Components/CharacterMovement/CharacterMovementComponent.h"
 
 void CPlayerCharacter::Initialize()
@@ -28,11 +29,10 @@ void CPlayerCharacter::Tick(float dt)
 
 void CPlayerCharacter::InputKey(float dt)
 {
-	float axisValue = 0.0f;
-	if (GetAsyncKeyState(VK_LEFT))
-		axisValue -= 1.0f;
-	else if (GetAsyncKeyState(VK_RIGHT))
-		axisValue += 1.0f;
+	CharacterMovement->AddMovement(
+		FVector::DownVector() * CInput::GetAxis(TEXT("Vertical")));
 
-	CharacterMovement->AddMovement(FVector::RightVector() * axisValue, dt);
+	CharacterMovement->AddMovement(
+		FVector::RightVector() * CInput::GetAxis(TEXT("Horizontal")));
+
 }

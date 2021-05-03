@@ -12,21 +12,28 @@ private :
     // 최대 속력을 나타냅니다.
     float MaxSpeed;
 
+    // 제동력
+    float BrakingForce;
+
     // 속도
     FVector Velocity;
 
+    // 충격 속도
+    FVector Impulse;
+
 public :
-    // 속도를 반환합니다.
-    FVector GetVelocity() const;
+    CCharacterMovementComponent();
 
-    // 속도를 설정합니다.
-    void SetVelocity(FVector newVelocity);
+public :
+    virtual void Tick(float dt) override;
 
+public :
     // 충격 속도를 추가합니다.
     void AddImpulse(FVector impulse);
 
     // 이동을 추가합니다.
-    void AddMovement(FVector direction, float deltaSeconds);
+    void AddMovement(FVector direction);
+
 
 public :
     FORCEINLINE float GetMaxSpeed() const
@@ -34,5 +41,12 @@ public :
     FORCEINLINE void SetMaxSpeed(float newMaxSpeed)
     { MaxSpeed = newMaxSpeed; }
 
+    // 속도를 반환합니다.
+    FORCEINLINE FVector GetVelocity() const
+    { return Velocity; }
+
+    // 속도를 설정합니다.
+    FORCEINLINE void SetVelocity(FVector newVelocity)
+    { Velocity = newVelocity; } 
 };
 

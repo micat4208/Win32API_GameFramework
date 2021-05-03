@@ -151,7 +151,10 @@
     <ClCompile Include="Framework\Bitmap\Bitmap.cpp" />
     <ClCompile Include="Framework\Entry\Entry.cpp" />
     <ClCompile Include="Framework\Single\GameInstance\GameInstance.cpp" />
+    <ClCompile Include="Framework\Single\InputManager\InputManager.cpp" />
     <ClCompile Include="Framework\Single\SceneManager\SceneManager.cpp" />
+    <ClCompile Include="Framework\Struct\ActionInput\ActionInput.cpp" />
+    <ClCompile Include="Framework\Struct\AxisInput\AxisInput.cpp" />
     <ClCompile Include="Framework\Struct\Vector\Vector.cpp" />
     <ClCompile Include="Game\Components\CharacterMovement\CharacterMovementComponent.cpp" />
     <ClCompile Include="Game\Components\PlayerCharacterRenderer\PlayerCharacterRenderer.cpp" />
@@ -168,8 +171,11 @@
     <ClInclude Include="Framework\Bitmap\Bitmap.h" />
     <ClInclude Include="Framework\Interface\ManagerClass.h" />
     <ClInclude Include="Framework\Single\GameInstance\GameInstance.h" />
+    <ClInclude Include="Framework\Single\InputManager\InputManager.h" />
     <ClInclude Include="Framework\Single\ManagerClassBase\ManagerClassBase.h" />
     <ClInclude Include="Framework\Single\SceneManager\SceneManager.h" />
+    <ClInclude Include="Framework\Struct\ActionInput\ActionInput.h" />
+    <ClInclude Include="Framework\Struct\AxisInput\AxisInput.h" />
     <ClInclude Include="Framework\Struct\Math\Math.h" />
     <ClInclude Include="Framework\Struct\Vector\Vector.h" />
     <ClInclude Include="Game\Components\CharacterMovement\CharacterMovementComponent.h" />
