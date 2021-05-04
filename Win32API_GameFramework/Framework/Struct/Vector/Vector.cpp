@@ -39,9 +39,9 @@ bool FVector::IsUnit(float errorTolerance) const
 tstring FVector::ToString() const
 {
 	tstring str = TEXT("X = ");
-	str += X;
+	str += to_tstring(X);
 	str += TEXT(", Y = ");
-	str += Y;
+	str += to_tstring(Y);
 
 	return str;
 }

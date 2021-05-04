@@ -25,6 +25,11 @@ void CInputManager::InitializeManagerClass()
 
 	AddAxis(TEXT("Vertical"), verticalLow, verticalHigh);
 #pragma endregion
+
+#pragma region Action ...
+	AddAction(TEXT("Space"), VK_SPACE);
+	AddAction(TEXT("FireBullet"), VK_LBUTTON);
+#pragma endregion
 }
 
 void CInputManager::AddAxis(tstring axisName, int lowKey, int highKey)
@@ -44,10 +49,12 @@ void CInputManager::AddAxis(tstring axisName, vector<int> lowKeys, vector<int> h
 
 void CInputManager::AddAction(tstring actionName, int actionKey)
 {
+	ActionInputs.insert(make_pair(actionName, FActionInput(actionKey)));
 }
 
 void CInputManager::AddAction(tstring actionName, vector<int> actionKeys)
 {
+	ActionInputs.insert(make_pair(actionName, FActionInput(actionKeys)));
 }
 
 void CInputManager::UpdateInputValue()
@@ -55,9 +62,28 @@ void CInputManager::UpdateInputValue()
 	// 축 입력 값 갱신
 	for (auto iter = AxisInputs.begin(); iter != AxisInputs.end(); ++iter)
 		iter->second.UpdateInputAxisValue();
+
+	// 액션 입력 값 갱신
+	for (auto iter = ActionInputs.begin(); iter != ActionInputs.end(); ++iter)
+		iter->second.UpdateInputActionValue();
 }
 
 float CInputManager::GetAxis(tstring axisName)
 {
 	return Instance()->AxisInputs[axisName].AxisValue;
+}
+
+bool CInputManager::GetKeyDown(tstring actionName)
+{
+	return Instance()->ActionInputs[actionName].IsKeyDown();
+}
+
+bool CInputManager::GetKeyUp(tstring actionName)
+{
+	return Instance()->ActionInputs[actionName].IsKeyUp();
+}
+
+bool CInputManager::GetKey(tstring actionName)
+{
+	return Instance()->ActionInputs[actionName].IsKey();
 }

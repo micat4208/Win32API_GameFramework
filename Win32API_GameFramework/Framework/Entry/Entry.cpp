@@ -8,6 +8,7 @@ HWND Hwnd;
 
 // GameInstance
 DEF_GAMEINSTANCECLASS* GameInstance;
+float GameStartTime;
 
 
 LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
@@ -18,7 +19,7 @@ int APIENTRY wWinMain(
 	LPTSTR		lpszCmdParam,
 	int			nCmdShow)
 {
-	srand(GetTickCount64());
+	srand(GameStartTime = GetTickCount64());
 
 	WNDCLASS wndClass;
 

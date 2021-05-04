@@ -46,5 +46,10 @@ public :
     // 축 입력 값을 얻습니다.
     static float GetAxis(tstring axisName);
 
+    // 키 입력 상태를 반환합니다.
+    static bool GetKeyDown(tstring actionName);
+    static bool GetKeyUp(tstring actionName);
+    static bool GetKey(tstring actionName);
+
 } CInput;
 

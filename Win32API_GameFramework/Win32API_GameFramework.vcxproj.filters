@@ -57,7 +57,7 @@
     <ClCompile Include="Game\Components\PlayerCharacterRenderer\PlayerCharacterRenderer.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Components\CharacterMovement\CharacterMovementComponent.cpp">
+    <ClCompile Include="Game\Components\Movement\MovementComponent.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Framework\Single\InputManager\InputManager.cpp">
@@ -67,6 +67,15 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Framework\Struct\ActionInput\ActionInput.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Components\PlayerAttack\PlayerAttackComponent.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\Statics\GameplayStatics.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\GameObject\Bullet\Bullet.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
@@ -134,7 +143,7 @@
     <ClInclude Include="Game\Components\PlayerCharacterRenderer\PlayerCharacterRenderer.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Game\Components\CharacterMovement\CharacterMovementComponent.h">
+    <ClInclude Include="Game\Components\Movement\MovementComponent.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Framework\Single\InputManager\InputManager.h">
@@ -144,6 +153,15 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Framework\Struct\ActionInput\ActionInput.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Components\PlayerAttack\PlayerAttackComponent.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Statics\GameplayStatics.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameObject\Bullet\Bullet.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

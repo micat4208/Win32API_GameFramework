@@ -1,10 +1,10 @@
 #include "Character.h"
 
-#include "Game/Components/CharacterMovement/CharacterMovementComponent.h"
+#include "Game/Components/Movement/MovementComponent.h"
 
 void CCharacter::Initialize()
 {
 	super::Initialize();
 
-	CharacterMovement = AddComponent<CCharacterMovementComponent>();
+	Movement = AddComponent<CMovementComponent>();
 }

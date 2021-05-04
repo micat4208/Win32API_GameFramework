@@ -33,6 +33,7 @@ using namespace std;
 
 
 extern HWND Hwnd;
+extern float GameStartTime;
 
 
 

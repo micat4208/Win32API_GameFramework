@@ -95,7 +95,12 @@ void CGameObject::Release()
 	{
 		// 메모리 해제
 		for (auto destroyedComponent : DestroyedComponents)
+		{
+			if (IsA<CRenderComponent>(destroyedComponent))
+				OwnerScene->UnRegisterRenderComponent(Cast<CRenderComponent>(destroyedComponent));
+
 			CObject::DeleteObject(destroyedComponent);
+		}
 
 		DestroyedComponents.clear();
 	}
