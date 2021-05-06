@@ -3,4 +3,5 @@
 CRenderComponent::CRenderComponent()
 {
 	bUseRender = true;
+	SortingOrder = 0;
 }

@@ -4,14 +4,15 @@
 #include "Framework/Statics/GameplayStatics.h"
 #include "Framework/Base/Scene/Scene.h"
 
+#include "Framework/Util/ObjectPool.h"
+
 #include "Game/GameObject/Bullet/Bullet.h"
-
-
 
 void CPlayerAttackComponent::Initialize()
 {
 	super::Initialize();
 
+	BulletPool = CObject::NewObject<CObjectPool>();
 	AttackDirection = FVector::ZeroVector();
 }
 
@@ -23,22 +24,23 @@ void CPlayerAttackComponent::Tick(float dt)
 		FireBullet();
 
 	FVector cursorPos = CGameplayStatics::GetMousePosition();
-	LOG(TEXT("CursorXY In Client = ") << cursorPos.ToString());
+}
+
+void CPlayerAttackComponent::Release()
+{
+	super::Release();
+
+	CObject::DeleteObject(BulletPool);
 }
 
 void CPlayerAttackComponent::FireBullet()
 {
-	static int bulletCount = 0;
-	for (int32 i = 0; i < 50; ++i)
-	{
-		++bulletCount;
 
-		CBullet* newBullet = Owner->OwnerScene->NewGameObject<CBullet>();
-		newBullet->InitializeBullet();
-		newBullet->Position = Owner->Position;
+	CBullet* newBullet = BulletPool->GetRecycledObject<CBullet>();
+	newBullet = (newBullet != nullptr) ?
+		newBullet :
+		BulletPool->RegisterRecyclableObject(Owner->OwnerScene->NewGameObject<CBullet>());
 
-
-		LOG(TEXT("bulletCount = ") << bulletCount);
-	}
-
+	newBullet->InitializeBullet();
+	newBullet->Position = Owner->Position;
 }

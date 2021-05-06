@@ -9,6 +9,9 @@ public :
     // Render 메서드 호출 여부를 나타냅니다.
     bool bUseRender;
 
+    // 그리기 순서를 나타냅니다.
+    int32 SortingOrder;
+
 public :
     CRenderComponent();
 

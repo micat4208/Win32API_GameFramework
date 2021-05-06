@@ -8,9 +8,10 @@
 void CBullet::Initialize()
 {
 	super::Initialize();
-	AddComponent<CPlayerCharacterRenderer>();
+	BulletRenderer = AddComponent<CPlayerCharacterRenderer>();
 	Movement = AddComponent<CMovementComponent>();
 	MaxLifeTime = 3.0f;
+	bRecyclable = false;
 }
 
 void CBullet::Tick(float dt)
@@ -18,10 +19,20 @@ void CBullet::Tick(float dt)
 	super::Tick(dt);
 
 	if (CGameplayStatics::GetTime() - CreatedTime >= MaxLifeTime)
-		OwnerScene->Destroy(this);
+	{
+		BulletRenderer->bUseRender = false;
+		bRecyclable = true;
+	}
+		//OwnerScene->Destroy(this);
 }
 
 void CBullet::InitializeBullet()
 {
 	CreatedTime = CGameplayStatics::GetTime();
+
+	BulletRenderer->bUseRender = true;
+}
+
+void CBullet::OnRecycleStarted()
+{
 }

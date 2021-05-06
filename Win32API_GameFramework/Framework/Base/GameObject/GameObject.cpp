@@ -39,6 +39,10 @@ void CGameObject::Tick(float DeltaSeconds)
 			// 해제시킬 컴포넌트를 사용중인 컴포넌트들에서 제외합니다.
 			UsedComponents.remove(destroyedComponent);
 
+			if (IsA<CRenderComponent>(destroyedComponent))
+				OwnerScene->UnRegisterRenderComponent(
+					Cast<CRenderComponent>(destroyedComponent));
+
 			// 메모리 해제
 			CObject::DeleteObject(destroyedComponent);
 		}

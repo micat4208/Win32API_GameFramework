@@ -50,6 +50,7 @@ void CScene::Tick(float deltaSecond)
 	}
 
 
+
 	// 사용하는 오브젝트가 존재하는 경우
 	if (UsedGameObjectList.size() > 0)
 	{
@@ -72,7 +73,7 @@ void CScene::Tick(float deltaSecond)
 void CScene::Render(HDC hdc)
 {
 	BitBlt(BackBuffer->GetDC(), 0, 0, WND_WIDTH, WND_HEIGHT, Eraser->GetDC(), 0, 0, SRCCOPY);
-	
+
 	for (auto renderComponent : UsedRenderComponents)
 	{
 		if (renderComponent->bBeDestroy) continue;

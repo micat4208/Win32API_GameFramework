@@ -157,6 +157,7 @@
     <ClCompile Include="Framework\Struct\ActionInput\ActionInput.cpp" />
     <ClCompile Include="Framework\Struct\AxisInput\AxisInput.cpp" />
     <ClCompile Include="Framework\Struct\Vector\Vector.cpp" />
+    <ClCompile Include="Framework\Util\ObjectPool.cpp" />
     <ClCompile Include="Game\Components\Movement\MovementComponent.cpp" />
     <ClCompile Include="Game\Components\PlayerAttack\PlayerAttackComponent.cpp" />
     <ClCompile Include="Game\Components\PlayerCharacterRenderer\PlayerCharacterRenderer.cpp" />
@@ -173,6 +174,7 @@
     <ClInclude Include="Framework\Base\Scene\Scene.h" />
     <ClInclude Include="Framework\Bitmap\Bitmap.h" />
     <ClInclude Include="Framework\Interface\ManagerClass.h" />
+    <ClInclude Include="Framework\Interface\ObjectPoolable.h" />
     <ClInclude Include="Framework\Single\GameInstance\GameInstance.h" />
     <ClInclude Include="Framework\Single\InputManager\InputManager.h" />
     <ClInclude Include="Framework\Single\ManagerClassBase\ManagerClassBase.h" />
@@ -182,6 +184,7 @@
     <ClInclude Include="Framework\Struct\AxisInput\AxisInput.h" />
     <ClInclude Include="Framework\Struct\Math\Math.h" />
     <ClInclude Include="Framework\Struct\Vector\Vector.h" />
+    <ClInclude Include="Framework\Util\ObjectPool.h" />
     <ClInclude Include="Game\Components\Movement\MovementComponent.h" />
     <ClInclude Include="Game\Components\PlayerAttack\PlayerAttackComponent.h" />
     <ClInclude Include="Game\Components\PlayerCharacterRenderer\PlayerCharacterRenderer.h" />

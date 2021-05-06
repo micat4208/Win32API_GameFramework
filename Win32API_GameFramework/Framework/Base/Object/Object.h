@@ -18,8 +18,8 @@ public :
 
 	// ParentType 형식과 ChildType 형식이 상속 관계에 속해있는지 확인합니다.
 	template<typename ParentType, typename ChildType>
-	FORCEINLINE static bool IsA(const ChildType* childInstance)
-	{ return is_base_of<ParentType, ChildType>(); }
+	FORCEINLINE static bool IsA(ChildType* childInstance)
+	{ return (dynamic_cast<ParentType*>(childInstance) != nullptr); }
 
 	template<typename ParentType, typename ChildType>
 	FORCEINLINE static bool IsA()
