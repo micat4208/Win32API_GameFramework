@@ -10,7 +10,7 @@ void CPlayerCharacter::Initialize()
 {
 	super::Initialize();
 
-	AddComponent<CPlayerCharacterRenderer>();
+	AddComponent<CPlayerCharacterRenderer>()->SetSortingOrder(1000);
 	AddComponent<CPlayerAttackComponent>();
 
 	Position = FVector::ScreenCenter();

@@ -35,6 +35,12 @@ void CPlayerAttackComponent::Release()
 
 void CPlayerAttackComponent::FireBullet()
 {
+	// 발사 지점 2초간 표시
+	Owner->OwnerScene->DrawCircle(
+		Owner->Position, 
+		FVector::OneVector() * 30.0f, 
+		RGB(255, 0, 255), 
+		2.0f);
 
 	CBullet* newBullet = BulletPool->GetRecycledObject<CBullet>();
 	newBullet = (newBullet != nullptr) ?

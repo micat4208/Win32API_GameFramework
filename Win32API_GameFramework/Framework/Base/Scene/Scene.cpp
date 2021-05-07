@@ -2,12 +2,16 @@
 
 #include "Framework/Bitmap/Bitmap.h"
 
+#include "Framework/Statics/GameplayStatics.h"
+
 void CScene::Initialize()
 {
 	super::Initialize();
 
 	BackBuffer = CBitmap::LoadBmp(NewObject<CBitmap>(), TEXT("Resources/Default/Black.bmp"));
 	Eraser = CBitmap::LoadBmp(NewObject<CBitmap>(), TEXT("Resources/Default/Black.bmp"));
+
+	bNeedSort = false;
 }
 
 void CScene::Tick(float deltaSecond)
@@ -37,6 +41,8 @@ void CScene::Tick(float deltaSecond)
 
 	if (CreatedRenderComponents.size() > 0)
 	{
+		bNeedSort = true;
+
 		for (auto createdRenderComponent : CreatedRenderComponents)
 			UsedRenderComponents.push_back(createdRenderComponent);
 		CreatedRenderComponents.clear();
@@ -72,8 +78,17 @@ void CScene::Tick(float deltaSecond)
 
 void CScene::Render(HDC hdc)
 {
+	if (bNeedSort)
+	{ 
+		UsedRenderComponents.sort([](CRenderComponent* first, CRenderComponent* second)
+			{ return first->GetSortingOrder() < second->GetSortingOrder(); } );
+	
+		bNeedSort = false;
+	}
+
 	BitBlt(BackBuffer->GetDC(), 0, 0, WND_WIDTH, WND_HEIGHT, Eraser->GetDC(), 0, 0, SRCCOPY);
 
+	// RenderComponent Draw
 	for (auto renderComponent : UsedRenderComponents)
 	{
 		if (renderComponent->bBeDestroy) continue;
@@ -84,12 +99,40 @@ void CScene::Render(HDC hdc)
 		renderComponent->Render(BackBuffer->GetDC());
 	}
 
+#if GAME_DEBUG_MODE == true
+	// Debug Draw
+	for (auto debugDrawInfo : DebugDrawInfos)
+		debugDrawInfo->Draw(BackBuffer->GetDC());
+
+	// Delete Debug Draw Info
+	for (auto iter = DebugDrawInfos.begin(); iter != DebugDrawInfos.end(); ++iter)
+	{
+		// 그리기 시작 후 Duration 만큼의 시간이 지났다면 메모리 해제, nullptr 로 초기화
+		if (CGameplayStatics::GetTime() - (*iter)->DrawStartTime >= (*iter)->Duration)
+			CObject::DeleteObject(*iter);
+	}
+
+	// nullptr 인 요소들을 제거
+	DebugDrawInfos.remove_if([](FDebugDrawInfo* debugDrawInfo) 
+		{ return debugDrawInfo == nullptr; });
+#endif
+
+
 	BitBlt(hdc, 0, 0, WND_WIDTH, WND_HEIGHT, BackBuffer->GetDC(), 0, 0, SRCCOPY);
 }
 
 void CScene::Release()
 {
 	super::Release();
+
+
+#if GAME_DEBUG_MODE == true
+	for (auto iter = DebugDrawInfos.begin(); iter != DebugDrawInfos.end(); ++iter)
+		CObject::DeleteObject(*iter);
+	DebugDrawInfos.clear();
+#endif
+
+
 
 	// 추가하려는 오브젝트가 존재하는 경우
 	if (CreatedGameObjectList.size() > 0)
@@ -133,4 +176,18 @@ void CScene::Destroy(CGameObject* gameObject)
 	gameObject->OnDestroy();
 
 	DestroyedGameObjectList.push_back(gameObject);
+}
+
+void CScene::AddDebugDraw(EDebugDrawType debugDrawType, FVector vec1, FVector vec2, COLORREF color, float duration)
+{
+#if GAME_DEBUG_MODE == true
+
+	FDebugDrawInfo* newDebugDrawInfo = CObject::NewObject<FDebugDrawInfo>();
+
+	newDebugDrawInfo->InitializeDebugDrawInfo(
+		debugDrawType, vec1, vec2, color, duration);
+
+	DebugDrawInfos.push_back(newDebugDrawInfo);
+
+#endif
 }

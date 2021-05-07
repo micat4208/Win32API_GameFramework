@@ -2,6 +2,8 @@
 #include "Framework/Base/Object/Object.h"
 #include "Framework/Base/GameObject/GameObject.h"
 
+#include "Framework/Struct/DebugDrawInfo/DebugDrawInfo.h"
+
 class CScene abstract :
     public CObject
 {
@@ -25,8 +27,14 @@ private :
     // 제거된 RenerComponent 들을 나타냅니다.
     list<class CRenderComponent*> DestroyedRenderComponents;
 
+    // DebugDrawInfos
+    list<struct FDebugDrawInfo*> DebugDrawInfos;
+
     class CBitmap* BackBuffer, *Eraser;
 
+public :
+    // UsedRenderComponents 에 추가된 요소들의 정렬이 필요함을 나타냅니다.
+    bool bNeedSort;
 
 
 public :
@@ -70,5 +78,22 @@ public :
     FORCEINLINE void UnRegisterRenderComponent(
         class CRenderComponent* renderComponent)
     { DestroyedRenderComponents.push_back(renderComponent); }
+
+    FORCEINLINE void DrawCircle(FVector center, FVector size,
+        COLORREF color, float duration = 5.0f)
+    { AddDebugDraw(EDebugDrawType::DT_Circle, center, size, color, duration); }
+
+    FORCEINLINE void DrawRect(FVector center, FVector size,
+        COLORREF color, float duration = 5.0f)
+    { AddDebugDraw(EDebugDrawType::DT_Rect, center, size, color, duration); }
+
+    FORCEINLINE void DrawLine(FVector start, FVector end,
+        COLORREF color, float duration = 5.0f)
+    { AddDebugDraw(EDebugDrawType::DT_LINE, start, end, color, duration); }
+
+private :
+    void AddDebugDraw(EDebugDrawType debugDrawType, FVector vec1, FVector vec2,
+        COLORREF color, float duration);
+
 };
 

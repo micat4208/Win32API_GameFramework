@@ -12,7 +12,7 @@
 
 #include "TypeDefine.h"
 #include "GameDefine.h"
-#include "Log.h"
+#include "GameDebug.h"
 
 #pragma comment (lib, "msimg32.lib")
 
