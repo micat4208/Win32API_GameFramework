@@ -143,6 +143,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Framework\Base\Component\Collision\CircleCollision\CircleCollisionComponent.cpp" />
+    <ClCompile Include="Framework\Base\Component\Collision\CollisionComponent.cpp" />
     <ClCompile Include="Framework\Base\Component\Component.cpp" />
     <ClCompile Include="Framework\Base\Component\RenderComponent\RenderComponent.cpp" />
     <ClCompile Include="Framework\Base\GameObject\GameObject.cpp" />
@@ -150,6 +152,7 @@
     <ClCompile Include="Framework\Base\Scene\Scene.cpp" />
     <ClCompile Include="Framework\Bitmap\Bitmap.cpp" />
     <ClCompile Include="Framework\Entry\Entry.cpp" />
+    <ClCompile Include="Framework\Single\CollisionManager\CollisionManager.cpp" />
     <ClCompile Include="Framework\Single\GameInstance\GameInstance.cpp" />
     <ClCompile Include="Framework\Single\InputManager\InputManager.cpp" />
     <ClCompile Include="Framework\Single\SceneManager\SceneManager.cpp" />
@@ -157,6 +160,7 @@
     <ClCompile Include="Framework\Struct\ActionInput\ActionInput.cpp" />
     <ClCompile Include="Framework\Struct\AxisInput\AxisInput.cpp" />
     <ClCompile Include="Framework\Struct\DebugDrawInfo\DebugDrawInfo.cpp" />
+    <ClCompile Include="Framework\Struct\Rect\Rect.cpp" />
     <ClCompile Include="Framework\Struct\Vector\Vector.cpp" />
     <ClCompile Include="Framework\Util\ObjectPool.cpp" />
     <ClCompile Include="Game\Components\Movement\MovementComponent.cpp" />
@@ -168,15 +172,19 @@
     <ClCompile Include="Game\Scene\GameScene\GameScene.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Framework\Base\Component\Collision\CircleCollision\CircleCollisionComponent.h" />
+    <ClInclude Include="Framework\Base\Component\Collision\CollisionComponent.h" />
     <ClInclude Include="Framework\Base\Component\Component.h" />
     <ClInclude Include="Framework\Base\Component\RenderComponent\RenderComponent.h" />
     <ClInclude Include="Framework\Base\GameObject\GameObject.h" />
     <ClInclude Include="Framework\Base\Object\Object.h" />
     <ClInclude Include="Framework\Base\Scene\Scene.h" />
     <ClInclude Include="Framework\Bitmap\Bitmap.h" />
+    <ClInclude Include="Framework\Enum\CollisionType.h" />
     <ClInclude Include="Framework\Enum\DebugDrawType.h" />
     <ClInclude Include="Framework\Interface\ManagerClass.h" />
     <ClInclude Include="Framework\Interface\ObjectPoolable.h" />
+    <ClInclude Include="Framework\Single\CollisionManager\CollisionManager.h" />
     <ClInclude Include="Framework\Single\GameInstance\GameInstance.h" />
     <ClInclude Include="Framework\Single\InputManager\InputManager.h" />
     <ClInclude Include="Framework\Single\ManagerClassBase\ManagerClassBase.h" />
@@ -186,6 +194,7 @@
     <ClInclude Include="Framework\Struct\AxisInput\AxisInput.h" />
     <ClInclude Include="Framework\Struct\DebugDrawInfo\DebugDrawInfo.h" />
     <ClInclude Include="Framework\Struct\Math\Math.h" />
+    <ClInclude Include="Framework\Struct\Rect\Rect.h" />
     <ClInclude Include="Framework\Struct\Vector\Vector.h" />
     <ClInclude Include="Framework\Util\ObjectPool.h" />
     <ClInclude Include="Game\Components\Movement\MovementComponent.h" />

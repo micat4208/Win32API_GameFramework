@@ -2,7 +2,11 @@
 #include "Framework/Base/Object/Object.h"
 #include "Framework/Struct/Vector/Vector.h"
 
+#include "Framework/Single/CollisionManager/CollisionManager.h"
+
 #include "Framework/Base/Component/RenderComponent/RenderComponent.h"
+
+#include "Framework/Base/Component/Collision/CollisionComponent.h"
 
 class CGameObject :
     public CObject
@@ -90,6 +94,10 @@ public :
 		// 만약 추가하는 컴포넌트가 RenderComponent 라면
 		if (IsA<CRenderComponent, ComponentClassType>())
 			RegisterNewRenderComponent(Cast<CRenderComponent>(newComponent));
+
+		// 만약 추가하는 컴포넌트가 CollisionComponent 라면
+		else if (IsA<CCollisionComponent, ComponentClassType>())
+			CCollisionManager::Instance()->RegisterCollision(Cast<CCollisionComponent>(newComponent));
 
 		return Cast<ComponentClassType>(newComponent);
 	}

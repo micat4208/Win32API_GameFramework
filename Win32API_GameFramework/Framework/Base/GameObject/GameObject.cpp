@@ -43,6 +43,10 @@ void CGameObject::Tick(float DeltaSeconds)
 				OwnerScene->UnRegisterRenderComponent(
 					Cast<CRenderComponent>(destroyedComponent));
 
+			else if (IsA<CCollisionComponent>(destroyedComponent))
+				CCollisionManager::Instance()->UnRegisterCollision(
+					Cast<CCollisionComponent>(destroyedComponent));
+
 			// 메모리 해제
 			CObject::DeleteObject(destroyedComponent);
 		}
@@ -102,6 +106,10 @@ void CGameObject::Release()
 		{
 			if (IsA<CRenderComponent>(destroyedComponent))
 				OwnerScene->UnRegisterRenderComponent(Cast<CRenderComponent>(destroyedComponent));
+
+			else if (IsA<CCollisionComponent>(destroyedComponent))
+				CCollisionManager::Instance()->UnRegisterCollision(
+					Cast<CCollisionComponent>(destroyedComponent));
 
 			CObject::DeleteObject(destroyedComponent);
 		}

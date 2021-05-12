@@ -1,6 +1,7 @@
 #include "Include/DefaultInclude.h"
 
 #include "Framework/Single/GameInstance/GameInstance.h"
+#include "Framework/Single/CollisionManager/CollisionManager.h"
 #include "Framework/Single/SceneManager/SceneManager.h"
 #include "Framework/Single/InputManager/InputManager.h"
 
@@ -94,6 +95,9 @@ int APIENTRY wWinMain(
 			if (totalDS >= targetDS)
 			{
 				CInputManager::Instance()->UpdateInputValue();
+
+				// 충돌체 검사
+				CCollisionManager::Instance()->DoCollisionTest();
 
 				// Tick 메서드 호출
 				CSceneManager::Instance()->Tick(totalDS);
