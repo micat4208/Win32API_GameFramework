@@ -145,6 +145,7 @@
   <ItemGroup>
     <ClCompile Include="Framework\Base\Component\Collision\CircleCollision\CircleCollisionComponent.cpp" />
     <ClCompile Include="Framework\Base\Component\Collision\CollisionComponent.cpp" />
+    <ClCompile Include="Framework\Base\Component\Collision\RectCollision\RectCollisionComponent.cpp" />
     <ClCompile Include="Framework\Base\Component\Component.cpp" />
     <ClCompile Include="Framework\Base\Component\RenderComponent\RenderComponent.cpp" />
     <ClCompile Include="Framework\Base\GameObject\GameObject.cpp" />
@@ -174,6 +175,7 @@
   <ItemGroup>
     <ClInclude Include="Framework\Base\Component\Collision\CircleCollision\CircleCollisionComponent.h" />
     <ClInclude Include="Framework\Base\Component\Collision\CollisionComponent.h" />
+    <ClInclude Include="Framework\Base\Component\Collision\RectCollision\RectCollisionComponent.h" />
     <ClInclude Include="Framework\Base\Component\Component.h" />
     <ClInclude Include="Framework\Base\Component\RenderComponent\RenderComponent.h" />
     <ClInclude Include="Framework\Base\GameObject\GameObject.h" />

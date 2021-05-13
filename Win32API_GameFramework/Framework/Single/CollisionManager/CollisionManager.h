@@ -16,6 +16,13 @@ private :
     bool DoCollisionTestCircleToCircle(
         class CCollisionComponent* circle1, class CCollisionComponent* circle2);
 
+    // 사각형과 사각형 충돌 검사
+    bool DoCollisionTestRectToRect(
+        class CCollisionComponent* rect1, class CCollisionComponent* rect2);
+
+    // 원과 사각형 충돌 검사
+    bool DoCollisionTestRectToCircle(class CCollisionComponent* rect, class CCollisionComponent* circle);
+
 public :
     void DoCollisionTest();
 

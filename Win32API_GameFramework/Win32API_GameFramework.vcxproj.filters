@@ -96,6 +96,9 @@
     <ClCompile Include="Framework\Single\CollisionManager\CollisionManager.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Framework\Base\Component\Collision\RectCollision\RectCollisionComponent.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Include\DefaultInclude.h">
@@ -207,6 +210,9 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Framework\Single\CollisionManager\CollisionManager.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Base\Component\Collision\RectCollision\RectCollisionComponent.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
