@@ -16,8 +16,6 @@ public:
     template<typename T>
     FORCEINLINE T* RegisterRecyclableObject(T* newRecyclableObject)
     {
-        LOG(TEXT("PoolObjects.size() = ") << PoolObjects.size());
-
         PoolObjects.push_back(newRecyclableObject);
         return newRecyclableObject;
     }

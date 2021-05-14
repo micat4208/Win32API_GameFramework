@@ -147,7 +147,8 @@
     <ClCompile Include="Framework\Base\Component\Collision\CollisionComponent.cpp" />
     <ClCompile Include="Framework\Base\Component\Collision\RectCollision\RectCollisionComponent.cpp" />
     <ClCompile Include="Framework\Base\Component\Component.cpp" />
-    <ClCompile Include="Framework\Base\Component\RenderComponent\RenderComponent.cpp" />
+    <ClCompile Include="Framework\Base\Component\Render\RenderComponent.cpp" />
+    <ClCompile Include="Framework\Base\Component\Render\SpriteRenderer\SpriteRendererComponent.cpp" />
     <ClCompile Include="Framework\Base\GameObject\GameObject.cpp" />
     <ClCompile Include="Framework\Base\Object\Object.cpp" />
     <ClCompile Include="Framework\Base\Scene\Scene.cpp" />
@@ -165,9 +166,6 @@
     <ClCompile Include="Framework\Struct\Vector\Vector.cpp" />
     <ClCompile Include="Framework\Util\ObjectPool.cpp" />
     <ClCompile Include="Game\Components\Movement\MovementComponent.cpp" />
-    <ClCompile Include="Game\Components\PlayerAttack\PlayerAttackComponent.cpp" />
-    <ClCompile Include="Game\Components\PlayerCharacterRenderer\PlayerCharacterRenderer.cpp" />
-    <ClCompile Include="Game\GameObject\Bullet\Bullet.cpp" />
     <ClCompile Include="Game\GameObject\Character\Character.cpp" />
     <ClCompile Include="Game\GameObject\Character\PlayerCharacter\PlayerCharacter.cpp" />
     <ClCompile Include="Game\Scene\GameScene\GameScene.cpp" />
@@ -177,7 +175,8 @@
     <ClInclude Include="Framework\Base\Component\Collision\CollisionComponent.h" />
     <ClInclude Include="Framework\Base\Component\Collision\RectCollision\RectCollisionComponent.h" />
     <ClInclude Include="Framework\Base\Component\Component.h" />
-    <ClInclude Include="Framework\Base\Component\RenderComponent\RenderComponent.h" />
+    <ClInclude Include="Framework\Base\Component\Render\RenderComponent.h" />
+    <ClInclude Include="Framework\Base\Component\Render\SpriteRenderer\SpriteRendererComponent.h" />
     <ClInclude Include="Framework\Base\GameObject\GameObject.h" />
     <ClInclude Include="Framework\Base\Object\Object.h" />
     <ClInclude Include="Framework\Base\Scene\Scene.h" />
@@ -200,9 +199,6 @@
     <ClInclude Include="Framework\Struct\Vector\Vector.h" />
     <ClInclude Include="Framework\Util\ObjectPool.h" />
     <ClInclude Include="Game\Components\Movement\MovementComponent.h" />
-    <ClInclude Include="Game\Components\PlayerAttack\PlayerAttackComponent.h" />
-    <ClInclude Include="Game\Components\PlayerCharacterRenderer\PlayerCharacterRenderer.h" />
-    <ClInclude Include="Game\GameObject\Bullet\Bullet.h" />
     <ClInclude Include="Game\GameObject\Character\Character.h" />
     <ClInclude Include="Game\GameObject\Character\PlayerCharacter\PlayerCharacter.h" />
     <ClInclude Include="Game\Scene\GameScene\GameScene.h" />

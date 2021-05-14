@@ -5,9 +5,15 @@
 class CRectCollisionComponent :
     public CCollisionComponent
 {
+private :
+    FVector Size;
+
 public:
     CRectCollisionComponent();
     CRectCollisionComponent(float size);
     CRectCollisionComponent(FVector size);
+
+protected :
+    virtual void UpdateBounds() override;
 
 };

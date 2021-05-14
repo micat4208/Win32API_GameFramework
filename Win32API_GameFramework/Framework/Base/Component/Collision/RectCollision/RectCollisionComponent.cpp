@@ -9,6 +9,12 @@ CRectCollisionComponent::CRectCollisionComponent(float size) :
 
 CRectCollisionComponent::CRectCollisionComponent(FVector size)
 {
+	Size = size;
 	CollisionType = ECollisionType::Rect;
-	Bounds = FRect(Owner->Position, size.X, size.Y);
+	Bounds = FRect(Owner->Position, Size.X, Size.Y);
+}
+
+void CRectCollisionComponent::UpdateBounds()
+{
+	Bounds = FRect(Owner->Position, Size.X, Size.Y);
 }

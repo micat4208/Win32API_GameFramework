@@ -26,6 +26,12 @@ public :
     // 다른 충돌체를 감지했을 경우 호출될 메서드
     virtual void OnOverlapped(CCollisionComponent* other);
 
+    virtual void Tick(float dt) override;
+
+protected :
+    // Bounds 를 갱신합니다.
+    virtual void UpdateBounds() PURE;
+
 public :
     FORCEINLINE const FRect& GetBounds() const
     { return Bounds; }

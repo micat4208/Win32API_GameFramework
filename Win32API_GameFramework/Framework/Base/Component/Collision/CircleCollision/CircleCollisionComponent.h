@@ -10,6 +10,9 @@ private :
 public :
     CCircleCollisionComponent();
 
+protected :
+    virtual void UpdateBounds() override;
+
 public :
     void SetRadius(float radius);
     FORCEINLINE float GetRadius() const

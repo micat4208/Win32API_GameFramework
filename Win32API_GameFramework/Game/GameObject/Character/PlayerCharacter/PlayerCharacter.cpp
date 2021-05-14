@@ -2,17 +2,11 @@
 
 #include "Framework/Single/InputManager/InputManager.h"
 
-#include "Game/Components/PlayerCharacterRenderer/PlayerCharacterRenderer.h"
 #include "Game/Components/Movement/MovementComponent.h"
-#include "Game/Components/PlayerAttack/PlayerAttackComponent.h"
 
 void CPlayerCharacter::Initialize()
 {
 	super::Initialize();
-
-	AddComponent<CPlayerCharacterRenderer>()->SetSortingOrder(1000);
-	AddComponent<CPlayerAttackComponent>();
-
 	Position = FVector::ScreenCenter();
 	Movement->SetMaxSpeed(300.0f);
 }

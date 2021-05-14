@@ -6,6 +6,5 @@ class CGameScene final :
 {
 public :
     virtual void Initialize() override;
-    virtual void Tick(float dt) override;
 };
 

@@ -7,6 +7,11 @@ CCircleCollisionComponent::CCircleCollisionComponent()
 	CollisionType = ECollisionType::Circle;
 }
 
+void CCircleCollisionComponent::UpdateBounds()
+{
+	Bounds = FRect(Owner->Position, Radius * 2.0f, Radius * 2.0f);
+}
+
 void CCircleCollisionComponent::SetRadius(float radius)
 {
 	Radius = radius;

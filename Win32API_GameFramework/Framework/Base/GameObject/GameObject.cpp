@@ -22,6 +22,7 @@ void CGameObject::Start()
 
 void CGameObject::Tick(float DeltaSeconds)
 {
+
 	// 생성된 컴포넌트가 존재한다면
 	if (CreatedComponents.size() > 0)
 	{

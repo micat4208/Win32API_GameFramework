@@ -9,3 +9,10 @@ void CCollisionComponent::OnOverlapped(CCollisionComponent* other)
 	}
 
 }
+
+void CCollisionComponent::Tick(float dt)
+{
+	super::Tick(dt);
+
+	UpdateBounds();
+}

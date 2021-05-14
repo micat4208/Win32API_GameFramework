@@ -5,6 +5,30 @@
 #include "Framework/Single/SceneManager/SceneManager.h"
 #include "Framework/Single/InputManager/InputManager.h"
 
+/*
+* TODO...
+* SpriteRendererComponent
+* AI - BehaviorControllerComponent, AIBehavior
+* AudioComponent
+* 
+* Game 을 위한 구조
+* 
+* 
+		RPG
+		뷰 : TopDown
+		
+		필요한 요소들
+		던전
+		몬스터
+			AI
+		
+		상호작용 가능한 객체들
+			Npc
+		UI
+			상점	인벤토리
+*/
+
+
 HWND Hwnd;
 
 // GameInstance

@@ -50,15 +50,68 @@ bool CCollisionManager::DoCollisionTestRectToRect(CCollisionComponent* rect1, CC
 
 bool CCollisionManager::DoCollisionTestRectToCircle(CCollisionComponent* rect, CCollisionComponent* circle)
 {
+	auto* rectCollision = Cast<CRectCollisionComponent>(rect);
+	auto* circleCollision = Cast<CCircleCollisionComponent>(circle);
+
+	// 사각형을 4등분 하여 구한 사각형의 가로 세로 길이
+	FVector halfRect = rectCollision->GetBounds().Max - rectCollision->GetBounds().Min;
+	// 사각형을 4등분 하여 구한 사각형의 대각선 길이
+	float l = sqrt(pow(halfRect.X, 2.0) + pow(halfRect.Y, 2.0f));
+
+	// 사각형과 원의 중심 위치 거리
+	float centerDistance = FVector::Distance(
+		rectCollision->GetBounds().GetCenter(), 
+		circleCollision->GetBounds().GetCenter());
+
+	// 서로 너무 먼 경우 충돌이 일어나지 않음으로 판단
+	if ((circleCollision->GetRadius() + l) > centerDistance) return false;
+
+	FVector circleCenter = circleCollision->GetBounds().GetCenter();
+
+	// 원의 중점의 X 좌표가 사각형의 가로 영역 내에 위치하는지,
+	// 원의 중점의 Y 좌표가 사각형의 세로 영역 내에 위치하는지 확인합니다.
+	if (FMath::IsIn(circleCenter.X, rectCollision->GetBounds().GetLeft(), rectCollision->GetBounds().GetRight()) ||
+		FMath::IsIn(circleCenter.Y, rectCollision->GetBounds().GetTop(), rectCollision->GetBounds().GetBottom()))
+	{
+		// 원의 반지름 길이만큼 확장된 사각 영역을 구합니다.
+		FRect expansionRect = rectCollision->GetBounds();
+		expansionRect.Min -= FVector::OneVector() * circleCollision->GetRadius();
+		expansionRect.Max += FVector::OneVector() * circleCollision->GetRadius();
+
+		// 원의 중심점이 확장된 사각형 내부에 위치하지 않는지 확인합니다.
+		if (circleCenter.X < expansionRect.GetLeft()) return false;
+		else if (circleCenter.X > expansionRect.GetRight()) return false;
+		else if (circleCenter.Y < expansionRect.GetTop()) return false;
+		else if (circleCenter.Y > expansionRect.GetBottom()) return false;
+
+		// 아니라면 겹침
+		return true;
+	}
 
 
+	// 사각형 가로 세로 크기
+	FVector rectCollisionSize = rectCollision->GetBounds().Max - rectCollision->GetBounds().Min;
 
+	// RectCollision 이 사용하는 사각 영역의 네 점의 위치들을 저장합니다.
+	FVector rectCollisionPoints[4] =
+	{
+		// 사각형의 좌측 상단
+		rectCollision->GetBounds().Min,
+		// 사각형의 좌측 하단
+		rectCollision->GetBounds().Min + FVector(0.0f, rectCollisionSize.Y),
+		// 사각형의 우측 상단
+		rectCollision->GetBounds().Max - FVector(0.0f, rectCollisionSize.Y),
+		// 사각형의 우측 하단
+		rectCollision->GetBounds().Max
+	};
 
+	// 사각형의 네 꼭지점 중 하나라도 원 내에 위치한다면 겹침
+	for (FVector point : rectCollisionPoints)
+	{
+		if (FVector::Distance(circleCenter, point) <= circleCollision->GetRadius()) return true;
+	}
 
-
-
-
-
+	// 아니라면 겹치지 않음
 	return false;
 }
 
