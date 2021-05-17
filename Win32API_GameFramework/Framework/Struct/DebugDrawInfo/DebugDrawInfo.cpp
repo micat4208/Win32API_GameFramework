@@ -1,5 +1,10 @@
 #include "DebugDrawInfo.h"
+
+#include "Framework/Single/SceneManager/SceneManager.h"
+
 #include "Framework/Statics/GameplayStatics.h"
+
+#include "Framework/Base/Scene/Scene.h"
 
 void FDebugDrawInfo::Initialize()
 {
@@ -13,7 +18,8 @@ void FDebugDrawInfo::Release()
 
 	if (HBrush)
 	{
-		::DeleteObject(HBrush);
+		if (bFill)
+			::DeleteObject(HBrush);
 		HBrush = NULL;
 	}
 
@@ -29,7 +35,8 @@ void FDebugDrawInfo::InitializeDebugDrawInfo(
 	FVector vec1, 
 	FVector vec2,
 	COLORREF color, 
-	float duration)
+	float duration,
+	bool bFill)
 {
 	DebugDrawType = debugDrawType;
 	Vec1 = vec1;
@@ -37,34 +44,39 @@ void FDebugDrawInfo::InitializeDebugDrawInfo(
 	Color = color;
 	DrawStartTime = CGameplayStatics::GetTime();
 	Duration = duration;
+	this->bFill = bFill;
 
 
 	switch (DebugDrawType)
 	{
 	case EDebugDrawType::DT_Rect:
-		HBrush = CreateSolidBrush(Color);
+		HBrush = (bFill) ? CreateSolidBrush(Color) : GetStockObject(NULL_BRUSH);
 		HPen = CreatePen(PS_SOLID, 1, Color);
 		FnDraw = [this](HDC hdc)
 		{
+			CScene* acitveScene = CSceneManager::Instance()->GetActiveScene();
+
 			Rectangle(hdc,
-				Vec1.X - (Vec2.X * 0.5f),
-				Vec1.Y - (Vec2.Y * 0.5f),
-				Vec1.X + (Vec2.X * 0.5f),
-				Vec1.Y + (Vec2.Y * 0.5f));
+				Vec1.X - (Vec2.X * 0.5f) - acitveScene->CameraPosition.X,
+				Vec1.Y - (Vec2.Y * 0.5f) - acitveScene->CameraPosition.Y,
+				Vec1.X + (Vec2.X * 0.5f) - acitveScene->CameraPosition.X,
+				Vec1.Y + (Vec2.Y * 0.5f) - acitveScene->CameraPosition.Y);
 		};
 
 		break;
 
 	case EDebugDrawType::DT_Circle:
-		HBrush = CreateSolidBrush(Color);
+		HBrush = (bFill) ? CreateSolidBrush(Color) : GetStockObject(NULL_BRUSH);
 		HPen = CreatePen(PS_SOLID, 1, Color);
 		FnDraw = [this](HDC hdc)
 		{
+			CScene* acitveScene = CSceneManager::Instance()->GetActiveScene();
+
 			Ellipse(hdc,
-				Vec1.X - (Vec2.X * 0.5f),
-				Vec1.Y - (Vec2.Y * 0.5f),
-				Vec1.X + (Vec2.X * 0.5f),
-				Vec1.Y + (Vec2.Y * 0.5f));
+				Vec1.X - (Vec2.X * 0.5f) - acitveScene->CameraPosition.X,
+				Vec1.Y - (Vec2.Y * 0.5f) - acitveScene->CameraPosition.Y,
+				Vec1.X + (Vec2.X * 0.5f) - acitveScene->CameraPosition.X,
+				Vec1.Y + (Vec2.Y * 0.5f) - acitveScene->CameraPosition.Y);
 		};
 		break;
 
@@ -72,8 +84,15 @@ void FDebugDrawInfo::InitializeDebugDrawInfo(
 		HPen = CreatePen(PS_SOLID, 1, Color);
 		FnDraw = [this](HDC hdc)
 		{
-			MoveToEx(hdc, Vec1.X, Vec1.Y, NULL);
-			LineTo(hdc, Vec2.X, Vec2.Y);
+			CScene* acitveScene = CSceneManager::Instance()->GetActiveScene();
+
+			MoveToEx(hdc, 
+				Vec1.X - acitveScene->CameraPosition.X,
+				Vec1.Y - acitveScene->CameraPosition.Y,
+				NULL);
+			LineTo(hdc, 
+				Vec2.X - acitveScene->CameraPosition.X,
+				Vec2.Y - acitveScene->CameraPosition.Y);
 		};
 		break;
 	}

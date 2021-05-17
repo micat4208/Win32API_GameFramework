@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Framework/Base/Component/Collision/CollisionComponent.h"
+#include "Framework/Base/Component/Scene/Collision/CollisionComponent.h"
 
 class CRectCollisionComponent :
     public CCollisionComponent

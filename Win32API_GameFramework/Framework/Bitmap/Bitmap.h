@@ -26,5 +26,8 @@ public :
 
     FORCEINLINE HDC GetDC() const
     { return MemDC; }
+
+    FORCEINLINE bool IsValid() const
+    { return Bmp != NULL; }
 };
 

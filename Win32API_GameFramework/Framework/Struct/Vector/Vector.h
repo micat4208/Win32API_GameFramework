@@ -122,5 +122,11 @@ public :
 		if (index == 0) return X;
 		else return Y;
 	}
+	
+	FORCEINLINE bool operator==(const FVector& vec) const
+	{ return (X == vec.X) && (Y == vec.Y); }
+	
+	FORCEINLINE bool operator!=(const FVector& vec) const
+	{ return (X != vec.X) || (Y != vec.Y); }
 };
 

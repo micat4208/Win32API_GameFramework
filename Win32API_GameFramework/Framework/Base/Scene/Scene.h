@@ -36,6 +36,8 @@ public :
     // UsedRenderComponents 에 추가된 요소들의 정렬이 필요함을 나타냅니다.
     bool bNeedSort;
 
+    // 카메라 위치를 나타냅니다.
+    FVector CameraPosition;
 
 public :
     virtual void Initialize() override;
@@ -80,20 +82,20 @@ public :
     { DestroyedRenderComponents.push_back(renderComponent); }
 
     FORCEINLINE void DrawCircle(FVector center, FVector size,
-        COLORREF color, float duration = 5.0f)
-    { AddDebugDraw(EDebugDrawType::DT_Circle, center, size, color, duration); }
+        COLORREF color, float duration = 5.0f, bool bFill = false)
+    { AddDebugDraw(EDebugDrawType::DT_Circle, center, size, color, duration, bFill); }
 
     FORCEINLINE void DrawRect(FVector center, FVector size,
-        COLORREF color, float duration = 5.0f)
-    { AddDebugDraw(EDebugDrawType::DT_Rect, center, size, color, duration); }
+        COLORREF color, float duration = 5.0f, bool bFill = false)
+    { AddDebugDraw(EDebugDrawType::DT_Rect, center, size, color, duration, bFill); }
 
     FORCEINLINE void DrawLine(FVector start, FVector end,
-        COLORREF color, float duration = 5.0f)
-    { AddDebugDraw(EDebugDrawType::DT_LINE, start, end, color, duration); }
+        COLORREF color, float duration = 5.0f, bool bFill = false)
+    { AddDebugDraw(EDebugDrawType::DT_LINE, start, end, color, duration, bFill); }
 
 private :
     void AddDebugDraw(EDebugDrawType debugDrawType, FVector vec1, FVector vec2,
-        COLORREF color, float duration);
+        COLORREF color, float duration, bool bFill);
 
 };
 

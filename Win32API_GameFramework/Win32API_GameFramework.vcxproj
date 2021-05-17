@@ -143,12 +143,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Framework\Base\Component\Collision\CircleCollision\CircleCollisionComponent.cpp" />
-    <ClCompile Include="Framework\Base\Component\Collision\CollisionComponent.cpp" />
-    <ClCompile Include="Framework\Base\Component\Collision\RectCollision\RectCollisionComponent.cpp" />
+    <ClCompile Include="Framework\Base\Component\Scene\Collision\CircleCollision\CircleCollisionComponent.cpp" />
+    <ClCompile Include="Framework\Base\Component\Scene\Collision\CollisionComponent.cpp" />
+    <ClCompile Include="Framework\Base\Component\Scene\Collision\RectCollision\RectCollisionComponent.cpp" />
     <ClCompile Include="Framework\Base\Component\Component.cpp" />
-    <ClCompile Include="Framework\Base\Component\Render\RenderComponent.cpp" />
-    <ClCompile Include="Framework\Base\Component\Render\SpriteRenderer\SpriteRendererComponent.cpp" />
+    <ClCompile Include="Framework\Base\Component\Scene\Render\RenderComponent.cpp" />
+    <ClCompile Include="Framework\Base\Component\Scene\Render\SpriteRenderer\SpriteRendererComponent.cpp" />
+    <ClCompile Include="Framework\Base\Component\Scene\SceneComponent.cpp" />
     <ClCompile Include="Framework\Base\GameObject\GameObject.cpp" />
     <ClCompile Include="Framework\Base\Object\Object.cpp" />
     <ClCompile Include="Framework\Base\Scene\Scene.cpp" />
@@ -163,6 +164,7 @@
     <ClCompile Include="Framework\Struct\AxisInput\AxisInput.cpp" />
     <ClCompile Include="Framework\Struct\DebugDrawInfo\DebugDrawInfo.cpp" />
     <ClCompile Include="Framework\Struct\Rect\Rect.cpp" />
+    <ClCompile Include="Framework\Struct\SpriteInfo\SpriteInfo.cpp" />
     <ClCompile Include="Framework\Struct\Vector\Vector.cpp" />
     <ClCompile Include="Framework\Util\ObjectPool.cpp" />
     <ClCompile Include="Game\Components\Movement\MovementComponent.cpp" />
@@ -171,18 +173,20 @@
     <ClCompile Include="Game\Scene\GameScene\GameScene.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Framework\Base\Component\Collision\CircleCollision\CircleCollisionComponent.h" />
-    <ClInclude Include="Framework\Base\Component\Collision\CollisionComponent.h" />
-    <ClInclude Include="Framework\Base\Component\Collision\RectCollision\RectCollisionComponent.h" />
+    <ClInclude Include="Framework\Base\Component\Scene\Collision\CircleCollision\CircleCollisionComponent.h" />
+    <ClInclude Include="Framework\Base\Component\Scene\Collision\CollisionComponent.h" />
+    <ClInclude Include="Framework\Base\Component\Scene\Collision\RectCollision\RectCollisionComponent.h" />
     <ClInclude Include="Framework\Base\Component\Component.h" />
-    <ClInclude Include="Framework\Base\Component\Render\RenderComponent.h" />
-    <ClInclude Include="Framework\Base\Component\Render\SpriteRenderer\SpriteRendererComponent.h" />
+    <ClInclude Include="Framework\Base\Component\Scene\Render\RenderComponent.h" />
+    <ClInclude Include="Framework\Base\Component\Scene\Render\SpriteRenderer\SpriteRendererComponent.h" />
+    <ClInclude Include="Framework\Base\Component\Scene\SceneComponent.h" />
     <ClInclude Include="Framework\Base\GameObject\GameObject.h" />
     <ClInclude Include="Framework\Base\Object\Object.h" />
     <ClInclude Include="Framework\Base\Scene\Scene.h" />
     <ClInclude Include="Framework\Bitmap\Bitmap.h" />
     <ClInclude Include="Framework\Enum\CollisionType.h" />
     <ClInclude Include="Framework\Enum\DebugDrawType.h" />
+    <ClInclude Include="Framework\Enum\SpriteDrawType.h" />
     <ClInclude Include="Framework\Interface\ManagerClass.h" />
     <ClInclude Include="Framework\Interface\ObjectPoolable.h" />
     <ClInclude Include="Framework\Single\CollisionManager\CollisionManager.h" />
@@ -196,6 +200,7 @@
     <ClInclude Include="Framework\Struct\DebugDrawInfo\DebugDrawInfo.h" />
     <ClInclude Include="Framework\Struct\Math\Math.h" />
     <ClInclude Include="Framework\Struct\Rect\Rect.h" />
+    <ClInclude Include="Framework\Struct\SpriteInfo\SpriteInfo.h" />
     <ClInclude Include="Framework\Struct\Vector\Vector.h" />
     <ClInclude Include="Framework\Util\ObjectPool.h" />
     <ClInclude Include="Game\Components\Movement\MovementComponent.h" />

@@ -12,6 +12,9 @@ void CScene::Initialize()
 	Eraser = CBitmap::LoadBmp(NewObject<CBitmap>(), TEXT("Resources/Default/Black.bmp"));
 
 	bNeedSort = false;
+	CameraPosition = FVector::ZeroVector();
+
+
 }
 
 void CScene::Tick(float deltaSecond)
@@ -178,7 +181,13 @@ void CScene::Destroy(CGameObject* gameObject)
 	DestroyedGameObjectList.push_back(gameObject);
 }
 
-void CScene::AddDebugDraw(EDebugDrawType debugDrawType, FVector vec1, FVector vec2, COLORREF color, float duration)
+void CScene::AddDebugDraw(
+	EDebugDrawType debugDrawType, 
+	FVector vec1, 
+	FVector vec2, 
+	COLORREF color, 
+	float duration,
+	bool bFill)
 {
 #if GAME_DEBUG_MODE == true
 

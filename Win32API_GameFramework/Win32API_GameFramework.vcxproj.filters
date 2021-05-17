@@ -42,7 +42,7 @@
     <ClCompile Include="Framework\Bitmap\Bitmap.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Framework\Base\Component\Render\RenderComponent.cpp">
+    <ClCompile Include="Framework\Base\Component\Scene\Render\RenderComponent.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Game\Scene\GameScene\GameScene.cpp">
@@ -75,22 +75,28 @@
     <ClCompile Include="Framework\Struct\DebugDrawInfo\DebugDrawInfo.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Framework\Base\Component\Collision\CollisionComponent.cpp">
+    <ClCompile Include="Framework\Base\Component\Scene\Collision\CollisionComponent.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Framework\Struct\Rect\Rect.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Framework\Base\Component\Collision\CircleCollision\CircleCollisionComponent.cpp">
+    <ClCompile Include="Framework\Base\Component\Scene\Collision\CircleCollision\CircleCollisionComponent.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Framework\Single\CollisionManager\CollisionManager.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Framework\Base\Component\Collision\RectCollision\RectCollisionComponent.cpp">
+    <ClCompile Include="Framework\Base\Component\Scene\Collision\RectCollision\RectCollisionComponent.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Framework\Base\Component\Render\SpriteRenderer\SpriteRendererComponent.cpp">
+    <ClCompile Include="Framework\Base\Component\Scene\Render\SpriteRenderer\SpriteRendererComponent.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\Base\Component\Scene\SceneComponent.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\Struct\SpriteInfo\SpriteInfo.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
@@ -143,7 +149,7 @@
     <ClInclude Include="Framework\Bitmap\Bitmap.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Framework\Base\Component\Render\RenderComponent.h">
+    <ClInclude Include="Framework\Base\Component\Scene\Render\RenderComponent.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Game\Scene\GameScene\GameScene.h">
@@ -182,7 +188,7 @@
     <ClInclude Include="Framework\Enum\DebugDrawType.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Framework\Base\Component\Collision\CollisionComponent.h">
+    <ClInclude Include="Framework\Base\Component\Scene\Collision\CollisionComponent.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Framework\Struct\Rect\Rect.h">
@@ -191,16 +197,25 @@
     <ClInclude Include="Framework\Enum\CollisionType.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Framework\Base\Component\Collision\CircleCollision\CircleCollisionComponent.h">
+    <ClInclude Include="Framework\Base\Component\Scene\Collision\CircleCollision\CircleCollisionComponent.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Framework\Single\CollisionManager\CollisionManager.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Framework\Base\Component\Collision\RectCollision\RectCollisionComponent.h">
+    <ClInclude Include="Framework\Base\Component\Scene\Collision\RectCollision\RectCollisionComponent.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Framework\Base\Component\Render\SpriteRenderer\SpriteRendererComponent.h">
+    <ClInclude Include="Framework\Base\Component\Scene\Render\SpriteRenderer\SpriteRendererComponent.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Base\Component\Scene\SceneComponent.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Struct\SpriteInfo\SpriteInfo.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Enum\SpriteDrawType.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

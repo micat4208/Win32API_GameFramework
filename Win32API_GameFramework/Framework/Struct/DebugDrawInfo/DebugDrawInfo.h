@@ -28,6 +28,9 @@ public :
 	HGDIOBJ HBrush;
 	HGDIOBJ HPen;
 
+	// 몇 채움 여부
+	bool bFill;
+
 	function<void(HDC)> FnDraw;
 
 public :
@@ -39,7 +42,8 @@ public :
 		FVector vec1, 
 		FVector vec2, 
 		COLORREF color,
-		float duration = 5.0f);
+		float duration,
+		bool bFill);
 
 	void Draw(HDC hdc) const;
 

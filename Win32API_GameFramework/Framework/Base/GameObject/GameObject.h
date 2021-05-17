@@ -4,9 +4,9 @@
 
 #include "Framework/Single/CollisionManager/CollisionManager.h"
 
-#include "Framework/Base/Component/RenderComponent/RenderComponent.h"
+#include "Framework/Base/Component/Scene/Render/RenderComponent.h"
 
-#include "Framework/Base/Component/Collision/CollisionComponent.h"
+#include "Framework/Base/Component/Scene/Collision/CollisionComponent.h"
 
 class CGameObject :
     public CObject

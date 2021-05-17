@@ -1,7 +1,7 @@
 #pragma once
 #pragma warning (disable : 26812)
 
-#include "Framework/Base/Component/Component.h"
+#include "Framework/Base/Component/Scene/SceneComponent.h"
 
 #include "Framework/Struct/Rect/Rect.h"
 
@@ -9,7 +9,7 @@
 
 // 충돌체를 나타내기 위한 컴포넌트
 class CCollisionComponent abstract :
-    public CComponent
+    public CSceneComponent
 {
 protected :
     // 충돌체의 영역을 나타냅니다.

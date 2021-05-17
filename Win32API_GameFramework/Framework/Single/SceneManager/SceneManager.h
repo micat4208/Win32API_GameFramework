@@ -41,5 +41,9 @@ public :
         // 다음 씬을 설정합니다.
         NextScene = NewObject<SceneType>();
     }
+
+    // 활설화중인 씬을 반환합니다.
+    FORCEINLINE CScene* GetActiveScene() const
+    { return CurrentScene; }
 };
 
