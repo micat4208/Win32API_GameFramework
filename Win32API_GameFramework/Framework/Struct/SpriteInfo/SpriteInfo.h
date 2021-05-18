@@ -62,6 +62,9 @@ public :
     FORCEINLINE FVector GetLoadedSpriteImageSize() const
     { return LoadedSpriteImageSize; }
 
+    FORCEINLINE class CBitmap* GetLoadedBitmap() const
+    { return LoadedBitmap; }
+
     bool IsValid() const;
 
 };

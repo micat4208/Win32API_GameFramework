@@ -99,6 +99,9 @@
     <ClCompile Include="Framework\Struct\SpriteInfo\SpriteInfo.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Framework\Struct\BitmapInfo\BitmapInfo.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Include\DefaultInclude.h">
@@ -216,6 +219,9 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Framework\Enum\SpriteDrawType.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Struct\BitmapInfo\BitmapInfo.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

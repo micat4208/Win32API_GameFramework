@@ -2,8 +2,8 @@
 
 #include "Framework/Base/GameObject/GameObject.h"
 
-#include "Framework/Base/Component/Collision/RectCollision/RectCollisionComponent.h"
-#include "Framework/Base/Component/Collision/CircleCollision/CircleCollisionComponent.h"
+#include "Framework/Base/Component/Scene/Collision/RectCollision/RectCollisionComponent.h"
+#include "Framework/Base/Component/Scene/Collision/CircleCollision/CircleCollisionComponent.h"
 
 
 bool CCollisionManager::DoCollisionTestCircleToCircle(

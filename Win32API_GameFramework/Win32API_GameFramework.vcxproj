@@ -162,6 +162,7 @@
     <ClCompile Include="Framework\Statics\GameplayStatics.cpp" />
     <ClCompile Include="Framework\Struct\ActionInput\ActionInput.cpp" />
     <ClCompile Include="Framework\Struct\AxisInput\AxisInput.cpp" />
+    <ClCompile Include="Framework\Struct\BitmapInfo\BitmapInfo.cpp" />
     <ClCompile Include="Framework\Struct\DebugDrawInfo\DebugDrawInfo.cpp" />
     <ClCompile Include="Framework\Struct\Rect\Rect.cpp" />
     <ClCompile Include="Framework\Struct\SpriteInfo\SpriteInfo.cpp" />
@@ -197,6 +198,7 @@
     <ClInclude Include="Framework\Statics\GameplayStatics.h" />
     <ClInclude Include="Framework\Struct\ActionInput\ActionInput.h" />
     <ClInclude Include="Framework\Struct\AxisInput\AxisInput.h" />
+    <ClInclude Include="Framework\Struct\BitmapInfo\BitmapInfo.h" />
     <ClInclude Include="Framework\Struct\DebugDrawInfo\DebugDrawInfo.h" />
     <ClInclude Include="Framework\Struct\Math\Math.h" />
     <ClInclude Include="Framework\Struct\Rect\Rect.h" />

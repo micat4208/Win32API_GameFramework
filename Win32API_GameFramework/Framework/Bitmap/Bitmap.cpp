@@ -4,6 +4,7 @@ CBitmap::CBitmap()
 {
 	Hdc = MemDC = NULL;
 	Bmp = OldBmp = NULL;
+	BitmapInfo = nullptr;
 }
 
 CBitmap* CBitmap::LoadBmp(CBitmap* bitmap, tstring path)
@@ -39,6 +40,25 @@ CBitmap* CBitmap::LoadBmp(CBitmap* bitmap, tstring path)
 	bitmap->OldBmp = (HBITMAP)SelectObject(bitmap->MemDC, bitmap->Bmp);
 	ReleaseDC(Hwnd, bitmap->Hdc);
 
+	// 비트맵 정보 초기화
+	{
+		int32 bmpWidth = bitmapInfo.bmWidth;
+		int32 bmpHeight = bitmapInfo.bmHeight;
+
+		COLORREF** pixelColor = new COLORREF*[bmpHeight];
+
+		// 픽셀 색상을 얻습니다.
+		for (int32 y = 0; y < bmpHeight; ++y)
+		{
+			pixelColor[y] = new COLORREF[bmpWidth];
+			for (int32 x = 0; x < bmpWidth; ++x)
+				pixelColor[y][x] = GetPixel(bitmap->GetDC(), x, y);
+		}
+
+		bitmap->BitmapInfo = NewObject<FBitmapInfo>();
+		bitmap->BitmapInfo->InitializeBitmapInfo(pixelColor, bmpWidth, bmpHeight);
+	}
+
 	return bitmap;
 }
 
@@ -48,4 +68,42 @@ void CBitmap::Release()
 
 	::DeleteObject(SelectObject(MemDC, OldBmp));
 	::DeleteDC(MemDC);
+
+	CObject::DeleteObject(BitmapInfo);
+}
+
+void CBitmap::FlipXY(bool flipX, bool flipY)
+{
+	if (!BitmapInfo) return;
+
+	// DC 의 변경할 픽셀 위치를 나타내는 변수
+	int32 targetPixelX = 0, targetPixelY = 0;
+
+	if (flipX && flipY)	// Flip X, Y
+	{
+		for (int32 y = BitmapInfo->PixelYCount - 1; y > 0; (--y, ++targetPixelY))
+		{
+			for (int32 x = BitmapInfo->PixelXCount - 1; x > 0; (--x, ++targetPixelX))
+				SetPixel(GetDC(), targetPixelX, targetPixelY, BitmapInfo->PixelColors[y][x]);
+			targetPixelX = 0;
+		}
+	}
+	else if (flipX)	// Flip X
+	{
+		for (int32 y = 0; y < BitmapInfo->PixelYCount; ++y)
+		{
+			for (int32 x = BitmapInfo->PixelXCount - 1; x > 0; (--x, ++targetPixelX))
+				SetPixel(GetDC(), targetPixelX, y, BitmapInfo->PixelColors[y][x]);
+			targetPixelX = 0;
+		}
+
+	}
+	else if (flipY)	// Flip Y
+	{
+		for (int32 y = BitmapInfo->PixelYCount - 1; y > 0; (--y, ++targetPixelY))
+		{
+			for (int32 x = 0; x < BitmapInfo->PixelXCount; ++x)
+				SetPixel(GetDC(), x, targetPixelY, BitmapInfo->PixelColors[y][x]);
+		}
+	}
 }

@@ -194,7 +194,7 @@ void CScene::AddDebugDraw(
 	FDebugDrawInfo* newDebugDrawInfo = CObject::NewObject<FDebugDrawInfo>();
 
 	newDebugDrawInfo->InitializeDebugDrawInfo(
-		debugDrawType, vec1, vec2, color, duration);
+		debugDrawType, vec1, vec2, color, duration, bFill);
 
 	DebugDrawInfos.push_back(newDebugDrawInfo);
 
