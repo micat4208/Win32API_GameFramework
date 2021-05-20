@@ -148,6 +148,7 @@
     <ClCompile Include="Framework\Base\Component\Scene\Collision\RectCollision\RectCollisionComponent.cpp" />
     <ClCompile Include="Framework\Base\Component\Component.cpp" />
     <ClCompile Include="Framework\Base\Component\Scene\Render\RenderComponent.cpp" />
+    <ClCompile Include="Framework\Base\Component\Scene\Render\SpriteRenderer\SpriteAnimation\SpriteAnimationComponent.cpp" />
     <ClCompile Include="Framework\Base\Component\Scene\Render\SpriteRenderer\SpriteRendererComponent.cpp" />
     <ClCompile Include="Framework\Base\Component\Scene\SceneComponent.cpp" />
     <ClCompile Include="Framework\Base\GameObject\GameObject.cpp" />
@@ -165,6 +166,7 @@
     <ClCompile Include="Framework\Struct\BitmapInfo\BitmapInfo.cpp" />
     <ClCompile Include="Framework\Struct\DebugDrawInfo\DebugDrawInfo.cpp" />
     <ClCompile Include="Framework\Struct\Rect\Rect.cpp" />
+    <ClCompile Include="Framework\Struct\SpriteAnimInfo\SpriteAnimInfo.cpp" />
     <ClCompile Include="Framework\Struct\SpriteInfo\SpriteInfo.cpp" />
     <ClCompile Include="Framework\Struct\Vector\Vector.cpp" />
     <ClCompile Include="Framework\Util\ObjectPool.cpp" />
@@ -179,6 +181,7 @@
     <ClInclude Include="Framework\Base\Component\Scene\Collision\RectCollision\RectCollisionComponent.h" />
     <ClInclude Include="Framework\Base\Component\Component.h" />
     <ClInclude Include="Framework\Base\Component\Scene\Render\RenderComponent.h" />
+    <ClInclude Include="Framework\Base\Component\Scene\Render\SpriteRenderer\SpriteAnimation\SpriteAnimationComponent.h" />
     <ClInclude Include="Framework\Base\Component\Scene\Render\SpriteRenderer\SpriteRendererComponent.h" />
     <ClInclude Include="Framework\Base\Component\Scene\SceneComponent.h" />
     <ClInclude Include="Framework\Base\GameObject\GameObject.h" />
@@ -202,6 +205,7 @@
     <ClInclude Include="Framework\Struct\DebugDrawInfo\DebugDrawInfo.h" />
     <ClInclude Include="Framework\Struct\Math\Math.h" />
     <ClInclude Include="Framework\Struct\Rect\Rect.h" />
+    <ClInclude Include="Framework\Struct\SpriteAnimInfo\SpriteAnimInfo.h" />
     <ClInclude Include="Framework\Struct\SpriteInfo\SpriteInfo.h" />
     <ClInclude Include="Framework\Struct\Vector\Vector.h" />
     <ClInclude Include="Framework\Util\ObjectPool.h" />

@@ -1,8 +1,11 @@
 #include "SpriteRendererComponent.h"
 
+#include "Framework/Bitmap/Bitmap.h"
+
 CSpriteRendererComponent::CSpriteRendererComponent()
 {
 	DrawSpriteInfo = nullptr;
+	bIsFlippedX = bIsFlippedY = false;
 }
 
 void CSpriteRendererComponent::Render(HDC hdc)
@@ -89,5 +92,15 @@ void CSpriteRendererComponent::Render(HDC hdc)
 
 	}
 
+
+}
+
+void CSpriteRendererComponent::FlipXY(bool flipX, bool flipY)
+{
+	if (!DrawSpriteInfo) return;
+	if (!DrawSpriteInfo->IsValid()) return;
+
+	bIsFlippedX = DrawSpriteInfo->GetLoadedBitmap()->bIsFlippedX = flipX;
+	bIsFlippedY = DrawSpriteInfo->GetLoadedBitmap()->bIsFlippedY = flipY;
 
 }

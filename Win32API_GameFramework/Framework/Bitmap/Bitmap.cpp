@@ -2,15 +2,22 @@
 
 CBitmap::CBitmap()
 {
-	Hdc = MemDC = NULL;
-	Bmp = OldBmp = NULL;
+	Hdc = MemDC = XFlippedHDC = YFlippedHDC = XYFlippedHDC = NULL;
+
+	Bmp = OldBmp = XFlippedBmp = YFlippedBmp = XYFlippedBmp =
+		OldXFlippedBmp = OldYFlippedBmp = OldXYFlippedBmp = NULL;
+
 	BitmapInfo = nullptr;
+	bUseFlippedBmp = bIsFlippedX = bIsFlippedY = false;
 }
 
-CBitmap* CBitmap::LoadBmp(CBitmap* bitmap, tstring path)
+CBitmap* CBitmap::LoadBmp(CBitmap* bitmap, tstring path, bool bUseFlippedBmp)
 {
+	bitmap->bUseFlippedBmp = bUseFlippedBmp;
+
 	bitmap->Hdc = ::GetDC(Hwnd);
 	bitmap->MemDC = ::CreateCompatibleDC(bitmap->Hdc);
+	
 
 	bitmap->Bmp = (HBITMAP)(LoadImage(NULL, path.c_str(), IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE | LR_CREATEDIBSECTION));
 	/// - LoadImage(hInstance, lpszName, uType, cx, cy, fuLoad) : 이미지를 로드합니다.
@@ -19,6 +26,17 @@ CBitmap* CBitmap::LoadBmp(CBitmap* bitmap, tstring path)
 	/// - uType : 읽고자 하는 타입을 전달합니다.
 	/// - cx, cy : 아이콘 / 커서의 너비 높이를 전달합니다.
 	/// - fuLoad : 이미지를 읽어올 방법을 전달합니다.
+	
+	if (bUseFlippedBmp)
+	{
+		bitmap->XFlippedHDC = ::CreateCompatibleDC(bitmap->Hdc);
+		bitmap->YFlippedHDC = ::CreateCompatibleDC(bitmap->Hdc);
+		bitmap->XYFlippedHDC = ::CreateCompatibleDC(bitmap->Hdc);
+
+		bitmap->XFlippedBmp =  (HBITMAP)(LoadImage(NULL, path.c_str(), IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE | LR_CREATEDIBSECTION));
+		bitmap->YFlippedBmp =  (HBITMAP)(LoadImage(NULL, path.c_str(), IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE | LR_CREATEDIBSECTION));
+		bitmap->XYFlippedBmp = (HBITMAP)(LoadImage(NULL, path.c_str(), IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE | LR_CREATEDIBSECTION));
+	}
 	
 	// 이미지 로드에 실패한 경우
 	if (bitmap->Bmp == NULL)
@@ -38,6 +56,14 @@ CBitmap* CBitmap::LoadBmp(CBitmap* bitmap, tstring path)
 	bitmap->Size = FVector(bitmapInfo.bmWidth, bitmapInfo.bmHeight);
 
 	bitmap->OldBmp = (HBITMAP)SelectObject(bitmap->MemDC, bitmap->Bmp);
+
+	if (bUseFlippedBmp)
+	{
+		bitmap->OldXFlippedBmp = (HBITMAP)SelectObject(bitmap->XFlippedHDC, bitmap->XFlippedBmp);
+		bitmap->OldYFlippedBmp = (HBITMAP)SelectObject(bitmap->YFlippedHDC, bitmap->YFlippedBmp);
+		bitmap->OldXYFlippedBmp = (HBITMAP)SelectObject(bitmap->XYFlippedHDC, bitmap->XYFlippedBmp);
+	}
+
 	ReleaseDC(Hwnd, bitmap->Hdc);
 
 	// 비트맵 정보 초기화
@@ -59,6 +85,22 @@ CBitmap* CBitmap::LoadBmp(CBitmap* bitmap, tstring path)
 		bitmap->BitmapInfo->InitializeBitmapInfo(pixelColor, bmpWidth, bmpHeight);
 	}
 
+
+	if (bUseFlippedBmp)
+	{
+		// Flip X
+		bitmap->FlipXY(true, false);
+		bitmap->bIsFlippedX = false;
+
+		// Flip Y
+		bitmap->FlipXY(false, true);
+		bitmap->bIsFlippedY = false;
+
+		// Flip XY
+		bitmap->FlipXY(true, true);
+		bitmap->bIsFlippedX = bitmap->bIsFlippedY = false;
+	}
+
 	return bitmap;
 }
 
@@ -69,15 +111,30 @@ void CBitmap::Release()
 	::DeleteObject(SelectObject(MemDC, OldBmp));
 	::DeleteDC(MemDC);
 
+	if (bUseFlippedBmp)
+	{
+		::DeleteObject(SelectObject(XFlippedHDC, OldXFlippedBmp));
+		::DeleteObject(SelectObject(YFlippedHDC, OldYFlippedBmp));
+		::DeleteObject(SelectObject(XYFlippedHDC, OldXYFlippedBmp));
+
+		::DeleteDC(XFlippedHDC);
+		::DeleteDC(YFlippedHDC);
+		::DeleteDC(XYFlippedHDC);
+	}
+
 	CObject::DeleteObject(BitmapInfo);
 }
 
 void CBitmap::FlipXY(bool flipX, bool flipY)
 {
+	if (!IsValid()) return;
 	if (!BitmapInfo) return;
 
 	// DC 의 변경할 픽셀 위치를 나타내는 변수
 	int32 targetPixelX = 0, targetPixelY = 0;
+
+	bIsFlippedX = flipX;
+	bIsFlippedY = flipY;
 
 	if (flipX && flipY)	// Flip X, Y
 	{

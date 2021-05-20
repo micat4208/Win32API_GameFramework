@@ -102,6 +102,12 @@
     <ClCompile Include="Framework\Struct\BitmapInfo\BitmapInfo.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Framework\Base\Component\Scene\Render\SpriteRenderer\SpriteAnimation\SpriteAnimationComponent.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\Struct\SpriteAnimInfo\SpriteAnimInfo.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Include\DefaultInclude.h">
@@ -222,6 +228,12 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Framework\Struct\BitmapInfo\BitmapInfo.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Base\Component\Scene\Render\SpriteRenderer\SpriteAnimation\SpriteAnimationComponent.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Struct\SpriteAnimInfo\SpriteAnimInfo.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
