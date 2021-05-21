@@ -4,20 +4,16 @@
 
 #include "Game/Components/Movement/MovementComponent.h"
 
-#include "Framework/Base/Component/Scene/Render/SpriteRenderer/SpriteRendererComponent.h"
+#include "Game/Components/PlayerSpriteAnimation/PlayerSpriteAnimationComponent.h"
 
 void CPlayerCharacter::Initialize()
 {
 	super::Initialize();
 	Position = FVector::ScreenCenter();
-	Movement->SetMaxSpeed(300.0f);
+	Movement->MaxSpeed = 300.0f;
+	Movement->BrakingForce = 1000.0f;
 
-	SpriteRenderer = AddComponent<CSpriteRendererComponent>();
-	TestSpriteInfo = CObject::NewObject<FSpriteInfo>();
-	TestSpriteInfo->InitializeSpriteInfo(
-		TEXT("Resources/PlayerCharacter/IDLE/IDLE 1.bmp"), 
-		ESpriteDrawType::UseTransparentBlt);
-	SpriteRenderer->SetDrawSpriteInfo(TestSpriteInfo);
+	SpriteAnimation = AddComponent<CPlayerSpriteAnimationComponent>();
 }
 
 void CPlayerCharacter::Start()
@@ -34,20 +30,13 @@ void CPlayerCharacter::Tick(float dt)
 
 void CPlayerCharacter::Release()
 {
-	CObject::DeleteObject(TestSpriteInfo);
-
 	super::Release();
 }
 
 void CPlayerCharacter::InputKey(float dt)
 {
-	Movement->AddMovement(
-		FVector::DownVector() * CInput::GetAxis(TEXT("Vertical")));
-
-	float horizontalInput = CInput::GetAxis(TEXT("Horizontal"));
-	Movement->AddMovement(FVector::RightVector() * horizontalInput);
-
-	SpriteRenderer->FlipX(horizontalInput < -0.1);
+	Movement->AddMovement(FVector::DownVector() * CInput::GetAxis(TEXT("Vertical")));
+	Movement->AddMovement(FVector::RightVector() * CInput::GetAxis(TEXT("Horizontal")));
 
 	if (CInput::GetKeyDown(TEXT("Space")))
 	{

@@ -6,9 +6,7 @@ class CPlayerCharacter final :
 {
 
 private :
-    class CSpriteRendererComponent* SpriteRenderer;
-
-    struct FSpriteInfo* TestSpriteInfo;
+    class CSpriteAnimationComponent* SpriteAnimation;
 
 public :
     virtual void Initialize() override;

@@ -1,11 +1,23 @@
 #include "SpriteAnimationComponent.h"
 
+#include "Framework/Statics/GameplayStatics.h"
+
+#include "Framework/Bitmap/Bitmap.h"
+
 void CSpriteAnimationComponent::Initialize()
 {
 	super::Initialize();
 
 	SpriteAnimation = nullptr;
 	SpriteIndex = 0;
+	LastSpriteChangedTime = 0.0f;
+}
+
+void CSpriteAnimationComponent::Tick(float dt)
+{
+	super::Tick(dt);
+
+	LoopAnimation();
 }
 
 void CSpriteAnimationComponent::Release()
@@ -18,6 +30,40 @@ void CSpriteAnimationComponent::Release()
 	SpriteAnimInfos.clear();
 
 	super::Release();
+}
+
+void CSpriteAnimationComponent::FlipXY(bool flipX, bool flipY)
+{
+	if (SpriteAnimation == nullptr) return;
+
+	for (auto iter = SpriteAnimation->SpriteInfos.begin(); 
+		iter != SpriteAnimation->SpriteInfos.end(); 
+		++iter)
+	{
+		(*iter)->GetLoadedBitmap()->bIsFlippedX = flipX;
+		(*iter)->GetLoadedBitmap()->bIsFlippedY = flipY;
+	}
+}
+
+void CSpriteAnimationComponent::LoopAnimation()
+{
+	if (SpriteAnimation == nullptr)
+		return;
+	else
+	{
+		auto spriteInfo = (*SpriteAnimation)[SpriteIndex];
+		if (spriteInfo) SetDrawSpriteInfo(spriteInfo);
+
+		// 재생중인 애니메이션의 SpriteDelay 만큼의 시간이 지났다면
+		if (CGameplayStatics::GetTime() - LastSpriteChangedTime >= SpriteAnimation->SpriteDelay)
+		{
+			// 마지막으로 스프라이트를 전환한 시간을 저장합니다.
+			LastSpriteChangedTime += SpriteAnimation->SpriteDelay;
+
+			// 스프라이트 인덱스를 다음 인덱스로 설정합니다.
+			SpriteIndex = (SpriteIndex == SpriteAnimation->GetLastSpriteIndex()) ? 0 : ++SpriteIndex;
+		}
+	}
 }
 
 void CSpriteAnimationComponent::AddSpriteAnimation(
@@ -77,4 +123,7 @@ void CSpriteAnimationComponent::PlaySpriteAnimation(tstring animationName, int32
 
 	// 스프라이트 애니메이션 인덱스가 범위를 초과하지 않도록 합니다.
 	SpriteIndex = FMath::Clamp(SpriteIndex, 0, SpriteAnimation->GetLastSpriteIndex());
+
+	// 마지막 전환 시간을 현재 시간으로 설정합니다.
+	LastSpriteChangedTime = CGameplayStatics::GetTime();
 }

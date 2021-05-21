@@ -11,5 +11,8 @@ protected :
 public :
     virtual void Initialize() override;
 
+public :
+    FORCEINLINE class CMovementComponent* GetMovement() const
+    { return Movement; }
 };
 

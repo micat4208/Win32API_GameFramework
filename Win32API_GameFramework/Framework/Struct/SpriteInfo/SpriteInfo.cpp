@@ -37,6 +37,26 @@ void FSpriteInfo::Release()
 	CObject::DeleteObject(LoadedBitmap);
 }
 
+void FSpriteInfo::MakeSpriteInfos(
+	vector<FSpriteInfo*>&		outSpriteInfos, 
+	const vector<tstring>&		imagePaths, 
+	ESpriteDrawType				spriteDrawType, 
+	FVector						pivot, 
+	COLORREF					crTransparent, 
+	DWORD						dwRop)
+{
+	for (int32 i = 0; i < imagePaths.size(); ++i)
+	{
+		FSpriteInfo* newSpriteInfo = CObject::NewObject<FSpriteInfo>();
+		newSpriteInfo->InitializeSpriteInfo(imagePaths[i], spriteDrawType);
+		newSpriteInfo->DrawPivot = pivot;
+		newSpriteInfo->CRTransparent = crTransparent;
+		newSpriteInfo->DWRop = dwRop;
+
+		outSpriteInfos.push_back(newSpriteInfo);
+	}
+}
+
 HDC FSpriteInfo::GetDC() const
 {
 	return (IsValid() ? LoadedBitmap->GetDC() : nullptr);

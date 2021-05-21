@@ -4,7 +4,7 @@
 
 CMovementComponent::CMovementComponent()
 {
-    Impulse = Velocity = Direction = FVector::ZeroVector();
+    Impulse = Velocity = FVector::ZeroVector();
     MaxSpeed = 600.0f;
     BrakingForce = 100.0f; // %
 }

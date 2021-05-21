@@ -57,6 +57,22 @@ public :
     virtual void Release() override;
 
 public :
+    // 여러개의 SpriteInfo 를 생성합니다.
+    /// - outSpriteInfos : 생성된 SpriteInfo 들을 저장할 vector 을 전달합니다.
+    /// - imagePaths : 이미지 경로들을 전달합니다.
+    /// - spriteDrawType : 스프라이트 이미지 그리기 방식을 전달합니다.
+    /// - pivot : 이미지 피벗을 전달합니다.
+    /// - crTransparent : spriteDrawType 에 UseTransparentBlt 이 전달될 경우, 숨길 색상을 전달합니다.
+    /// - dwRop : spriteDrawType 에 UseStretchBlt 이 전달될 경우, 그리기 방식을 전달합니다.
+    static void MakeSpriteInfos(
+        vector<FSpriteInfo*>& outSpriteInfos,
+        const vector<tstring>& imagePaths,
+        ESpriteDrawType spriteDrawType,
+        FVector pivot = FVector(0.5f, 0.5f),
+        COLORREF crTransparent = RGB(255, 0, 255),
+        DWORD dwRop = SRCCOPY);
+
+public :
     HDC GetDC() const;
 
     FORCEINLINE FVector GetLoadedSpriteImageSize() const

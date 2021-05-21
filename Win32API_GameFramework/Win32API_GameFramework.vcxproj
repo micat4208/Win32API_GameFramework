@@ -171,6 +171,7 @@
     <ClCompile Include="Framework\Struct\Vector\Vector.cpp" />
     <ClCompile Include="Framework\Util\ObjectPool.cpp" />
     <ClCompile Include="Game\Components\Movement\MovementComponent.cpp" />
+    <ClCompile Include="Game\Components\PlayerSpriteAnimation\PlayerSpriteAnimationComponent.cpp" />
     <ClCompile Include="Game\GameObject\Character\Character.cpp" />
     <ClCompile Include="Game\GameObject\Character\PlayerCharacter\PlayerCharacter.cpp" />
     <ClCompile Include="Game\Scene\GameScene\GameScene.cpp" />
@@ -210,6 +211,7 @@
     <ClInclude Include="Framework\Struct\Vector\Vector.h" />
     <ClInclude Include="Framework\Util\ObjectPool.h" />
     <ClInclude Include="Game\Components\Movement\MovementComponent.h" />
+    <ClInclude Include="Game\Components\PlayerSpriteAnimation\PlayerSpriteAnimationComponent.h" />
     <ClInclude Include="Game\GameObject\Character\Character.h" />
     <ClInclude Include="Game\GameObject\Character\PlayerCharacter\PlayerCharacter.h" />
     <ClInclude Include="Game\Scene\GameScene\GameScene.h" />

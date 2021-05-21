@@ -22,9 +22,18 @@ private :
     // 스프라이트 인덱스
     int32 SpriteIndex;
 
+    // 마지막으로 스프라이트를 전환한 시간을 나타냅니다.
+    float LastSpriteChangedTime;
+
 public :
     virtual void Initialize() override;
+    virtual void Tick(float dt) override;
     virtual void Release() override;
+
+    virtual void FlipXY(bool flipX, bool flipY) override;
+
+private :
+    void LoopAnimation();
 
 public :
     // 스프라이트 애니메이션을 추가합니다.
