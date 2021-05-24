@@ -3,6 +3,8 @@
 #include "Game/GameObject/Character/PlayerCharacter/PlayerCharacter.h"
 
 #include "Game/Components/Movement/MovementComponent.h"
+#include "Game/Components/PlayerCharacterMovementHelper/PlayerCharacterMovementHelperComponent.h"
+
 
 void CPlayerSpriteAnimationComponent::Initialize()
 {
@@ -70,10 +72,8 @@ void CPlayerSpriteAnimationComponent::AnimControl()
 
 	animNameToPlay = (speed < 0.1f) ? TEXT("Idle") : TEXT("Walk");
 
-	// 이동하는 방향에 따라 이미지를 뒤집어주세요
-	/// - 이동키를 입력하지 않았을 경우에는 바라보던 방향을 그대로 바라봅니다.
 
-
+	FlipXY(playerCharacter->GetMovementHelper()->GetLookDirection() == EDirection::Left, false);
 
 	// 상단에서 결정된 애니메이션 재생
 	PlaySpriteAnimation(animNameToPlay);

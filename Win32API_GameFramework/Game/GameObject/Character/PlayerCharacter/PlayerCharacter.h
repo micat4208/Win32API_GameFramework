@@ -7,6 +7,7 @@ class CPlayerCharacter final :
 
 private :
     class CSpriteAnimationComponent* SpriteAnimation;
+    class CPlayerCharacterMovementHelperComponent * MovementHelper;
 
 public :
     virtual void Initialize() override;
@@ -17,6 +18,11 @@ public :
 
 private :
     void InputKey(float dt);
+
+public :
+    FORCEINLINE class CPlayerCharacterMovementHelperComponent * GetMovementHelper() const
+    { return MovementHelper; }
+
 
 };
 

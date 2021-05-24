@@ -5,6 +5,7 @@
 #include "Game/Components/Movement/MovementComponent.h"
 
 #include "Game/Components/PlayerSpriteAnimation/PlayerSpriteAnimationComponent.h"
+#include "Game/Components/PlayerCharacterMovementHelper/PlayerCharacterMovementHelperComponent.h"
 
 void CPlayerCharacter::Initialize()
 {
@@ -14,6 +15,7 @@ void CPlayerCharacter::Initialize()
 	Movement->BrakingForce = 1000.0f;
 
 	SpriteAnimation = AddComponent<CPlayerSpriteAnimationComponent>();
+	MovementHelper = AddComponent<CPlayerCharacterMovementHelperComponent>();
 }
 
 void CPlayerCharacter::Start()

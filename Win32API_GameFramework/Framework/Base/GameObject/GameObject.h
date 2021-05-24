@@ -102,6 +102,24 @@ public :
 		return Cast<ComponentClassType>(newComponent);
 	}
 
+	// 해당 GameObject 에 추가된 컴포넌트 중 지정한 컴포넌트를 얻습니다.
+	template<typename ComponentClassType>
+	ComponentClassType* GetComponent() const
+	{
+		for (auto iter = CreatedComponents.begin(); iter != CreatedComponents.end(); ++iter)
+			if (IsA<ComponentClassType>((*iter))) return Cast<ComponentClassType>(*iter);
+
+		for (auto iter = UsedComponents.begin(); iter != UsedComponents.end(); ++iter)
+		{
+			if (IsA<ComponentClassType>((*iter)))
+			{
+				if (!(*iter)->bBeDestroy) return Cast<ComponentClassType>(*iter);
+			}
+		}
+
+		return nullptr;
+	}
+
 	// 컴포넌트를 제거합니다.
 	void RemoveComponent(CComponent* component);
 

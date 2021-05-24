@@ -30,6 +30,7 @@
 
 
 HWND Hwnd;
+HINSTANCE HInstance;
 
 // GameInstance
 DEF_GAMEINSTANCECLASS* GameInstance;
@@ -53,7 +54,7 @@ int APIENTRY wWinMain(
 	wndClass.hbrBackground = (HBRUSH)COLOR_WINDOW;
 	wndClass.hCursor = LoadCursor(NULL, IDC_ARROW);
 	wndClass.hIcon = LoadIcon(NULL, IDI_APPLICATION);
-	wndClass.hInstance = hInstance;
+	wndClass.hInstance = HInstance = hInstance;
 	wndClass.lpfnWndProc = WndProc;
 	wndClass.lpszClassName = TEXT("WndClass");
 	wndClass.lpszMenuName = NULL;

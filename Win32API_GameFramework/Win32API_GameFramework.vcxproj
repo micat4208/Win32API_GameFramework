@@ -171,10 +171,14 @@
     <ClCompile Include="Framework\Struct\Vector\Vector.cpp" />
     <ClCompile Include="Framework\Util\ObjectPool.cpp" />
     <ClCompile Include="Game\Components\Movement\MovementComponent.cpp" />
+    <ClCompile Include="Game\Components\PlayerCharacterMovementHelper\PlayerCharacterMovementHelperComponent.cpp" />
     <ClCompile Include="Game\Components\PlayerSpriteAnimation\PlayerSpriteAnimationComponent.cpp" />
+    <ClCompile Include="Game\Components\TileMapRenderer\TileMapRendererComponent.cpp" />
     <ClCompile Include="Game\GameObject\Character\Character.cpp" />
     <ClCompile Include="Game\GameObject\Character\PlayerCharacter\PlayerCharacter.cpp" />
     <ClCompile Include="Game\Scene\GameScene\GameScene.cpp" />
+    <ClCompile Include="Game\GameObject\TileMap\TileMap.cpp" />
+    <ClCompile Include="Game\Scene\MapEditorScene\MapEditorScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\Base\Component\Scene\Collision\CircleCollision\CircleCollisionComponent.h" />
@@ -191,6 +195,7 @@
     <ClInclude Include="Framework\Bitmap\Bitmap.h" />
     <ClInclude Include="Framework\Enum\CollisionType.h" />
     <ClInclude Include="Framework\Enum\DebugDrawType.h" />
+    <ClInclude Include="Framework\Enum\Direction.h" />
     <ClInclude Include="Framework\Enum\SpriteDrawType.h" />
     <ClInclude Include="Framework\Interface\ManagerClass.h" />
     <ClInclude Include="Framework\Interface\ObjectPoolable.h" />
@@ -211,15 +216,23 @@
     <ClInclude Include="Framework\Struct\Vector\Vector.h" />
     <ClInclude Include="Framework\Util\ObjectPool.h" />
     <ClInclude Include="Game\Components\Movement\MovementComponent.h" />
+    <ClInclude Include="Game\Components\PlayerCharacterMovementHelper\PlayerCharacterMovementHelperComponent.h" />
     <ClInclude Include="Game\Components\PlayerSpriteAnimation\PlayerSpriteAnimationComponent.h" />
+    <ClInclude Include="Game\Components\TileMapRenderer\TileMapRendererComponent.h" />
     <ClInclude Include="Game\GameObject\Character\Character.h" />
     <ClInclude Include="Game\GameObject\Character\PlayerCharacter\PlayerCharacter.h" />
     <ClInclude Include="Game\Scene\GameScene\GameScene.h" />
+    <ClInclude Include="Game\Scene\MapEditorScene\MapEditorScene.h" />
     <ClInclude Include="Include\CharDefine.h" />
     <ClInclude Include="Include\DefaultInclude.h" />
     <ClInclude Include="Include\GameDefine.h" />
     <ClInclude Include="Include\GameDebug.h" />
     <ClInclude Include="Include\TypeDefine.h" />
+    <ClInclude Include="Game\GameObject\TileMap\TileMap.h" />
+    <ClInclude Include="resource.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Win32API_GameFramework.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
