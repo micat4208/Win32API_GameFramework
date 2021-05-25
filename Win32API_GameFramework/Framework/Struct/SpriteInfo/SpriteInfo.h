@@ -51,7 +51,8 @@ public :
     void InitializeSpriteInfo(
         tstring imagePath,
         ESpriteDrawType spriteDrawType,
-        FVector imageSize = USE_LOADED_SIZE);
+        FVector imageSize = USE_LOADED_SIZE,
+        bool bUseFlip = true);
 
 public :
     virtual void Release() override;

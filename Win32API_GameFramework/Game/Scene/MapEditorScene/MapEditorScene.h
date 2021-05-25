@@ -7,6 +7,7 @@ class CMapEditorScene final :
 private :
     int32 TileMapCountX;
     int32 TileMapCountY;
+    int32 TileMapScale;
 
     class CTileMap* TileMap;
 

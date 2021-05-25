@@ -7,7 +7,7 @@ class CSpriteRendererComponent :
     public CRenderComponent
 {
 
-private :
+protected :
     // 그릴 스프라이트 정보
     FSpriteInfo* DrawSpriteInfo;
 

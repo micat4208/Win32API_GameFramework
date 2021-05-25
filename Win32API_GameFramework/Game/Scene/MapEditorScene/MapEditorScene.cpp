@@ -27,8 +27,14 @@ void CMapEditorScene::Tick(float dt)
 		if (DialogBox(HInstance, MAKEINTRESOURCE(IDD_DIALOG_MAP_SETTING),
 			Hwnd, (DLGPROC)&CMapEditorScene::MapSettingDlgProc) == IDOK)
 		{
-			// 타일맵 크기 설정
+			// 맵 크기 설정
 			TileMap->SetTileMapXY(TileMapCountX, TileMapCountY);
+
+			// 타일맵 스케일 설정
+			TileMap->SetTileMapScale(TileMapScale);
+
+			// 타일맵을 생성합니다.
+			TileMap->MakeTileMap();
 
 		}
 	}
@@ -47,6 +53,7 @@ BOOL CMapEditorScene::MapSettingDlgProc(HWND hWnd, UINT msg, WPARAM wParam, LPAR
 			// 맵 크기 에디트 내용 설정
 			SetDlgItemInt(hWnd, IDC_EDIT_MAPSIZEX, mapEditorScene->TileMapCountX, FALSE);
 			SetDlgItemInt(hWnd, IDC_EDIT_MAPSIZEY, mapEditorScene->TileMapCountY, FALSE);
+			SetDlgItemInt(hWnd, IDC_EDIT_MAP_SCALE, mapEditorScene->TileMapScale, FALSE);
 
 			return FALSE;
 		}
@@ -58,6 +65,7 @@ BOOL CMapEditorScene::MapSettingDlgProc(HWND hWnd, UINT msg, WPARAM wParam, LPAR
 			{
 				mapEditorScene->TileMapCountX = GetDlgItemInt(hWnd, IDC_EDIT_MAPSIZEX, NULL, FALSE);
 				mapEditorScene->TileMapCountY = GetDlgItemInt(hWnd, IDC_EDIT_MAPSIZEY, NULL, FALSE);
+				mapEditorScene->TileMapScale = GetDlgItemInt(hWnd, IDC_EDIT_MAP_SCALE, NULL, FALSE);
 
 				EndDialog(hWnd, IDOK);
 			}

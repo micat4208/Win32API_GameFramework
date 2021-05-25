@@ -15,10 +15,11 @@ FSpriteInfo::FSpriteInfo()
 void FSpriteInfo::InitializeSpriteInfo(
 	tstring imagePath, 
 	ESpriteDrawType spriteDrawType, 
-	FVector imageSize)
+	FVector imageSize,
+	bool bUseFlip)
 {
 	// 스프라이트 이미지 로드
-	LoadedBitmap = CBitmap::LoadBmp(NewObject<CBitmap>(), imagePath);
+	LoadedBitmap = CBitmap::LoadBmp(NewObject<CBitmap>(), imagePath, bUseFlip);
 
 	// 스프라이트 이미지 실제 사이즈 설정
 	if (LoadedBitmap)

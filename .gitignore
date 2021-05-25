@@ -1,5 +1,8 @@
 # Visual Studio 2015 user specific files
 .vs/
+.x86/
+.x64/
+*.tlog
 
 
 # Prerequisites
