@@ -14,6 +14,9 @@ void CScene::Initialize()
 	bNeedSort = false;
 	CameraPosition = FVector::ZeroVector();
 
+	bDoSortRenderComponent = true;
+	SortingOrderThread = new FThread(&CScene::SortRenderComponent, this);
+
 
 }
 
@@ -44,11 +47,11 @@ void CScene::Tick(float deltaSecond)
 
 	if (CreatedRenderComponents.size() > 0)
 	{
-		bNeedSort = true;
-
 		for (auto createdRenderComponent : CreatedRenderComponents)
 			UsedRenderComponents.push_back(createdRenderComponent);
 		CreatedRenderComponents.clear();
+
+		bNeedSort = true;
 	}
 
 	if (DestroyedRenderComponents.size() > 0)
@@ -81,13 +84,6 @@ void CScene::Tick(float deltaSecond)
 
 void CScene::Render(HDC hdc)
 {
-	if (bNeedSort)
-	{ 
-		UsedRenderComponents.sort([](CRenderComponent* first, CRenderComponent* second)
-			{ return first->GetSortingOrder() < second->GetSortingOrder(); } );
-	
-		bNeedSort = false;
-	}
 
 	BitBlt(BackBuffer->GetDC(), 0, 0, WND_WIDTH, WND_HEIGHT, Eraser->GetDC(), 0, 0, SRCCOPY);
 
@@ -126,7 +122,10 @@ void CScene::Render(HDC hdc)
 
 void CScene::Release()
 {
-	super::Release();
+	bDoSortRenderComponent = false;
+	SortingOrderThread->join();
+	delete SortingOrderThread;
+	SortingOrderThread = nullptr;
 
 
 #if GAME_DEBUG_MODE == true
@@ -166,6 +165,22 @@ void CScene::Release()
 	// Bitmap °´Ã¼ ÇØÁ¦
 	CObject::DeleteObject(BackBuffer);
 	CObject::DeleteObject(Eraser);
+
+	super::Release();
+}
+
+void CScene::SortRenderComponent()
+{
+	while (bDoSortRenderComponent)
+	{
+		if (bNeedSort)
+		{ 
+			UsedRenderComponents.sort([](CRenderComponent* first, CRenderComponent* second)
+				{ return first->GetSortingOrder() < second->GetSortingOrder(); } );
+		
+			bNeedSort = false;
+		}
+	}
 }
 
 void CScene::Destroy(CGameObject* gameObject)

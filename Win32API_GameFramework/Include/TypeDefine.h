@@ -1,5 +1,7 @@
 #pragma once
 
+#include <thread>
+
 // CoreDataTypes...
 typedef __int8					int8;
 typedef __int16					int16;
@@ -9,3 +11,7 @@ typedef unsigned __int8			uint8;
 typedef unsigned __int16		uint16;
 typedef unsigned __int32		uint32;
 typedef unsigned __int64		uint64;
+
+typedef std::thread FThread;
+
+enum EIndex { INDEX_NONE = -1 };

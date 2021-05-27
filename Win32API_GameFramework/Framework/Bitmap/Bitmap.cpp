@@ -29,13 +29,26 @@ CBitmap* CBitmap::LoadBmp(CBitmap* bitmap, tstring path, bool bUseFlippedBmp)
 	
 	if (bUseFlippedBmp)
 	{
-		bitmap->XFlippedHDC = ::CreateCompatibleDC(bitmap->Hdc);
-		bitmap->YFlippedHDC = ::CreateCompatibleDC(bitmap->Hdc);
-		bitmap->XYFlippedHDC = ::CreateCompatibleDC(bitmap->Hdc);
+		FThread t1([bitmap, path]()
+			{
+				bitmap->XFlippedHDC = ::CreateCompatibleDC(bitmap->Hdc);
+				bitmap->XFlippedBmp = (HBITMAP)(LoadImage(NULL, path.c_str(), IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE | LR_CREATEDIBSECTION));
+			});
+		FThread t2([bitmap, path]()
+			{
+				bitmap->YFlippedHDC = ::CreateCompatibleDC(bitmap->Hdc);
+				bitmap->YFlippedBmp = (HBITMAP)(LoadImage(NULL, path.c_str(), IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE | LR_CREATEDIBSECTION));
+			});
 
-		bitmap->XFlippedBmp =  (HBITMAP)(LoadImage(NULL, path.c_str(), IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE | LR_CREATEDIBSECTION));
-		bitmap->YFlippedBmp =  (HBITMAP)(LoadImage(NULL, path.c_str(), IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE | LR_CREATEDIBSECTION));
-		bitmap->XYFlippedBmp = (HBITMAP)(LoadImage(NULL, path.c_str(), IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE | LR_CREATEDIBSECTION));
+		FThread t3([bitmap, path]()
+			{
+				bitmap->XYFlippedHDC = ::CreateCompatibleDC(bitmap->Hdc);
+				bitmap->XYFlippedBmp = (HBITMAP)(LoadImage(NULL, path.c_str(), IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE | LR_CREATEDIBSECTION));
+			});
+
+		t1.join();
+		t2.join();
+		t3.join();
 	}
 	
 	// 이미지 로드에 실패한 경우

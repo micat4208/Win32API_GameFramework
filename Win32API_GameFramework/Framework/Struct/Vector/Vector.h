@@ -40,6 +40,14 @@ public :
 	// 이 벡터가 단위벡터임을 확인합니다.
 	bool IsUnit(float errorTolerance = (1.e-8f)) const;
 
+	// 해당 위치가 창 내부에 위치하는지 확인합니다.
+	bool InWnd() const;
+
+	// 해당 위치가 창 내부에 위치하는지 확인합니다.
+	/// - cameraPosition : 연산시킬 카메라 위치를 전달합니다.
+	/// - padding : 패딩을 전달합니다.
+	bool InWnd(const FVector& cameraPosition, FVector padding = FVector(0.0f, 0.0f)) const;
+
 	virtual tstring ToString() const override;
 
 
@@ -64,6 +72,9 @@ public :
 
 	FORCEINLINE static FVector ScreenCenter()
 	{ return FVector(WND_WIDTH * 0.5f, WND_HEIGHT * 0.5f); }
+
+	FORCEINLINE static FVector ScreenSize()
+	{ return FVector(WND_WIDTH, WND_HEIGHT); }
 
 	static FVector VRand(float _min = 0.0f, float _max = 1.0f);
 

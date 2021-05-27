@@ -10,10 +10,29 @@ void CTileMap::Initialize()
 	TileMapCountX = TileMapCountY = 0;
 	TileMapScale = 1;
 
+	bUseUpdateTileDrawState = false;
+	UpdateTileDrawStateThread = nullptr;
+
 }
 
 void CTileMap::Release()
 {
+	// 타일 그리기 상태를 갱신중이라면
+	if (UpdateTileDrawStateThread)
+	{
+		// 타일 그리기 상태 갱신을 중단시킵니다.
+		bUseUpdateTileDrawState = false;
+
+		// 스레드 종료를 대기합니다.
+		UpdateTileDrawStateThread->join();
+
+		// 해제
+		delete UpdateTileDrawStateThread;
+		UpdateTileDrawStateThread = nullptr;
+	}
+
+	TileMapRenderers.clear();
+
 	if (!TileMapData)
 	{
 		for (int32 y = 0; y < TileMapCountY; ++y)
@@ -68,9 +87,19 @@ void CTileMap::MakeTileMap()
 			renderer->TileIndexY = y;
 			renderer->RelativeScale = FVector::OneVector() * (float)TileMapScale;
 			renderer->UpdatePosition();
-
-
 		}
 	}
+
+	// 타일 그리기 상태를 계속 갱신시킵니다.
+	bUseUpdateTileDrawState = true;
+	UpdateTileDrawStateThread = new FThread(
+		[this]()
+		{
+			while (bUseUpdateTileDrawState)
+			{
+				for (auto tileMapRenderer : TileMapRenderers)
+					tileMapRenderer->UpdateDrawState();
+			}
+		});
 
 }

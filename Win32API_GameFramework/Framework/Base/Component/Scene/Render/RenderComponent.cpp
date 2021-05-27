@@ -19,4 +19,4 @@ CScene* CRenderComponent::GetActiveScene() const
 { return Owner->OwnerScene; }
 
 FVector CRenderComponent::ToCameraPosition(const FVector& scenePosition) const
-{ return scenePosition - GetActiveScene()->CameraPosition; }
+{ return scenePosition - GetActiveScene()->CameraPosition + (FVector::ScreenSize() * 0.5f); }

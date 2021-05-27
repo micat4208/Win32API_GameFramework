@@ -70,6 +70,7 @@ void CInputManager::UpdateInputValue()
 
 float CInputManager::GetAxis(tstring axisName)
 {
+	if (axisName == TEXT("MouseWheel")) return (float)Instance()->MouseWheelAxis;
 	return Instance()->AxisInputs[axisName].AxisValue;
 }
 

@@ -1,6 +1,7 @@
 #include "MapEditorScene.h"
 
 #include "Framework/Single/SceneManager/SceneManager.h"
+#include "Framework/Single/InputManager/InputManager.h"
 
 #include "Game/GameObject/TileMap/TileMap.h"
 
@@ -14,6 +15,7 @@ void CMapEditorScene::Initialize()
 
 	TileMapCountX = 0;
 	TileMapCountY = 0;
+	CameraSpeed = 1.0f;
 
 }
 
@@ -39,6 +41,28 @@ void CMapEditorScene::Tick(float dt)
 		}
 	}
 
+	InputKey(dt);
+}
+
+void CMapEditorScene::InputKey(float dt)
+{
+	float wheelAxis = CInput::GetAxis(TEXT("MouseWheel"));
+	bool bIsWheelKeyInput = !FMath::Approximately(wheelAxis, 0.0f);
+
+	if (bIsWheelKeyInput)
+	{
+		CameraSpeed += wheelAxis * 0.5f;
+		CameraSpeed = FMath::Clamp(CameraSpeed, 0.1f, 50.0f);
+	}
+
+	FVector cameraVelocity = FVector(
+		CInput::GetAxis(TEXT("Horizontal")),
+		CInput::GetAxis(TEXT("Vertical")));
+	cameraVelocity *= -100.0f * CameraSpeed * dt;
+
+
+
+	MoveCamera(cameraVelocity);
 }
 
 BOOL CMapEditorScene::MapSettingDlgProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)

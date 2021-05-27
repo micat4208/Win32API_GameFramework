@@ -18,6 +18,9 @@
 typedef class CInputManager final :
     public CManagerClassBase<CInputManager>
 {
+public :
+    int32 MouseWheelAxis;
+
 private :
     // 축 입력을 저장합니다.
     map<tstring, FAxisInput> AxisInputs;

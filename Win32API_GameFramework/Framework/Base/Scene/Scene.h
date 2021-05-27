@@ -32,6 +32,9 @@ private :
 
     class CBitmap* BackBuffer, *Eraser;
 
+    FThread* SortingOrderThread;
+    bool bDoSortRenderComponent;
+
 public :
     // UsedRenderComponents 에 추가된 요소들의 정렬이 필요함을 나타냅니다.
     bool bNeedSort;
@@ -49,6 +52,9 @@ public :
     virtual void Render(HDC hdc);
 
     virtual void Release() override;
+
+private :
+    void SortRenderComponent();
 
 public :
     template<typename T>
@@ -93,9 +99,11 @@ public :
         COLORREF color, float duration = 5.0f, bool bFill = false)
     { AddDebugDraw(EDebugDrawType::DT_LINE, start, end, color, duration, bFill); }
 
+    FORCEINLINE void MoveCamera(FVector velocity)
+    { CameraPosition += (velocity * -1.0f); }
+
 private :
     void AddDebugDraw(EDebugDrawType debugDrawType, FVector vec1, FVector vec2,
         COLORREF color, float duration, bool bFill);
-
 };
 

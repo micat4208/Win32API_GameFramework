@@ -8,6 +8,7 @@ private :
     int32 TileMapCountX;
     int32 TileMapCountY;
     int32 TileMapScale;
+    float CameraSpeed;
 
     class CTileMap* TileMap;
 
@@ -17,7 +18,12 @@ public :
     virtual void Tick(float dt) override;
 
 private :
+    void InputKey(float dt);
+
+private :
     static BOOL MapSettingDlgProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
+
+
 
 
 

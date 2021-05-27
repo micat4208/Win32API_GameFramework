@@ -20,5 +20,8 @@ public :
     // 타일맵 위치를 갱신합니다.
     void UpdatePosition();
 
+    // 그리기 상태를 갱신합니다.
+    void UpdateDrawState();
+
 };
 

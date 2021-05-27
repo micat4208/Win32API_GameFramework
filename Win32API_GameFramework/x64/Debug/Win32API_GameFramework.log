@@ -1,29 +1,9 @@
-﻿  SpriteAnimationComponent.cpp
-C:\Users\SBSGAME\Desktop\Share\GameProgramming\GameProgramming6\Win32API\Game\Win32API_GameFramework\Win32API_GameFramework\Framework\Struct\SpriteAnimInfo\SpriteAnimInfo.h(32,5): warning C4267: 'return': 'size_t'에서 'int32'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  SpriteRendererComponent.cpp
-C:\Users\SBSGAME\Desktop\Share\GameProgramming\GameProgramming6\Win32API\Game\Win32API_GameFramework\Win32API_GameFramework\Framework\Base\Component\Scene\Render\SpriteRenderer\SpriteRendererComponent.cpp(64,71): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\SBSGAME\Desktop\Share\GameProgramming\GameProgramming6\Win32API\Game\Win32API_GameFramework\Win32API_GameFramework\Framework\Base\Component\Scene\Render\SpriteRenderer\SpriteRendererComponent.cpp(64,36): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\SBSGAME\Desktop\Share\GameProgramming\GameProgramming6\Win32API\Game\Win32API_GameFramework\Win32API_GameFramework\Framework\Base\Component\Scene\Render\SpriteRenderer\SpriteRendererComponent.cpp(61,53): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\SBSGAME\Desktop\Share\GameProgramming\GameProgramming6\Win32API\Game\Win32API_GameFramework\Win32API_GameFramework\Framework\Base\Component\Scene\Render\SpriteRenderer\SpriteRendererComponent.cpp(61,27): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\SBSGAME\Desktop\Share\GameProgramming\GameProgramming6\Win32API\Game\Win32API_GameFramework\Win32API_GameFramework\Framework\Base\Component\Scene\Render\SpriteRenderer\SpriteRendererComponent.cpp(55,47): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\SBSGAME\Desktop\Share\GameProgramming\GameProgramming6\Win32API\Game\Win32API_GameFramework\Win32API_GameFramework\Framework\Base\Component\Scene\Render\SpriteRenderer\SpriteRendererComponent.cpp(55,24): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\SBSGAME\Desktop\Share\GameProgramming\GameProgramming6\Win32API\Game\Win32API_GameFramework\Win32API_GameFramework\Framework\Base\Component\Scene\Render\SpriteRenderer\SpriteRendererComponent.cpp(52,31): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\SBSGAME\Desktop\Share\GameProgramming\GameProgramming6\Win32API\Game\Win32API_GameFramework\Win32API_GameFramework\Framework\Base\Component\Scene\Render\SpriteRenderer\SpriteRendererComponent.cpp(52,16): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\SBSGAME\Desktop\Share\GameProgramming\GameProgramming6\Win32API\Game\Win32API_GameFramework\Win32API_GameFramework\Framework\Base\Component\Scene\Render\SpriteRenderer\SpriteRendererComponent.cpp(86,71): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\SBSGAME\Desktop\Share\GameProgramming\GameProgramming6\Win32API\Game\Win32API_GameFramework\Win32API_GameFramework\Framework\Base\Component\Scene\Render\SpriteRenderer\SpriteRendererComponent.cpp(86,36): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\SBSGAME\Desktop\Share\GameProgramming\GameProgramming6\Win32API\Game\Win32API_GameFramework\Win32API_GameFramework\Framework\Base\Component\Scene\Render\SpriteRenderer\SpriteRendererComponent.cpp(83,53): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\SBSGAME\Desktop\Share\GameProgramming\GameProgramming6\Win32API\Game\Win32API_GameFramework\Win32API_GameFramework\Framework\Base\Component\Scene\Render\SpriteRenderer\SpriteRendererComponent.cpp(83,27): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\SBSGAME\Desktop\Share\GameProgramming\GameProgramming6\Win32API\Game\Win32API_GameFramework\Win32API_GameFramework\Framework\Base\Component\Scene\Render\SpriteRenderer\SpriteRendererComponent.cpp(77,47): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\SBSGAME\Desktop\Share\GameProgramming\GameProgramming6\Win32API\Game\Win32API_GameFramework\Win32API_GameFramework\Framework\Base\Component\Scene\Render\SpriteRenderer\SpriteRendererComponent.cpp(77,24): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\SBSGAME\Desktop\Share\GameProgramming\GameProgramming6\Win32API\Game\Win32API_GameFramework\Win32API_GameFramework\Framework\Base\Component\Scene\Render\SpriteRenderer\SpriteRendererComponent.cpp(74,31): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\SBSGAME\Desktop\Share\GameProgramming\GameProgramming6\Win32API\Game\Win32API_GameFramework\Win32API_GameFramework\Framework\Base\Component\Scene\Render\SpriteRenderer\SpriteRendererComponent.cpp(74,16): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  PlayerSpriteAnimationComponent.cpp
-C:\Users\SBSGAME\Desktop\Share\GameProgramming\GameProgramming6\Win32API\Game\Win32API_GameFramework\Win32API_GameFramework\Framework\Struct\SpriteAnimInfo\SpriteAnimInfo.h(32,5): warning C4267: 'return': 'size_t'에서 'int32'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  TileMapRendererComponent.cpp
-C:\Users\SBSGAME\Desktop\Share\GameProgramming\GameProgramming6\Win32API\Game\Win32API_GameFramework\Win32API_GameFramework\Game\Components\TileMapRenderer\TileMapRendererComponent.cpp(31,62): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\SBSGAME\Desktop\Share\GameProgramming\GameProgramming6\Win32API\Game\Win32API_GameFramework\Win32API_GameFramework\Game\Components\TileMapRenderer\TileMapRendererComponent.cpp(30,62): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  PlayerCharacter.cpp
-C:\Users\SBSGAME\Desktop\Share\GameProgramming\GameProgramming6\Win32API\Game\Win32API_GameFramework\Win32API_GameFramework\Framework\Struct\SpriteAnimInfo\SpriteAnimInfo.h(32,5): warning C4267: 'return': 'size_t'에서 'int32'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  TileMap.cpp
+﻿  Entry.cpp
+C:\Users\SBSGAME\Desktop\Share\GameProgramming\GameProgramming6\Win32API\Game\Win32API_GameFramework\Win32API_GameFramework\Framework\Entry\Entry.cpp(48,38): warning C4244: '=': 'ULONGLONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\SBSGAME\Desktop\Share\GameProgramming\GameProgramming6\Win32API\Game\Win32API_GameFramework\Win32API_GameFramework\Framework\Entry\Entry.cpp(48,22): warning C4244: '인수': 'float'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\SBSGAME\Desktop\Share\GameProgramming\GameProgramming6\Win32API\Game\Win32API_GameFramework\Win32API_GameFramework\Framework\Entry\Entry.cpp(159,13): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\SBSGAME\Desktop\Share\GameProgramming\GameProgramming6\Win32API\Game\Win32API_GameFramework\Win32API_GameFramework\Framework\Entry\Entry.cpp(159,4): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  SceneManager.cpp
+  MapEditorScene.cpp
   코드를 생성하고 있습니다...
   Win32API_GameFramework.vcxproj -> C:\Users\SBSGAME\Desktop\Share\GameProgramming\GameProgramming6\Win32API\Game\Win32API_GameFramework\x64\Debug\Win32API_GameFramework.exe

@@ -129,7 +129,10 @@ int APIENTRY wWinMain(
 				// Render 메서드 호출
 				CSceneManager::Instance()->Render(GameInstance->GetDC());
 
+				CInputManager::Instance()->MouseWheelAxis = 0;
+
 				totalDS = 0.0f;
+
 			}
 
 			totalDS += functionCallDelta;
@@ -158,6 +161,13 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 			wndRC.bottom - wndRC.top, 
 			false);
 
+		return 0;
+	}
+
+	case WM_MOUSEWHEEL :
+	{
+		SHORT wheelAxis = FMath::Sign((SHORT)HIWORD(wParam));
+		CInput::Instance()->MouseWheelAxis = wheelAxis;
 		return 0;
 	}
 

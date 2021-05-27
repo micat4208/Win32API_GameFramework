@@ -14,6 +14,12 @@ private :
     // 추가된 TileMapRenderer 컴포넌트들을 나타냅니다.
     vector<class CTileMapRendererComponent* > TileMapRenderers;
 
+    // 타일 그리기 상태를 갱신시키도록 할 것인지에 대한 여부를 나타냅니다.
+    bool bUseUpdateTileDrawState;
+
+    // 타일 그리기 상태를 갱신하는 스레드
+    FThread* UpdateTileDrawStateThread;
+
 
 
 public :
