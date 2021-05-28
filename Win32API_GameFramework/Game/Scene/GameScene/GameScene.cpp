@@ -1,9 +1,15 @@
 #include "GameScene.h"
 #include "Game/GameObject/Character/PlayerCharacter/PlayerCharacter.h"
 
+#include "Game/GameObject/Audio/AudioObject.h"
+
 void CGameScene::Initialize()
 {
 	super::Initialize();
+
+	AudioObject = NewGameObject<CAudioObject>(TEXT("AudioObject"));
+
+	AudioObject->CreateAudio("Resources/Audio/Pleasant_Porridge.mp3");
 
 	// 플레이어 캐릭터를 생성합니다.
 	NewGameObject<CPlayerCharacter>(TEXT("PlayerCharacter"));

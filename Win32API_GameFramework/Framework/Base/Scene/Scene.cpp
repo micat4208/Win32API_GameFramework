@@ -8,8 +8,8 @@ void CScene::Initialize()
 {
 	super::Initialize();
 
-	BackBuffer = CBitmap::LoadBmp(NewObject<CBitmap>(), TEXT("Resources/Default/Black.bmp"), false);
-	Eraser = CBitmap::LoadBmp(NewObject<CBitmap>(), TEXT("Resources/Default/Black.bmp"), false);
+	BackBuffer = CBitmap::LoadBmp(NewObject<CBitmap>(), TEXT("Resources/Default/Black.bmp"), false, TEXT("BackBuffer"));
+	Eraser = CBitmap::LoadBmp(NewObject<CBitmap>(), TEXT("Resources/Default/Black.bmp"), false, TEXT("Eraser"));
 
 	bNeedSort = false;
 	CameraPosition = FVector::ZeroVector();
@@ -163,8 +163,10 @@ void CScene::Release()
 	DestroyedGameObjectList.clear();
 
 	// Bitmap ∞¥√º «ÿ¡¶
-	CObject::DeleteObject(BackBuffer);
-	CObject::DeleteObject(Eraser);
+	CBitmap::ReleaseAllBmp();
+	BackBuffer = Eraser = nullptr;
+	//CObject::DeleteObject(BackBuffer);
+	//CObject::DeleteObject(Eraser);
 
 	super::Release();
 }

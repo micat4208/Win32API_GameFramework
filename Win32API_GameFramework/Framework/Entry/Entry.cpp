@@ -35,6 +35,7 @@ HINSTANCE HInstance;
 // GameInstance
 DEF_GAMEINSTANCECLASS* GameInstance;
 float GameStartTime;
+FMOD_SYSTEM* SoundSystem;
 
 
 LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
@@ -72,6 +73,12 @@ int APIENTRY wWinMain(
 
 	ShowWindow(Hwnd, nCmdShow);
 
+	// FMOD 사운드 시스템 생성
+	FMOD_System_Create(&SoundSystem);
+
+	// FMOD 사운드 시스템 초기화
+	FMOD_System_Init(SoundSystem, 32, FMOD_INIT_NORMAL, NULL);
+
 	// GameInstance 생성
 	GameInstance = CObject::NewObject<DEF_GAMEINSTANCECLASS>();
 
@@ -94,6 +101,8 @@ int APIENTRY wWinMain(
 	
 	QueryPerformanceCounter(&Counter);
 	/// - QueryPerformanceCounter(LARGE_INTEGER * lpPerformanceCount) : 현재 CPU 클럭 수를 lpPerformanceCount 에 저장합니다.
+
+
 
 
 	MSG msg;
@@ -172,6 +181,12 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 	}
 
 	case WM_DESTROY:
+
+		// 사운드 시스템을 닫습니다.
+		FMOD_System_Close(SoundSystem);
+
+		// 사운드 시스템 해제
+		FMOD_System_Release(SoundSystem);
 
 		// GameInstance 해제
 		CObject::DeleteObject(GameInstance);

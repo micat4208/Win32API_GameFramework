@@ -7,6 +7,9 @@ class CBitmap final :
     public CObject
 {
 private :
+    static map<tstring, CBitmap*> LoadedBitmaps;
+
+private :
     HDC Hdc, MemDC,
         XFlippedHDC, YFlippedHDC, XYFlippedHDC;
 
@@ -33,10 +36,13 @@ public :
 
 public :
     // 비트맵 이미지를 로드합니다.
-    static CBitmap* LoadBmp(CBitmap* bitmap, tstring path, bool bUseFlippedBmp = true);
+    static CBitmap* LoadBmp(CBitmap* bitmap, tstring path, bool bUseFlippedBmp = true, tstring key = TEXT("USE_PATH"));
 
 public :
+    static void ReleaseAllBmp();
+
     virtual void Release() override;
+
 
 public :
     // 이미지를 뒤집습니다.

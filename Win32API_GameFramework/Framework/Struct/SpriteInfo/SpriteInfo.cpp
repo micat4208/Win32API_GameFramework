@@ -35,7 +35,7 @@ void FSpriteInfo::InitializeSpriteInfo(
 void FSpriteInfo::Release()
 {
 	super::Release();
-	CObject::DeleteObject(LoadedBitmap);
+	LoadedBitmap = nullptr;
 }
 
 void FSpriteInfo::MakeSpriteInfos(

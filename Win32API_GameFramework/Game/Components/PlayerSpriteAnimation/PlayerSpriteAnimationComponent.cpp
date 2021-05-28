@@ -22,10 +22,9 @@ void CPlayerSpriteAnimationComponent::Initialize()
 
 	FSpriteInfo::MakeSpriteInfos(
 		idleSpriteInfos, idleSpritePaths, ESpriteDrawType::UseTransparentBlt, FVector(0.5f, 1.0f));
-	AddSpriteAnimation(TEXT("Idle"), idleSpriteInfos, 0.3f);
+	AddSpriteAnimation(TEXT("Idle"), idleSpriteInfos, 0.2f);
 
 #pragma endregion
-
 
 #pragma region WALK ANIMATION
 
@@ -39,13 +38,14 @@ void CPlayerSpriteAnimationComponent::Initialize()
 
 	FSpriteInfo::MakeSpriteInfos(
 		walkSpriteInfos, walkSpritePaths, ESpriteDrawType::UseTransparentBlt, FVector(0.5f, 1.0f));
-	AddSpriteAnimation(TEXT("Walk"), walkSpriteInfos, 0.2f);
+	AddSpriteAnimation(TEXT("Walk"), walkSpriteInfos, 0.1f);
 
 #pragma endregion
 
-
 	// Idle Animation Àç»ý
 	PlaySpriteAnimation(TEXT("Idle"));
+
+	RelativeScale = FVector::OneVector() * 0.3f;
 }
 
 void CPlayerSpriteAnimationComponent::Tick(float dt)

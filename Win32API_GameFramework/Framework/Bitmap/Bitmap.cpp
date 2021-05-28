@@ -1,5 +1,9 @@
 #include "Bitmap.h"
 
+map<tstring, CBitmap*> CBitmap::LoadedBitmaps;
+
+
+
 CBitmap::CBitmap()
 {
 	Hdc = MemDC = XFlippedHDC = YFlippedHDC = XYFlippedHDC = NULL;
@@ -11,8 +15,15 @@ CBitmap::CBitmap()
 	bUseFlippedBmp = bIsFlippedX = bIsFlippedY = false;
 }
 
-CBitmap* CBitmap::LoadBmp(CBitmap* bitmap, tstring path, bool bUseFlippedBmp)
+CBitmap* CBitmap::LoadBmp(CBitmap* bitmap, tstring path, bool bUseFlippedBmp, tstring key)
 {
+	if (key == TEXT("USE_PATH"))
+		key = path;
+
+	// 이미 로드된 비트맵이라면, 이미 생성된 bitmap 객체 리턴
+	auto iter = CBitmap::LoadedBitmaps.find(key);
+	if (iter != CBitmap::LoadedBitmaps.end()) return iter->second;
+
 	bitmap->bUseFlippedBmp = bUseFlippedBmp;
 
 	bitmap->Hdc = ::GetDC(Hwnd);
@@ -114,7 +125,21 @@ CBitmap* CBitmap::LoadBmp(CBitmap* bitmap, tstring path, bool bUseFlippedBmp)
 		bitmap->bIsFlippedX = bitmap->bIsFlippedY = false;
 	}
 
+	CBitmap::LoadedBitmaps.insert(make_pair(key, bitmap));
+
 	return bitmap;
+}
+
+void CBitmap::ReleaseAllBmp()
+{
+	for (auto iter = CBitmap::LoadedBitmaps.begin();
+		iter != CBitmap::LoadedBitmaps.end();
+		++iter)
+	{
+		iter->second->Release();
+	}
+
+	CBitmap::LoadedBitmaps.clear();
 }
 
 void CBitmap::Release()

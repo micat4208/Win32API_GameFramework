@@ -9,12 +9,14 @@
 #include <vector>
 #include <map>
 #include <list>
+#include <fmod.h>
 
 #include "TypeDefine.h"
 #include "GameDefine.h"
 #include "GameDebug.h"
 
 #pragma comment (lib, "msimg32.lib")
+#pragma comment (lib, "fmod_vc.lib")
 
 using namespace std;
 
@@ -35,6 +37,26 @@ using namespace std;
 extern HWND Hwnd;
 extern float GameStartTime;
 extern HINSTANCE HInstance;
+extern FMOD_SYSTEM* SoundSystem;
+
+
+
+// FMOD
+/// 회원가입 / 로그인 후
+/// https://www.fmod.com/download
+/// Download -> FMOD Studio Suite -> FMOD Engine 설치
+
+// 프로젝트 속성 -> [C/C++] :: 추가 포함 디렉터리
+// C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\core\inc
+// 프로젝트 속성 -> [링커] :: 추가 라이브러리 디렉터리
+// C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\core\lib\x64 or
+// C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\core\lib\x86
+
+// 사용 전 <fmod.h> 포함
+
+
+
+
 
 
 
