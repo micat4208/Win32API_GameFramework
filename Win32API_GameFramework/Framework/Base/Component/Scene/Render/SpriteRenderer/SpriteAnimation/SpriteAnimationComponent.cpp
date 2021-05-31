@@ -23,7 +23,7 @@ void CSpriteAnimationComponent::Tick(float dt)
 void CSpriteAnimationComponent::Release()
 {
 	// 그리는 스프라이트를 비웁니다.
-	SetDrawSpriteInfo(nullptr);
+	DrawSpriteInfo = nullptr;
 
 	for (auto iter = SpriteAnimInfos.begin(); iter != SpriteAnimInfos.end(); ++iter)
 		CObject::DeleteObject(iter->second);
@@ -52,7 +52,7 @@ void CSpriteAnimationComponent::LoopAnimation()
 	else
 	{
 		auto spriteInfo = (*SpriteAnimation)[SpriteIndex];
-		if (spriteInfo) SetDrawSpriteInfo(spriteInfo);
+		if (spriteInfo) DrawSpriteInfo = spriteInfo;
 
 		// 재생중인 애니메이션의 SpriteDelay 만큼의 시간이 지났다면
 		if (CGameplayStatics::GetTime() - LastSpriteChangedTime >= SpriteAnimation->SpriteDelay)

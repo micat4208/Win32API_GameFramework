@@ -8,12 +8,14 @@ public :
     // ≈∏¿œ ¿Œµ¶Ω∫
     int32 TileIndexX;
     int32 TileIndexY;
+    bool bIsBlockingTile;
 
 private :
     FSpriteInfo* TileMapSpriteInfo;
 
 public :
     virtual void Initialize() override;
+    virtual void Render(HDC hdc) override;
     virtual void Release() override;
 
 public :

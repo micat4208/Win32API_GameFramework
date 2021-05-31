@@ -37,10 +37,10 @@ void CSpriteRendererComponent::Render(HDC hdc)
 	// 스프라이트 이미지를 그릴 좌측 상단 위치를 얻습니다.
 	/// - 컴포넌트 위치를 피벗의 위치이므로, 피벗을 기준으로 나눈 좌측 상단 사각형 크기를 빼서
 	///   그리기 시작 위치를 얻습니다.
-	FVector drawStartLT = GetComponentPosition() - ltOfPivotRectSize;
+	DrawStartLT = GetComponentPosition() - ltOfPivotRectSize;
 
 	// 카메라 위치를 적용시킵니다.
-	drawStartLT = ToCameraPosition(drawStartLT);
+	DrawStartLT = ToCameraPosition(DrawStartLT);
 
 	switch (DrawSpriteInfo->SpriteDrawType)
 	{
@@ -49,7 +49,7 @@ void CSpriteRendererComponent::Render(HDC hdc)
 			// 이미지를 그립니다.
 			TransparentBlt(hdc,
 				// 이미지를 그리기 시작할 위치
-				drawStartLT.X, drawStartLT.Y,
+				DrawStartLT.X, DrawStartLT.Y,
 
 				// 그려질 이미지 크기
 				drawSpriteImageSize.X, drawSpriteImageSize.Y,
@@ -71,7 +71,7 @@ void CSpriteRendererComponent::Render(HDC hdc)
 			// 이미지를 그립니다.
 			StretchBlt(hdc,
 				// 이미지를 그리기 시작할 위치
-				drawStartLT.X, drawStartLT.Y,
+				DrawStartLT.X, DrawStartLT.Y,
 
 				// 그려질 이미지 크기
 				drawSpriteImageSize.X, drawSpriteImageSize.Y,

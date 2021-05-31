@@ -129,6 +129,9 @@
     <ClCompile Include="Game\GameObject\Audio\AudioObject.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Game\Struct\TileMapInfo\TileMapInfo.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Include\DefaultInclude.h">
@@ -282,6 +285,9 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Game\GameObject\Audio\AudioObject.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Struct\TileMapInfo\TileMapInfo.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

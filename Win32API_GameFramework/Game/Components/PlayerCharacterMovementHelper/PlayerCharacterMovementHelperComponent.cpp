@@ -1,6 +1,7 @@
 #include "PlayerCharacterMovementHelperComponent.h"
 
 #include "Framework/Base/GameObject/GameObject.h"
+#include "Game/GameObject/TileMap/TileMap.h"
 #include "Game/Components/Movement/MovementComponent.h"
 
 CPlayerCharacterMovementHelperComponent::CPlayerCharacterMovementHelperComponent()
@@ -14,6 +15,11 @@ void CPlayerCharacterMovementHelperComponent::Start()
 
 	// Owner(PlayerCharacter) 에 추가된 CMovementComponent 컴포넌트를 얻습니다.
 	Movement = Owner->GetComponent<CMovementComponent>();
+
+	FVector mapAreaLT = TileMap->Position;
+	FVector mapAreaRB = mapAreaLT + TileMap->GetMapSize();
+
+	Movement->SetMovableArea(mapAreaLT, mapAreaRB);
 }
 
 void CPlayerCharacterMovementHelperComponent::Tick(float dt)
@@ -21,6 +27,11 @@ void CPlayerCharacterMovementHelperComponent::Tick(float dt)
 	super::Tick(dt);
 
 	UpdateLookDirection();
+}
+
+void CPlayerCharacterMovementHelperComponent::SetTileMap(CTileMap* tileMap)
+{
+	TileMap = tileMap;
 }
 
 void CPlayerCharacterMovementHelperComponent::UpdateLookDirection()

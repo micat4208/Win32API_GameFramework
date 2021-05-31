@@ -5,6 +5,7 @@ class CGameScene final :
     public CScene
 {
 private :
+    class CTileMap* TileMap;
     class CAudioObject* AudioObject;
 
 public :
@@ -13,5 +14,8 @@ public :
 public :
     FORCEINLINE class CAudioObject* GetAudioObject() const
     { return AudioObject; }
+
+    FORCEINLINE class CTileMap* GetTileMap() const
+    { return TileMap; }
 };
 

@@ -9,6 +9,12 @@ private :
     // 충격 속도
     FVector Impulse;
 
+    // 이동 가능한 범위 LT
+    FVector MovableAreaLT;
+
+    // 이동 가능한 범위 RB
+    FVector MovableAreaRB;
+
 public :
     // 최대 속력을 나타냅니다.
     float MaxSpeed;
@@ -31,6 +37,12 @@ public :
 
     // 이동을 추가합니다.
     void AddMovement(FVector direction);
+
+    FORCEINLINE void SetMovableArea(const FVector& lt, const FVector& rb)
+    {
+        MovableAreaLT = lt;
+        MovableAreaRB = rb;
+    }
 
 };
 

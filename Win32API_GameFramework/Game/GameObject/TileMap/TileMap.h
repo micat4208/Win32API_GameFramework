@@ -5,11 +5,13 @@ class CTileMap :
     public CGameObject
 {
 private :
-    int32 TileMapCountX;
-    int32 TileMapCountY;
+    struct FTileMapInfo* TileMapData;
+
     int32 TileMapScale;
 
-    int32** TileMapData;
+    // 맵 크기를 나타냅니다.
+    /// - 이 값은 RelativeScale 의 영향을 받습니다.
+    FVector MapSize;
 
     // 추가된 TileMapRenderer 컴포넌트들을 나타냅니다.
     vector<class CTileMapRendererComponent* > TileMapRenderers;
@@ -26,7 +28,23 @@ public :
     virtual void Initialize() override;
     virtual void Release() override;
 
+private :
+    // 타일맵 정보를 생성합니다.
+    void MakeTileMapInfo(string mapCode);
+
+    // 맵 크기를 갱신합니다.
+    void UpdateMapSize();
+
 public :
+    FORCEINLINE void SetTileMap(string mapCode, int32 tileMapScale = 1)
+    { 
+        MakeTileMapInfo(mapCode); 
+        SetTileMapScale(tileMapScale);
+    }
+
+    FORCEINLINE const FVector& GetMapSize() const
+    { return MapSize; }
+
     // 타일맵 XY 크기를 설정합니다.
     void SetTileMapXY(int32 sizeX, int32 sizeY);
 
@@ -35,6 +53,10 @@ public :
 
     // 타일맵을 생성합니다.
     void MakeTileMap();
+
+
+
+
 
 };
 

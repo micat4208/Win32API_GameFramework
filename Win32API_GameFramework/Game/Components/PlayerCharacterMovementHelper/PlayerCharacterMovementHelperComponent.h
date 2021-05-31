@@ -8,6 +8,8 @@ class CPlayerCharacterMovementHelperComponent final :
 private :
     class CMovementComponent* Movement;
 
+    class CTileMap* TileMap;
+
     // 플레이어 캐릭터가 바라보는 방향을 나타냅니다.
     EDirection LookDirection;
 
@@ -17,6 +19,9 @@ public :
 public :
     virtual void Start() override;
     virtual void Tick(float dt) override;
+
+public :
+    void SetTileMap(class CTileMap* tileMap);
 
 private :
     // 플레이어 캐릭터가 바라보는 방향을 갱신합니다.

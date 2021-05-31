@@ -5,6 +5,7 @@
 
 #include <combaseapi.h>
 #include <functional>
+#include <fstream>
 
 #include <vector>
 #include <map>

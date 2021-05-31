@@ -88,7 +88,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\core\inc;C:\Users\SBSGAME\Desktop\Share\GameProgramming\GameProgramming6\Win32API\Game\Win32API_GameFramework\Win32API_GameFramework;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\core\inc;C:\Users\SBSGAME\Desktop\Share\GameProgramming\GameProgramming6\Win32API\Game\Win32API_GameFramework\Win32API_GameFramework\Game;C:\Users\SBSGAME\Desktop\Share\GameProgramming\GameProgramming6\Win32API\Game\Win32API_GameFramework\Win32API_GameFramework\Framework;C:\Users\SBSGAME\Desktop\Share\GameProgramming\GameProgramming6\Win32API\Game\Win32API_GameFramework\Win32API_GameFramework;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -104,7 +104,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\core\inc;C:\Users\SBSGAME\Desktop\Share\GameProgramming\GameProgramming6\Win32API\Game\Win32API_GameFramework\Win32API_GameFramework;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\core\inc;C:\Users\SBSGAME\Desktop\Share\GameProgramming\GameProgramming6\Win32API\Game\Win32API_GameFramework\Win32API_GameFramework\Game;C:\Users\SBSGAME\Desktop\Share\GameProgramming\GameProgramming6\Win32API\Game\Win32API_GameFramework\Win32API_GameFramework\Framework;C:\Users\SBSGAME\Desktop\Share\GameProgramming\GameProgramming6\Win32API\Game\Win32API_GameFramework\Win32API_GameFramework;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -120,7 +120,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\core\inc;C:\Users\SBSGAME\Desktop\Share\GameProgramming\GameProgramming6\Win32API\Game\Win32API_GameFramework\Win32API_GameFramework;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\core\inc;C:\Users\SBSGAME\Desktop\Share\GameProgramming\GameProgramming6\Win32API\Game\Win32API_GameFramework\Win32API_GameFramework\Game;C:\Users\SBSGAME\Desktop\Share\GameProgramming\GameProgramming6\Win32API\Game\Win32API_GameFramework\Win32API_GameFramework\Framework;C:\Users\SBSGAME\Desktop\Share\GameProgramming\GameProgramming6\Win32API\Game\Win32API_GameFramework\Win32API_GameFramework;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -136,7 +136,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\core\inc;C:\Users\SBSGAME\Desktop\Share\GameProgramming\GameProgramming6\Win32API\Game\Win32API_GameFramework\Win32API_GameFramework;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\core\inc;C:\Users\SBSGAME\Desktop\Share\GameProgramming\GameProgramming6\Win32API\Game\Win32API_GameFramework\Win32API_GameFramework\Game;C:\Users\SBSGAME\Desktop\Share\GameProgramming\GameProgramming6\Win32API\Game\Win32API_GameFramework\Win32API_GameFramework\Framework;C:\Users\SBSGAME\Desktop\Share\GameProgramming\GameProgramming6\Win32API\Game\Win32API_GameFramework\Win32API_GameFramework;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -185,6 +185,7 @@
     <ClCompile Include="Game\Scene\GameScene\GameScene.cpp" />
     <ClCompile Include="Game\GameObject\TileMap\TileMap.cpp" />
     <ClCompile Include="Game\Scene\MapEditorScene\MapEditorScene.cpp" />
+    <ClCompile Include="Game\Struct\TileMapInfo\TileMapInfo.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\Base\Component\Audio\AudioComponent.h" />
@@ -231,6 +232,7 @@
     <ClInclude Include="Game\GameObject\Character\PlayerCharacter\PlayerCharacter.h" />
     <ClInclude Include="Game\Scene\GameScene\GameScene.h" />
     <ClInclude Include="Game\Scene\MapEditorScene\MapEditorScene.h" />
+    <ClInclude Include="Game\Struct\TileMapInfo\TileMapInfo.h" />
     <ClInclude Include="Include\CharDefine.h" />
     <ClInclude Include="Include\DefaultInclude.h" />
     <ClInclude Include="Include\GameDefine.h" />

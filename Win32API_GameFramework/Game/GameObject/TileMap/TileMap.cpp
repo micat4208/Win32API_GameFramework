@@ -2,12 +2,14 @@
 
 #include "Game/Components/TileMapRenderer/TileMapRendererComponent.h"
 
+#include "Struct/TileMapInfo/TileMapInfo.h"
+
+
 void CTileMap::Initialize()
 {
 	super::Initialize();
 
 	TileMapData = nullptr;
-	TileMapCountX = TileMapCountY = 0;
 	TileMapScale = 1;
 
 	bUseUpdateTileDrawState = false;
@@ -35,14 +37,36 @@ void CTileMap::Release()
 
 	if (!TileMapData)
 	{
-		for (int32 y = 0; y < TileMapCountY; ++y)
-			delete[] TileMapData[y];
-		delete[] TileMapData;
+		CObject::DeleteObject(TileMapData);
 		TileMapData = nullptr;
 	}
 
 	super::Release();
 
+}
+
+void CTileMap::MakeTileMapInfo(string mapCode)
+{
+	TileMapData = CObject::NewObject<FTileMapInfo>();
+	TileMapData->InitializeTileMap(mapCode);
+
+	MakeTileMap();
+}
+
+void CTileMap::UpdateMapSize()
+{
+	if (TileMapRenderers.size() == 0) return;
+	if (TileMapData->TileMapXCount == 0 || TileMapData->TileMapYCount == 0) return;
+
+	auto firstTileMapRenderer = (*TileMapRenderers.begin());
+
+	auto tileSpriteInfo = firstTileMapRenderer->DrawSpriteInfo;
+	if (tileSpriteInfo == nullptr) return;
+	if (!tileSpriteInfo->IsValid()) return;
+
+	MapSize = tileSpriteInfo->SpriteImageSize * TileMapScale;
+	MapSize.X *= TileMapData->TileMapXCount;
+	MapSize.Y *= TileMapData->TileMapYCount;
 }
 
 void CTileMap::SetTileMapXY(int32 sizeX, int32 sizeY)
@@ -53,8 +77,10 @@ void CTileMap::SetTileMapXY(int32 sizeX, int32 sizeY)
 		return;
 	}
 
-	TileMapCountX = sizeX;
-	TileMapCountY = sizeY;
+	if (TileMapData == nullptr) return;
+
+	TileMapData->TileMapXCount = sizeX;
+	TileMapData->TileMapYCount = sizeY;
 }
 
 void CTileMap::SetTileMapScale(int32 scale)
@@ -66,29 +92,37 @@ void CTileMap::SetTileMapScale(int32 scale)
 	}
 
 	TileMapScale = scale;
+
+	for (auto renderer : TileMapRenderers)
+	{
+		renderer->RelativeScale = FVector::OneVector() * (float)TileMapScale;
+		renderer->UpdatePosition();
+	}
+
+	UpdateMapSize();
 }
 
 void CTileMap::MakeTileMap()
 {
-	if (TileMapCountX == 0 || TileMapCountY == 0 || TileMapScale < 1) return;
+	if (TileMapData == nullptr) return;
+	if (TileMapData->TileMapXCount == 0 || TileMapData->TileMapYCount == 0 || TileMapScale < 1) return;
 
-	TileMapData = new int32 * [TileMapCountY];
-
-	for (int32 y = 0; y < TileMapCountY; ++y)
+	for (int32 y = 0; y < TileMapData->TileMapYCount; ++y)
 	{
-		TileMapData[y] = new int32[TileMapCountX];
-		for (int32 x = 0; x < TileMapCountX; ++x)
+		for (int32 x = 0; x < TileMapData->TileMapXCount; ++x)
 		{
-			TileMapData[y][x] = 1;
 			auto renderer = AddComponent<CTileMapRendererComponent>();
 
 			TileMapRenderers.push_back(renderer);
 			renderer->TileIndexX = x;
 			renderer->TileIndexY = y;
+			renderer->bIsBlockingTile = TileMapData->IsBlockingTile(x, y);
 			renderer->RelativeScale = FVector::OneVector() * (float)TileMapScale;
 			renderer->UpdatePosition();
 		}
 	}
+
+	UpdateMapSize();
 
 	// 타일 그리기 상태를 계속 갱신시킵니다.
 	bUseUpdateTileDrawState = true;

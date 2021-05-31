@@ -7,13 +7,15 @@ class CSpriteRendererComponent :
     public CRenderComponent
 {
 
-protected :
+public :
     // 그릴 스프라이트 정보
     FSpriteInfo* DrawSpriteInfo;
 
 protected :
     bool bIsFlippedX;
     bool bIsFlippedY;
+
+    FVector DrawStartLT;
 
 public :
     CSpriteRendererComponent();
@@ -24,8 +26,6 @@ public :
     virtual void FlipXY(bool flipX, bool flipY);
 
 public :
-    FORCEINLINE void SetDrawSpriteInfo(FSpriteInfo* newSpriteInfo)
-    { DrawSpriteInfo = newSpriteInfo; }
 
     FORCEINLINE void FlipX(bool flipX) { FlipXY(flipX, false); }
     FORCEINLINE void FlipY(bool flipY) { FlipXY(false, flipY); }

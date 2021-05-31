@@ -11,7 +11,32 @@ void CTileMapRendererComponent::Initialize()
 		TEXT("Resources/DungeonTile/DUNGEON_TILE2.bmp"),
 		ESpriteDrawType::UseStretchBlt, USE_LOADED_SIZE, false);
 
-	SetDrawSpriteInfo(TileMapSpriteInfo);
+	DrawSpriteInfo = TileMapSpriteInfo;
+
+	bIsBlockingTile = false;
+}
+
+void CTileMapRendererComponent::Render(HDC hdc)
+{
+	super::Render(hdc);
+
+	if (bIsBlockingTile)
+	{
+		if (DrawSpriteInfo == nullptr) return;
+		if (!DrawSpriteInfo->IsValid()) return;
+		if (DrawSpriteInfo->SpriteDrawType == ESpriteDrawType::Hide) return;
+
+		FVector drawSpriteImageSize = FVector(
+			DrawSpriteInfo->SpriteImageSize.X * RelativeScale.X,
+			DrawSpriteInfo->SpriteImageSize.Y * RelativeScale.Y);
+
+		Rectangle(hdc,
+			DrawStartLT.X,
+			DrawStartLT.Y,
+			DrawStartLT.X + drawSpriteImageSize.X,
+			DrawStartLT.Y + drawSpriteImageSize.Y);
+	}
+
 }
 
 void CTileMapRendererComponent::Release()
@@ -27,7 +52,6 @@ void CTileMapRendererComponent::UpdatePosition()
 
 	FVector tileImageSize = DrawSpriteInfo->SpriteImageSize;
 
-	// 컴포넌트의 Scale 과 TileIndexX, Y 를 이용하여 컴포넌트의 위치를 설정해보세요!
 	RelativePosition = FVector(
 		((tileImageSize.X * 0.5) + (TileIndexX * tileImageSize.X)) * RelativeScale.X,
 		((tileImageSize.Y * 0.5) + (TileIndexY * tileImageSize.Y)) * RelativeScale.Y);

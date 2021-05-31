@@ -62,9 +62,9 @@ struct FMath
 
 	// value 의 값이 _min, _max 사이의 값임을 확인하는 함수
 	static FORCEINLINE bool IsIn(int32 value, int32 _min, int32 _max)
-	{ return (value >= _min && value <= _max); }
+	{ return (value > _min && value < _max); }
 	static FORCEINLINE bool IsIn(float value, float _min, float _max)
-	{ return (value >= _min && value <= _max); }
+	{ return (value > _min && value < _max); }
 
 	// t 를 이용하여 a 부터 b 까지 선형보간시킵니다. (곡선)
 	static FORCEINLINE float Lerp(float a, float b, float t)

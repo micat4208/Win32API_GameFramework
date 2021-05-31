@@ -2,7 +2,10 @@
 
 #include "Framework/Single/InputManager/InputManager.h"
 
+#include "Game/Scene/GameScene/GameScene.h"
+
 #include "Game/Components/Movement/MovementComponent.h"
+#include "Game/GameObject/TileMap/TileMap.h"
 
 #include "Game/Components/PlayerSpriteAnimation/PlayerSpriteAnimationComponent.h"
 #include "Game/Components/PlayerCharacterMovementHelper/PlayerCharacterMovementHelperComponent.h"
@@ -16,6 +19,9 @@ void CPlayerCharacter::Initialize()
 
 	SpriteAnimation = AddComponent<CPlayerSpriteAnimationComponent>();
 	MovementHelper = AddComponent<CPlayerCharacterMovementHelperComponent>();
+
+	// TileMap ¼³Á¤
+	MovementHelper->SetTileMap(Cast<CGameScene>(OwnerScene)->GetTileMap());
 }
 
 void CPlayerCharacter::Start()
