@@ -38,30 +38,37 @@ bool FVector::IsUnit(float errorTolerance) const
 
 bool FVector::InWnd() const
 {
-	// 화면 크기를 얻습니다.
+	// 화면 크기를 얻음
 	float wndWidth = WND_WIDTH;
 	float wndHeight = WND_HEIGHT;
 
-	if (!FMath::IsIn(X, 0.0f, wndWidth)) return false;
-	else if (!FMath::IsIn(Y, 0.0f, wndHeight)) return false;
-	else return true;
+	if (!FMath::IsIn(X, 0.0f, wndWidth))
+		return false;
+	else if (!FMath::IsIn(Y, 0.0f, wndHeight))
+		return false;
+	else
+		return true;
 }
 
 bool FVector::InWnd(const FVector& cameraPosition, FVector padding) const
 {
-	// 화면 크기를 얻습니다.
+	// 화면 크기를 얻음
 	float wndHalfWidth = WND_WIDTH * 0.5f;
 	float wndHalfHeight = WND_HEIGHT * 0.5f;
 
 	if (!FMath::IsIn(X, 
 		cameraPosition.X - wndHalfWidth - padding.X,
-		cameraPosition.X + wndHalfWidth + padding.X)) return false;
+		cameraPosition.X + wndHalfWidth + padding.X))
+		return false;
+
 	else if (!FMath::IsIn(Y, 
 		cameraPosition.Y - wndHalfHeight - padding.Y,
-		cameraPosition.Y + wndHalfHeight + padding.Y)) return false;
-
-	else return true;
+		cameraPosition.Y + wndHalfHeight + padding.Y))
+		return false;
+	else
+		return true;
 }
+
 
 tstring FVector::ToString() const
 {

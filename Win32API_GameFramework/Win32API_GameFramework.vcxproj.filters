@@ -117,7 +117,7 @@
     <ClCompile Include="Game\GameObject\TileMap\TileMap.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Scene\MapEditorScene\MapEditorScene.cpp">
+    <ClCompile Include="Game\Scene\MapEditerScene\MapEditerScene.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Game\Components\TileMapRenderer\TileMapRendererComponent.cpp">
@@ -272,7 +272,7 @@
     <ClInclude Include="Game\GameObject\TileMap\TileMap.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Game\Scene\MapEditorScene\MapEditorScene.h">
+    <ClInclude Include="Game\Scene\MapEditerScene\MapEditerScene.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="resource.h">

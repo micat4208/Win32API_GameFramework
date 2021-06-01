@@ -2,8 +2,6 @@
 
 map<tstring, CBitmap*> CBitmap::LoadedBitmaps;
 
-
-
 CBitmap::CBitmap()
 {
 	Hdc = MemDC = XFlippedHDC = YFlippedHDC = XYFlippedHDC = NULL;
@@ -20,9 +18,10 @@ CBitmap* CBitmap::LoadBmp(CBitmap* bitmap, tstring path, bool bUseFlippedBmp, ts
 	if (key == TEXT("USE_PATH"))
 		key = path;
 
-	// 이미 로드된 비트맵이라면, 이미 생성된 bitmap 객체 리턴
+	// 이미 로드된 비트맵이라면 이미 생성된 객체 리턴
 	auto iter = CBitmap::LoadedBitmaps.find(key);
-	if (iter != CBitmap::LoadedBitmaps.end()) return iter->second;
+	if (iter != CBitmap::LoadedBitmaps.end())
+		return iter->second;
 
 	bitmap->bUseFlippedBmp = bUseFlippedBmp;
 
@@ -45,21 +44,24 @@ CBitmap* CBitmap::LoadBmp(CBitmap* bitmap, tstring path, bool bUseFlippedBmp, ts
 				bitmap->XFlippedHDC = ::CreateCompatibleDC(bitmap->Hdc);
 				bitmap->XFlippedBmp = (HBITMAP)(LoadImage(NULL, path.c_str(), IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE | LR_CREATEDIBSECTION));
 			});
+
 		FThread t2([bitmap, path]()
 			{
-				bitmap->YFlippedHDC = ::CreateCompatibleDC(bitmap->Hdc);
+				bitmap->YFlippedHDC = ::CreateCompatibleDC(bitmap->Hdc);				
 				bitmap->YFlippedBmp = (HBITMAP)(LoadImage(NULL, path.c_str(), IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE | LR_CREATEDIBSECTION));
 			});
 
 		FThread t3([bitmap, path]()
-			{
+			{				
 				bitmap->XYFlippedHDC = ::CreateCompatibleDC(bitmap->Hdc);
 				bitmap->XYFlippedBmp = (HBITMAP)(LoadImage(NULL, path.c_str(), IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE | LR_CREATEDIBSECTION));
 			});
 
+		
 		t1.join();
 		t2.join();
 		t3.join();
+		
 	}
 	
 	// 이미지 로드에 실패한 경우
@@ -134,17 +136,19 @@ void CBitmap::ReleaseAllBmp()
 {
 	for (auto iter = CBitmap::LoadedBitmaps.begin();
 		iter != CBitmap::LoadedBitmaps.end();
-		++iter)
+		iter++)
 	{
-		iter->second->Release();
+		::CObject::DeleteObject(iter->second);
+		// iter->second->Release();
 	}
-
 	CBitmap::LoadedBitmaps.clear();
 }
 
 void CBitmap::Release()
 {
 	super::Release();
+	
+	CObject::DeleteObject(BitmapInfo);
 
 	::DeleteObject(SelectObject(MemDC, OldBmp));
 	::DeleteDC(MemDC);
@@ -160,7 +164,6 @@ void CBitmap::Release()
 		::DeleteDC(XYFlippedHDC);
 	}
 
-	CObject::DeleteObject(BitmapInfo);
 }
 
 void CBitmap::FlipXY(bool flipX, bool flipY)

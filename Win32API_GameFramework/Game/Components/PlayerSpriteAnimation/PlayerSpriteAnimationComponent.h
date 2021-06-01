@@ -10,8 +10,9 @@ public :
     virtual void Initialize() override;
     virtual void Tick(float dt) override;
 
-private :
+private:
     void AnimControl();
 
+    //FVector prevPosition;
 };
 

@@ -42,6 +42,9 @@ public :
     // 카메라 위치를 나타냅니다.
     FVector CameraPosition;
 
+private:
+    void SortRenderComponent();
+
 public :
     virtual void Initialize() override;
 
@@ -52,9 +55,6 @@ public :
     virtual void Render(HDC hdc);
 
     virtual void Release() override;
-
-private :
-    void SortRenderComponent();
 
 public :
     template<typename T>
@@ -100,10 +100,14 @@ public :
     { AddDebugDraw(EDebugDrawType::DT_LINE, start, end, color, duration, bFill); }
 
     FORCEINLINE void MoveCamera(FVector velocity)
-    { CameraPosition += (velocity * -1.0f); }
+    {
+        CameraPosition += (velocity * -1.0f);
+    }
+
 
 private :
     void AddDebugDraw(EDebugDrawType debugDrawType, FVector vec1, FVector vec2,
         COLORREF color, float duration, bool bFill);
+
 };
 

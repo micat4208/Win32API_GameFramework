@@ -26,6 +26,8 @@ public :
     virtual void FlipXY(bool flipX, bool flipY);
 
 public :
+    FORCEINLINE void SetDrawSpriteInfo(FSpriteInfo* newSpriteInfo)
+    { DrawSpriteInfo = newSpriteInfo; }
 
     FORCEINLINE void FlipX(bool flipX) { FlipXY(flipX, false); }
     FORCEINLINE void FlipY(bool flipY) { FlipXY(false, flipY); }

@@ -13,8 +13,8 @@ FSpriteInfo::FSpriteInfo()
 }
 
 void FSpriteInfo::InitializeSpriteInfo(
-	tstring imagePath, 
-	ESpriteDrawType spriteDrawType, 
+	tstring imagePath,
+	ESpriteDrawType spriteDrawType,
 	FVector imageSize,
 	bool bUseFlip)
 {
@@ -35,7 +35,7 @@ void FSpriteInfo::InitializeSpriteInfo(
 void FSpriteInfo::Release()
 {
 	super::Release();
-	LoadedBitmap = nullptr;
+	LoadedBitmap = nullptr;	
 }
 
 void FSpriteInfo::MakeSpriteInfos(

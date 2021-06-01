@@ -6,7 +6,7 @@
 class CGameplayStatics final :
     public CObject
 {
-public :
+public :   
     // 게임 시작 이후 지난 시간을 반환합니다.
     static float GetTime();
 

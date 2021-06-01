@@ -4,6 +4,20 @@
 
 #include "Framework/Statics/GameplayStatics.h"
 
+void CScene::SortRenderComponent()
+{
+	while (bDoSortRenderComponent)
+	{
+		if (bNeedSort)
+		{
+			UsedRenderComponents.sort([](CRenderComponent* first, CRenderComponent* second)
+				{ return first->GetSortingOrder() < second->GetSortingOrder(); });
+
+			bNeedSort = false;
+		}
+	}
+}
+
 void CScene::Initialize()
 {
 	super::Initialize();
@@ -16,8 +30,6 @@ void CScene::Initialize()
 
 	bDoSortRenderComponent = true;
 	SortingOrderThread = new FThread(&CScene::SortRenderComponent, this);
-
-
 }
 
 void CScene::Tick(float deltaSecond)
@@ -46,7 +58,7 @@ void CScene::Tick(float deltaSecond)
 	}
 
 	if (CreatedRenderComponents.size() > 0)
-	{
+	{	
 		for (auto createdRenderComponent : CreatedRenderComponents)
 			UsedRenderComponents.push_back(createdRenderComponent);
 		CreatedRenderComponents.clear();
@@ -84,6 +96,7 @@ void CScene::Tick(float deltaSecond)
 
 void CScene::Render(HDC hdc)
 {
+	
 
 	BitBlt(BackBuffer->GetDC(), 0, 0, WND_WIDTH, WND_HEIGHT, Eraser->GetDC(), 0, 0, SRCCOPY);
 
@@ -125,7 +138,7 @@ void CScene::Release()
 	bDoSortRenderComponent = false;
 	SortingOrderThread->join();
 	delete SortingOrderThread;
-	SortingOrderThread = nullptr;
+	SortingOrderThread = nullptr;	
 
 
 #if GAME_DEBUG_MODE == true
@@ -162,27 +175,13 @@ void CScene::Release()
 	UsedGameObjectList.clear();
 	DestroyedGameObjectList.clear();
 
-	// Bitmap 按眉 秦力
 	CBitmap::ReleaseAllBmp();
 	BackBuffer = Eraser = nullptr;
+
+	// Bitmap 按眉 秦力
 	//CObject::DeleteObject(BackBuffer);
 	//CObject::DeleteObject(Eraser);
-
 	super::Release();
-}
-
-void CScene::SortRenderComponent()
-{
-	while (bDoSortRenderComponent)
-	{
-		if (bNeedSort)
-		{ 
-			UsedRenderComponents.sort([](CRenderComponent* first, CRenderComponent* second)
-				{ return first->GetSortingOrder() < second->GetSortingOrder(); } );
-		
-			bNeedSort = false;
-		}
-	}
 }
 
 void CScene::Destroy(CGameObject* gameObject)

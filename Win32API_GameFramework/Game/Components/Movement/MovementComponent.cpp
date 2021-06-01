@@ -17,7 +17,7 @@ void CMovementComponent::Tick(float dt)
     super::Tick(dt);
 
     FVector& ownerPosition = Owner->Position;
-    ownerPosition += (Velocity + Impulse) * dt;
+    Owner->Position += (Velocity + Impulse) * dt;
 
     Velocity = FVector(
         FMath::Lerp(Velocity.X, 0.0f, dt * ((MaxSpeed * 0.01f) * BrakingForce * dt)),
@@ -39,7 +39,6 @@ void CMovementComponent::Tick(float dt)
         ownerPosition.Y = FMath::Clamp(ownerPosition.Y, MovableAreaLT.Y, MovableAreaRB.Y);
         Velocity.Y = 0.0f;
     }
-
 }
 
 void CMovementComponent::AddImpulse(FVector impulse)

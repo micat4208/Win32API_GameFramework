@@ -4,18 +4,22 @@
 class CGameScene final :
     public CScene
 {
-private :
+private:
     class CTileMap* TileMap;
     class CAudioObject* AudioObject;
 
 public :
     virtual void Initialize() override;
 
-public :
+public:
     FORCEINLINE class CAudioObject* GetAudioObject() const
-    { return AudioObject; }
+    {
+        return AudioObject;
+    }
 
     FORCEINLINE class CTileMap* GetTileMap() const
-    { return TileMap; }
+    {
+        return TileMap;
+    }
 };
 

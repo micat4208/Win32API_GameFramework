@@ -6,7 +6,7 @@
 class CBitmap final :
     public CObject
 {
-private :
+private:
     static map<tstring, CBitmap*> LoadedBitmaps;
 
 private :
@@ -29,8 +29,6 @@ public :
     bool bIsFlippedX, bIsFlippedY;
 
 
-
-
 public :
     CBitmap();
 
@@ -40,9 +38,7 @@ public :
 
 public :
     static void ReleaseAllBmp();
-
     virtual void Release() override;
-
 
 public :
     // 이미지를 뒤집습니다.

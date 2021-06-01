@@ -18,7 +18,7 @@
 typedef class CInputManager final :
     public CManagerClassBase<CInputManager>
 {
-public :
+public:
     int32 MouseWheelAxis;
 
 private :

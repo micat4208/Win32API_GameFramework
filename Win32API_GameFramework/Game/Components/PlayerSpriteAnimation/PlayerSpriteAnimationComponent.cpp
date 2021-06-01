@@ -1,14 +1,14 @@
 #include "PlayerSpriteAnimationComponent.h"
 
 #include "Game/GameObject/Character/PlayerCharacter/PlayerCharacter.h"
-
-#include "Game/Components/Movement/MovementComponent.h"
 #include "Game/Components/PlayerCharacterMovementHelper/PlayerCharacterMovementHelperComponent.h"
-
+#include "Game/Components/Movement/MovementComponent.h"
+#include "Framework/Enum/Direction.h"
 
 void CPlayerSpriteAnimationComponent::Initialize()
 {
-	super::Initialize();
+	super::Initialize();	
+	//  prevPosition = Owner->Position;
 
 #pragma region IDLE ANIMATION
 
@@ -21,10 +21,11 @@ void CPlayerSpriteAnimationComponent::Initialize()
 	};
 
 	FSpriteInfo::MakeSpriteInfos(
-		idleSpriteInfos, idleSpritePaths, ESpriteDrawType::UseTransparentBlt, FVector(0.5f, 1.0f));
-	AddSpriteAnimation(TEXT("Idle"), idleSpriteInfos, 0.2f);
+		idleSpriteInfos, idleSpritePaths, ESpriteDrawType::UseTransparentBlt, FVector(0.5f, 0.7f));
+	AddSpriteAnimation(TEXT("Idle"), idleSpriteInfos, 0.3f);
 
 #pragma endregion
+
 
 #pragma region WALK ANIMATION
 
@@ -37,10 +38,13 @@ void CPlayerSpriteAnimationComponent::Initialize()
 	};
 
 	FSpriteInfo::MakeSpriteInfos(
-		walkSpriteInfos, walkSpritePaths, ESpriteDrawType::UseTransparentBlt, FVector(0.5f, 1.0f));
-	AddSpriteAnimation(TEXT("Walk"), walkSpriteInfos, 0.1f);
+		walkSpriteInfos, walkSpritePaths, ESpriteDrawType::UseTransparentBlt, FVector(0.5f, 0.7f));
+	AddSpriteAnimation(TEXT("Walk"), walkSpriteInfos, 0.2f);
+		
+
 
 #pragma endregion
+
 
 	// Idle Animation 재생
 	PlaySpriteAnimation(TEXT("Idle"));
@@ -56,7 +60,7 @@ void CPlayerSpriteAnimationComponent::Tick(float dt)
 }
 
 void CPlayerSpriteAnimationComponent::AnimControl()
-{
+{	
 	// 이 컴포넌트를 소유하는 PlayerCharacter 를 얻습니다.
 	CPlayerCharacter* playerCharacter = Cast<CPlayerCharacter>(Owner);
 
@@ -71,7 +75,6 @@ void CPlayerSpriteAnimationComponent::AnimControl()
 	float speed = playerCharacter->GetMovement()->Velocity.Length();
 
 	animNameToPlay = (speed < 0.1f) ? TEXT("Idle") : TEXT("Walk");
-
 
 	FlipXY(playerCharacter->GetMovementHelper()->GetLookDirection() == EDirection::Left, false);
 

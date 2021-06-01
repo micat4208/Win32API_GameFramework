@@ -37,7 +37,6 @@ DEF_GAMEINSTANCECLASS* GameInstance;
 float GameStartTime;
 FMOD_SYSTEM* SoundSystem;
 
-
 LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
 int APIENTRY wWinMain(
@@ -102,9 +101,6 @@ int APIENTRY wWinMain(
 	QueryPerformanceCounter(&Counter);
 	/// - QueryPerformanceCounter(LARGE_INTEGER * lpPerformanceCount) : 현재 CPU 클럭 수를 lpPerformanceCount 에 저장합니다.
 
-
-
-
 	MSG msg;
 	msg.message = WM_NULL;
 	while (msg.message != WM_QUIT)
@@ -141,7 +137,6 @@ int APIENTRY wWinMain(
 				CInputManager::Instance()->MouseWheelAxis = 0;
 
 				totalDS = 0.0f;
-
 			}
 
 			totalDS += functionCallDelta;
@@ -173,16 +168,17 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 		return 0;
 	}
 
-	case WM_MOUSEWHEEL :
+	case WM_MOUSEWHEEL:
 	{
-		SHORT wheelAxis = FMath::Sign((SHORT)HIWORD(wParam));
+		SHORT wheelAxis = FMath::Sign((SHORT)HIWORD(wParam));		
 		CInput::Instance()->MouseWheelAxis = wheelAxis;
+
 		return 0;
 	}
 
 	case WM_DESTROY:
 
-		// 사운드 시스템을 닫습니다.
+		// 사운드 시스템을 닫음
 		FMOD_System_Close(SoundSystem);
 
 		// 사운드 시스템 해제

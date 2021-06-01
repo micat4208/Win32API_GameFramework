@@ -52,7 +52,9 @@ void CSpriteAnimationComponent::LoopAnimation()
 	else
 	{
 		auto spriteInfo = (*SpriteAnimation)[SpriteIndex];
-		if (spriteInfo) DrawSpriteInfo = spriteInfo;
+		if (spriteInfo)
+			DrawSpriteInfo = spriteInfo;
+		//SetDrawSpriteInfo(spriteInfo);
 
 		// 재생중인 애니메이션의 SpriteDelay 만큼의 시간이 지났다면
 		if (CGameplayStatics::GetTime() - LastSpriteChangedTime >= SpriteAnimation->SpriteDelay)

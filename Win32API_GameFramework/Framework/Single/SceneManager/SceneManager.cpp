@@ -1,7 +1,7 @@
 #include "SceneManager.h"
 
 #include "Game/Scene/GameScene/GameScene.h"
-#include "Game/Scene/MapEditorScene/MapEditorScene.h"
+#include "Game/Scene/MapEditerScene/MapEditerScene.h"
 
 CSceneManager::CSceneManager()
 {

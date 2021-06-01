@@ -1,5 +1,4 @@
 #include "AudioObject.h"
-
 #include "Framework/Base/Component/Audio/AudioComponent.h"
 
 CAudioComponent* CAudioObject::CreateAudio(string path, bool bLoop)

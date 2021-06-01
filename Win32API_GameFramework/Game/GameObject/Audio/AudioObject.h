@@ -1,17 +1,13 @@
 #pragma once
 #include "Framework/Base/GameObject/GameObject.h"
 
-class CAudioObject final :
+class CAudioObject :
     public CGameObject
 {
-
-private :
+private:
     list<class CAudioComponent*> AudioComponents;
 
-public :
+public:
     class CAudioComponent* CreateAudio(string path, bool bLoop = false);
-
-
-
 };
 
