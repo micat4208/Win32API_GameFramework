@@ -1,5 +1,6 @@
-﻿  TileMap.cpp
-C:\Users\SBSGAME\Desktop\Share\GameProgramming\GameProgramming6\Win32API\Game\Win32API_GameFramework\Win32API_GameFramework\Game\GameObject\TileMap\TileMap.cpp(67,46): warning C4244: '인수': 'int32'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+﻿  PlayerCharacterMovementHelperComponent.cpp
+C:\Users\SBSGAME\Desktop\Share\GameProgramming\GameProgramming6\Win32API\Game\Win32API_GameFramework\Win32API_GameFramework\Game\Components\PlayerCharacterMovementHelper\PlayerCharacterMovementHelperComponent.cpp(84,36): warning C4244: '=': 'float'에서 'int32'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\SBSGAME\Desktop\Share\GameProgramming\GameProgramming6\Win32API\Game\Win32API_GameFramework\Win32API_GameFramework\Game\Components\PlayerCharacterMovementHelper\PlayerCharacterMovementHelperComponent.cpp(85,36): warning C4244: '=': 'float'에서 'int32'(으)로 변환하면서 데이터가 손실될 수 있습니다.
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29910\include\xstring(2468,23): warning C4244: '인수': '_Elem'에서 'const _Elem'(으)로 변환하면서 데이터가 손실될 수 있습니다.
           with
           [

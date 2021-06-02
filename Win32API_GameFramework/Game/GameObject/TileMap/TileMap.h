@@ -34,6 +34,10 @@ private:
     void UpdateMapSize();
 
 public :
+    // tileIndexX, tileIndexY 에 해당하는 타일의 좌측 상단 우측 하단 위치를 반환합니다.
+    FVector GetTileLT(int32 tileIndexX, int32 tileIndexY);
+    FVector GetTileRB(int32 tileIndexX, int32 tileIndexY);
+
     // tileIndexX, tileIndexY 에 해당하는 타일이 막혀있는 타일인지 확인합니다.
     bool IsBlockingTile(int32 tileIndexX, int32 tileIndexY);
 

@@ -69,6 +69,30 @@ void CTileMap::UpdateMapSize()
 	MapSize.Y *= TileMapData->TileMapYCount;
 }
 
+FVector CTileMap::GetTileLT(int32 tileIndexX, int32 tileIndexY)
+{
+	if (TileMapData == nullptr || TileMapRenderers.size() == 0) return FVector::ZeroVector();
+	CTileMapRendererComponent* firstTileMapRenderer = *TileMapRenderers.begin();
+	if (firstTileMapRenderer->DrawSpriteInfo == nullptr) return FVector::ZeroVector();
+	if (!firstTileMapRenderer->DrawSpriteInfo->IsValid()) return FVector::ZeroVector();
+
+	FVector tileSize = firstTileMapRenderer->DrawSpriteInfo->SpriteImageSize * TileMapScale;
+
+	return FVector(tileSize.X * tileIndexX, tileSize.Y * tileIndexY);
+}
+
+FVector CTileMap::GetTileRB(int32 tileIndexX, int32 tileIndexY)
+{
+	if (TileMapData == nullptr || TileMapRenderers.size() == 0) return FVector::ZeroVector();
+	CTileMapRendererComponent* firstTileMapRenderer = *TileMapRenderers.begin();
+	if (firstTileMapRenderer->DrawSpriteInfo == nullptr) return FVector::ZeroVector();
+	if (!firstTileMapRenderer->DrawSpriteInfo->IsValid()) return FVector::ZeroVector();
+
+	FVector tileSize = firstTileMapRenderer->DrawSpriteInfo->SpriteImageSize * TileMapScale;
+
+	return FVector(tileSize.X + (tileSize.X * tileIndexX), tileSize.Y + (tileSize.Y * tileIndexY));
+}
+
 bool CTileMap::IsBlockingTile(int32 tileIndexX, int32 tileIndexY)
 {
 	if (TileMapData == nullptr) return false;

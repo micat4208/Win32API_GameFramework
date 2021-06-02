@@ -49,6 +49,7 @@ void CPlayerCharacter::InputKey(float dt)
 		CInput::GetAxis(TEXT("Vertical")));
 
 	Movement->AddMovement(FVector::RightVector() * InputAxis.X);
+	
 	Movement->AddMovement(FVector::DownVector() * InputAxis.Y);
 
 	if (CInput::GetKeyDown(TEXT("Space")))
