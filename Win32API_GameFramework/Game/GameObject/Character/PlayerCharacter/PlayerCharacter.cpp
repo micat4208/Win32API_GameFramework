@@ -1,14 +1,17 @@
 #include "PlayerCharacter.h"
 
-#include "Framework/Single/InputManager/InputManager.h"
+#include "Single/InputManager/InputManager.h"
 
-#include "Game/Components/Movement/MovementComponent.h"
-#include "Game/GameObject/TileMap/TileMap.h"
+#include "Components/Movement/MovementComponent.h"
+#include "GameObject/TileMap/TileMap.h"
 
-#include "Game/Components/PlayerSpriteAnimation/PlayerSpriteAnimationComponent.h"
-#include "Game/Components/PlayerCharacterMovementHelper/PlayerCharacterMovementHelperComponent.h"
+#include "Components/PlayerSpriteAnimation/PlayerSpriteAnimationComponent.h"
+#include "Components/PlayerCharacterMovementHelper/PlayerCharacterMovementHelperComponent.h"
 
-#include "Game/Scene/GameScene/GameScene.h"
+#include "Base/GameObject/ScreenObject/ScreenObject.h"
+#include "GameObject/UIObject/PlayerUI/PlayerUI.h"
+
+#include "Scene/GameScene/GameScene.h"
 
 void CPlayerCharacter::Initialize()
 {
@@ -27,6 +30,8 @@ void CPlayerCharacter::Initialize()
 void CPlayerCharacter::Start()
 {
 	super::Start();
+
+	FloatingPlayerUI();
 }
 
 void CPlayerCharacter::Tick(float dt)
@@ -34,6 +39,10 @@ void CPlayerCharacter::Tick(float dt)
 	super::Tick(dt);
 
 	InputKey(dt);
+
+	// 카메라 이동
+	OwnerScene->CameraPosition = FVector::Lerp(
+		OwnerScene->CameraPosition, Position, 3.0f * dt);
 }
 
 void CPlayerCharacter::Release()
@@ -56,4 +65,9 @@ void CPlayerCharacter::InputKey(float dt)
 	{
 		Movement->AddImpulse(FVector::RightVector() * 1000.0f);
 	}
+}
+
+void CPlayerCharacter::FloatingPlayerUI()
+{
+	OwnerScene->GetScreen()->CreateUIObject<CPlayerUI>();
 }

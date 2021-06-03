@@ -1,8 +1,10 @@
 #include "Scene.h"
 
-#include "Framework/Bitmap/Bitmap.h"
+#include "Bitmap/Bitmap.h"
 
-#include "Framework/Statics/GameplayStatics.h"
+#include "Statics/GameplayStatics.h"
+
+#include "Base/GameObject/ScreenObject/ScreenObject.h"
 
 void CScene::SortRenderComponent()
 {
@@ -30,6 +32,9 @@ void CScene::Initialize()
 
 	bDoSortRenderComponent = true;
 	SortingOrderThread = new FThread(&CScene::SortRenderComponent, this);
+
+	// 스크린 오브젝트 생성
+	Screen = NewGameObject<CScreenObject>();
 }
 
 void CScene::Tick(float deltaSecond)

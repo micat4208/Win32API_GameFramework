@@ -24,6 +24,8 @@ public :
 private :
     void InputKey(float dt);
 
+    void FloatingPlayerUI();
+
 public :
     FORCEINLINE class CMovementComponent* GetMovement() const
     { return Movement; }

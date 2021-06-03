@@ -90,14 +90,6 @@ void CPlayerCharacterMovementHelperComponent::CheckBlockingTile()
 	if (TileMap == nullptr) return;
 	if (TileMapIndexX == INDEX_NONE || TileMapIndexY == INDEX_NONE) return;
 
-
-	// 검사할 타일 인덱스
-	int32 checkingTileIndexX = TileMapIndexX;
-	int32 checkingTileIndexY = TileMapIndexY;
-
-	// 변경시킬 축을 가리킬 포인터
-	float* targetAxis = nullptr;
-
 	// 캐릭터 위치의 타일 바운더리를 얻습니다.
 	FRect currentTileBoundaray = FRect(
 		TileMap->GetTileLT(TileMapIndexX, TileMapIndexY),
@@ -108,79 +100,38 @@ void CPlayerCharacterMovementHelperComponent::CheckBlockingTile()
 		TileMap->Position,
 		TileMap->Position + TileMap->GetMapSize());
 
-
-
 	// 가로 타일 검사
-	if (bCheckHorizontalTile)
-	{
-		// 검사할 타일 방향을 저장합니다.
-		/// - 좌측으로 이동중이라면 좌측 타일을, 우측으로 이동중이라면 우측 타일을 검사하도록 합니다.
-		EDirection checkingTileDirection = (PlayerCharacter->GetInputAxis().X < 0.0f) ? 
-			EDirection::Left : EDirection::Right;
-
-		// 검사시킬 타일 인덱스를 설정합니다.
-		checkingTileIndexX += (checkingTileDirection == EDirection::Left) ? -1 : 1;
-
-		// 변경시킬 축을 저장합니다.
-		targetAxis = (checkingTileDirection == EDirection::Left) ?
-			&Movement->GetMovableAreaLT().X :
-			&Movement->GetMovableAreaRB().X;
-
-		// 이동 제한에 사용될 바운더리를 얻습니다.
-		/// - 만약 TileMapIndexX, TileMapIndexY 에 해당하는 타일이 막힌 타일이라면
-		///   현재 캐릭터가 위치한 타일의 바운더리를 사용, 막힌 타일이 아니라면 맵의 바운더리를 사용하도록 합니다.
-		FRect& boundary = (TileMap->IsBlockingTile(checkingTileIndexX, checkingTileIndexY)) ?
-			currentTileBoundaray : mapBoundary;
-
-		// 캐릭터가 이동 가능한 위치를 설정합니다.
-		*targetAxis = (checkingTileDirection == EDirection::Left) ?
-			boundary.GetLeft() : boundary.GetRight();
-	}
-
-	checkingTileIndexX = TileMapIndexX;
-
+	Movement->GetMovableAreaLT().X = (TileMap->IsBlockingTile(TileMapIndexX - 1, TileMapIndexY)) ?
+		currentTileBoundaray.Min.X : mapBoundary.Min.X;
+	Movement->GetMovableAreaRB().X = (TileMap->IsBlockingTile(TileMapIndexX + 1, TileMapIndexY)) ?
+		currentTileBoundaray.Max.X : mapBoundary.Max.X;
+	
 	// 세로 타일 검사
-	if (bCheckVerticalTile)
-	{
+	Movement->GetMovableAreaLT().Y = (TileMap->IsBlockingTile(TileMapIndexX, TileMapIndexY - 1)) ?
+		currentTileBoundaray.Min.Y : mapBoundary.Min.Y;
+	Movement->GetMovableAreaRB().Y = (TileMap->IsBlockingTile(TileMapIndexX, TileMapIndexY + 1)) ?
+		currentTileBoundaray.Max.Y : mapBoundary.Max.Y;
 
-		// 검사할 타일 방향을 저장합니다.
-		/// - 상단으로 이동중이라면 상단 타일을, 하단으로 이동중이라면 하단 타일을 검사하도록 합니다.
-		EDirection checkingTileDirection = (PlayerCharacter->GetInputAxis().Y < 0.0f) ?
-			EDirection::Up : EDirection::Down;
-
-		// 검사시킬 타일 인덱스를 설정합니다.
-		checkingTileIndexY += (checkingTileDirection == EDirection::Up) ? -1 : 1;
-
-		// 변경시킬 축을 저장합니다.
-		targetAxis = (checkingTileDirection == EDirection::Up) ?
-			&Movement->GetMovableAreaLT().Y :
-			&Movement->GetMovableAreaRB().Y;
-
-		// 이동 제한에 사용될 바운더리를 얻습니다.
-		/// - 만약 TileMapIndexX, TileMapIndexY 에 해당하는 타일이 막힌 타일이라면
-		///   현재 캐릭터가 위치한 타일의 바운더리를 사용, 막힌 타일이 아니라면 맵의 바운더리를 사용하도록 합니다.
-		FRect& boundary = (TileMap->IsBlockingTile(checkingTileIndexX, checkingTileIndexY)) ?
-			currentTileBoundaray : mapBoundary;
-
-		// 캐릭터가 이동 가능한 위치를 설정합니다.
-		*targetAxis = (checkingTileDirection == EDirection::Up) ?
-			boundary.GetTop() : boundary.GetBottom();
-	}
 
 	// 현재 타일 검사
+	/// - 현재 타일이 막힌 타일이라면
 	if (TileMap->IsBlockingTile(TileMapIndexX, TileMapIndexY))
 	{
+		int32 tileAxisX = (PlayerCharacter->Position.X < currentTileBoundaray.GetCenter().X) ? -1 : 1;
+		int32 tileAxisY = (PlayerCharacter->Position.Y < currentTileBoundaray.GetCenter().Y) ? -1 : 1;
 
-		// 현재 타일의 중심 위치를 얻습니다.
-		FVector currentTileCenter = currentTileBoundaray.GetCenter();
+		// 현재 타일의 가장 가까운 경계를 얻습니다.
+		FVector nearestBoudary = currentTileBoundaray.GetBoundaryFromIntAxis(tileAxisX, tileAxisY);
 
-		FVector newPosition(
-			(Owner->Position.X < currentTileCenter.X) ?
-			currentTileBoundaray.GetLeft() - 0.001f : currentTileBoundaray.GetRight() + 0.001f,
-			(Owner->Position.Y < currentTileCenter.Y) ?
-			currentTileBoundaray.GetTop() - 0.001f : currentTileBoundaray.GetBottom() + 0.001f);
+		// 플레이어 캐릭터 위치에서 가장 가까운 경계까지의 거리를 구합니다.
+		FVector boundaryDistance = FVector(
+			FMath::Distance(nearestBoudary.X, PlayerCharacter->Position.X),
+			FMath::Distance(nearestBoudary.Y, PlayerCharacter->Position.Y));
 
-		Owner->Position = newPosition;
+		// 최대한 자연스럽게	보이도록 하기 위해, 경계에 가가운 축만 경계로 이동시키며
+		// 먼 축은 위치를 옮기지 않습니다.
+		if (boundaryDistance.X < boundaryDistance.Y)
+			PlayerCharacter->Position.X = nearestBoudary.X;
+		else PlayerCharacter->Position.Y = nearestBoudary.Y;
 	}
-
 }

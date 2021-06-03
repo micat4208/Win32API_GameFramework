@@ -27,16 +27,21 @@ void CMovementComponent::Tick(float dt)
         FMath::Lerp(Impulse.X, 0.0f, dt * ((MaxSpeed * 0.01f) * BrakingForce * dt)),
         FMath::Lerp(Impulse.Y, 0.0f, dt * ((MaxSpeed * 0.01f) * BrakingForce * dt)));
 
+    // 이동 가능 영역
+    FRect movableArea(
+        MovableAreaLT + (FVector::OneVector() * 1.0f),
+        MovableAreaRB - (FVector::OneVector() * 1.0f));
+
     // 캐릭터가 이동 가능한 영역 내에 위치하는지 확인
     if (!FMath::IsIn(ownerPosition.X, MovableAreaLT.X, MovableAreaRB.X))
     {
-        ownerPosition.X = FMath::Clamp(ownerPosition.X, MovableAreaLT.X, MovableAreaRB.X);
+        ownerPosition.X = FMath::Clamp(ownerPosition.X, MovableAreaLT.X + 2.0f, MovableAreaRB.X - 2.0f);
         Velocity.X = 0.0f;
     }
 
     if (!FMath::IsIn(ownerPosition.Y, MovableAreaLT.Y, MovableAreaRB.Y))
     {
-        ownerPosition.Y = FMath::Clamp(ownerPosition.Y, MovableAreaLT.Y, MovableAreaRB.Y);
+        ownerPosition.Y = FMath::Clamp(ownerPosition.Y, MovableAreaLT.Y + 2.0f, MovableAreaRB.Y - 2.0f);
         Velocity.Y = 0.0f;
     }
 }

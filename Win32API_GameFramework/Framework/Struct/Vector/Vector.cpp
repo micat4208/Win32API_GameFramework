@@ -10,6 +10,13 @@ float FVector::Distance(const FVector& v1, const FVector& v2)
 FVector FVector::Direction(const FVector& from, const FVector& to)
 { return FVector((to.X - from.X), (to.Y - from.Y)).Normalized(); }
 
+FVector FVector::Lerp(const FVector& a, const FVector& b, float t)
+{
+	return FVector(
+		FMath::Lerp(a.X, b.X, t),
+		FMath::Lerp(a.Y, b.Y, t));
+}
+
 float FVector::Length() const
 { return sqrt(pow(X, 2) + pow(Y, 2)); }
 

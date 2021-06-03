@@ -22,6 +22,7 @@ public :
 	// from 에서 to 로의 방향을 반환합니다.
 	static FVector Direction(const FVector& from, const FVector& to);
 
+	static FVector Lerp(const FVector& a, const FVector& b, float t);
 public :
 	// Vector 의 길이를 반환합니다.
 	float Length() const;
@@ -42,6 +43,7 @@ public :
 
 	// 해당 위치가 창 내부에 위치하는지 확인함
 	bool InWnd() const;
+
 
 
 	// 해당 위치가 창 내부에 위치하는지 확인함

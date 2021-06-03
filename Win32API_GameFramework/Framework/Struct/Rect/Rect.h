@@ -22,5 +22,18 @@ public :
     FORCEINLINE float GetRight() const      { return Max.X; }
     FORCEINLINE float GetBottom() const     { return Max.Y; }
     FORCEINLINE FVector GetCenter() const   { return ((Max - Min) * 0.5f) + Min; }
+
+    // 사분면상의 꼭지점을 반환합니다.
+    /// - (1 , -1) : 제 1 사분면 RT
+    /// - (-1, -1) : 제 2 사분면 LT
+    /// - (-1,  1) : 제 3 사분면 LB
+    /// - ( 1,  1) : 제 4 사분면 RB
+    FORCEINLINE FVector GetBoundaryFromIntAxis(int32 x, int32 y) const
+    {
+        return FVector(
+            ((x < 0) ? Min.X : Max.X),
+            ((y < 0) ? Min.Y : Max.Y));
+    }
+
 };
 

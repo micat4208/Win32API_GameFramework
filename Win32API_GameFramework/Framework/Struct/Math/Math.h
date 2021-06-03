@@ -54,11 +54,23 @@ struct FMath
 		float errorTolenance = (1.e-8f))
 	{ return (Abs(a) - Abs(b)) <= errorTolenance; }
 
+	static FORCEINLINE int32 Min(int32 a, int32 b)
+	{ return ((a <= b) ? a : b); }
+	
+	static FORCEINLINE int32 Max(int32 a, int32 b)
+	{ return ((a >= b) ? a : b); }
+	
+	static FORCEINLINE float Min(float a, float b)
+	{ return ((a <= b) ? a : b); }
+	
+	static FORCEINLINE float Max(float a, float b)
+	{ return ((a >= b) ? a : b); }
+
 	// value 의 값을 _min 과 _max 사이의 값으로 변환하여 반환하는 함수
 	static FORCEINLINE int32 Clamp(int32 value, int32 _min, int32 _max)
-	{ return min(_max, max(value, _min)); }
+	{ return Min(_max, Max(value, _min)); }
 	static FORCEINLINE float Clamp(float value, float _min, float _max)
-	{ return min(_max, max(value, _min)); }
+	{ return Min(_max, Max(value, _min)); }
 
 	// value 의 값이 _min, _max 사이의 값임을 확인하는 함수
 	static FORCEINLINE bool IsIn(int32 value, int32 _min, int32 _max, bool bUseAboveOrBelow = false)

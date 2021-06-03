@@ -35,6 +35,8 @@ private :
     FThread* SortingOrderThread;
     bool bDoSortRenderComponent;
 
+    class CScreenObject* Screen;
+
 public :
     // UsedRenderComponents 에 추가된 요소들의 정렬이 필요함을 나타냅니다.
     bool bNeedSort;
@@ -100,9 +102,10 @@ public :
     { AddDebugDraw(EDebugDrawType::DT_LINE, start, end, color, duration, bFill); }
 
     FORCEINLINE void MoveCamera(FVector velocity)
-    {
-        CameraPosition += (velocity * -1.0f);
-    }
+    { CameraPosition += (velocity * -1.0f); }
+
+    FORCEINLINE class CScreenObject* GetScreen() const
+    { return Screen; }
 
 
 private :
