@@ -22,6 +22,7 @@ public :
     FORCEINLINE float GetRight() const      { return Max.X; }
     FORCEINLINE float GetBottom() const     { return Max.Y; }
     FORCEINLINE FVector GetCenter() const   { return ((Max - Min) * 0.5f) + Min; }
+    FORCEINLINE FVector GetSize() const     { return Max - Min; }
 
     // 사분면상의 꼭지점을 반환합니다.
     /// - (1 , -1) : 제 1 사분면 RT

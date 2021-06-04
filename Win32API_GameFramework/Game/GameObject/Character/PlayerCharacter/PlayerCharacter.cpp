@@ -11,6 +11,8 @@
 #include "Base/GameObject/ScreenObject/ScreenObject.h"
 #include "GameObject/UIObject/PlayerUI/PlayerUI.h"
 
+#include "Base/GameObject/UIObject/UIObject.h"
+
 #include "Scene/GameScene/GameScene.h"
 
 void CPlayerCharacter::Initialize()
@@ -25,6 +27,8 @@ void CPlayerCharacter::Initialize()
 
 	// Å¸ÀÏ ¸Ê ¼³Á¤
 	MovementHelper->SetTileMap(Cast<CGameScene>(OwnerScene)->GetTileMap());
+
+	OwnerScene->GetScreen()->CreateUIObject<CUIObject>();
 }
 
 void CPlayerCharacter::Start()

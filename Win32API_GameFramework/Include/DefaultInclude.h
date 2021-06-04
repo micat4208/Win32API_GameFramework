@@ -13,7 +13,7 @@
 
 #include <fstream>
 
-#include "TypeDefine.h"
+#include "DeclHelper.h"
 #include "GameDefine.h"
 #include "GameDebug.h"
 

@@ -9,6 +9,9 @@ public :
     // Render 메서드 호출 여부를 나타냅니다.
     bool bUseRender;
 
+    // 카메라 위치 적용 여부를 나타냅니다.
+    bool bUseCameraPosition;
+
 private :
     // 그리기 순서를 나타냅니다.
     int32 SortingOrder;
@@ -31,6 +34,9 @@ public :
 
     // 카메라 위치를 적용시킨 위치를 반환합니다.
     FVector ToCameraPosition(const FVector& scenePosition) const;
+
+    // 그릴 위치를 반환합니다.
+    virtual FVector ToRenderPosition(const FVector& scenePosition) const;
 
 };
 

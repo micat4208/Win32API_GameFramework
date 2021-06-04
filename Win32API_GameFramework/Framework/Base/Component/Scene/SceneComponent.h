@@ -17,6 +17,6 @@ public :
 
 public :
     // 이 컴포넌트의 월드 위치를 반환합니다.
-    FVector GetComponentPosition() const;
+    virtual FVector GetComponentPosition() const;
 };
 

@@ -107,6 +107,9 @@ public :
     FORCEINLINE class CScreenObject* GetScreen() const
     { return Screen; }
 
+    FORCEINLINE class CBitmap* GetBackBuffer() const
+    { return BackBuffer; }
+
 
 private :
     void AddDebugDraw(EDebugDrawType debugDrawType, FVector vec1, FVector vec2,

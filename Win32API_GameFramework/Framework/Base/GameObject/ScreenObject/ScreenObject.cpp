@@ -4,11 +4,6 @@
 
 void CScreenObject::DestroyUIObject(CUIObject* uiObject)
 {
-	auto iter = UIObjects.begin();
-
-	for (; iter != UIObjects.end(); ++iter)
-		if (*iter == uiObject) break;
-
+	UIObjects.remove(uiObject);
 	OwnerScene->Destroy(uiObject);
-	*iter = nullptr;
 }

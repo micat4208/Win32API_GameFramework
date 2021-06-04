@@ -152,7 +152,7 @@
     <ClCompile Include="Framework\Base\Component\Scene\Render\RenderComponent.cpp" />
     <ClCompile Include="Framework\Base\Component\Scene\Render\SpriteRenderer\SpriteAnimation\SpriteAnimationComponent.cpp" />
     <ClCompile Include="Framework\Base\Component\Scene\Render\SpriteRenderer\SpriteRendererComponent.cpp" />
-    <ClCompile Include="Framework\Base\Component\Scene\Render\UI\UIComponent.cpp" />
+    <ClCompile Include="Framework\Base\Component\Scene\Render\UI\UISpriteRenderer\UISpriteRendererComponent.cpp" />
     <ClCompile Include="Framework\Base\Component\Scene\SceneComponent.cpp" />
     <ClCompile Include="Framework\Base\GameObject\GameObject.cpp" />
     <ClCompile Include="Framework\Base\GameObject\ScreenObject\ScreenObject.cpp" />
@@ -197,7 +197,7 @@
     <ClInclude Include="Framework\Base\Component\Scene\Render\RenderComponent.h" />
     <ClInclude Include="Framework\Base\Component\Scene\Render\SpriteRenderer\SpriteAnimation\SpriteAnimationComponent.h" />
     <ClInclude Include="Framework\Base\Component\Scene\Render\SpriteRenderer\SpriteRendererComponent.h" />
-    <ClInclude Include="Framework\Base\Component\Scene\Render\UI\UIComponent.h" />
+    <ClInclude Include="Framework\Base\Component\Scene\Render\UI\UISpriteRenderer\UISpriteRendererComponent.h" />
     <ClInclude Include="Framework\Base\Component\Scene\SceneComponent.h" />
     <ClInclude Include="Framework\Base\GameObject\GameObject.h" />
     <ClInclude Include="Framework\Base\GameObject\ScreenObject\ScreenObject.h" />
@@ -211,6 +211,7 @@
     <ClInclude Include="Framework\Enum\SpriteDrawType.h" />
     <ClInclude Include="Framework\Interface\ManagerClass.h" />
     <ClInclude Include="Framework\Interface\ObjectPoolable.h" />
+    <ClInclude Include="Framework\Interface\UIComponent.h" />
     <ClInclude Include="Framework\Single\CollisionManager\CollisionManager.h" />
     <ClInclude Include="Framework\Single\GameInstance\GameInstance.h" />
     <ClInclude Include="Framework\Single\InputManager\InputManager.h" />
@@ -239,6 +240,7 @@
     <ClInclude Include="Game\Scene\MapEditerScene\MapEditerScene.h" />
     <ClInclude Include="Game\Struct\TileMapInfo\TileMapInfo.h" />
     <ClInclude Include="Include\CharDefine.h" />
+    <ClInclude Include="Include\DeclHelper.h" />
     <ClInclude Include="Include\DefaultInclude.h" />
     <ClInclude Include="Include\GameDefine.h" />
     <ClInclude Include="Include\GameDebug.h" />

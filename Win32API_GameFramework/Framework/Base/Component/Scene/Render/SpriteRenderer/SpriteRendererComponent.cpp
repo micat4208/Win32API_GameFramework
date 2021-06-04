@@ -4,6 +4,8 @@
 
 CSpriteRendererComponent::CSpriteRendererComponent()
 {
+	bUseCameraPosition = true;
+	bUseRender = true;
 	DrawSpriteInfo = nullptr;
 	bIsFlippedX = bIsFlippedY = false;
 }
@@ -39,8 +41,7 @@ void CSpriteRendererComponent::Render(HDC hdc)
 	///   그리기 시작 위치를 얻습니다.
 	DrawStartLT = GetComponentPosition() - ltOfPivotRectSize;
 
-	// 카메라 위치를 적용시킵니다.
-	DrawStartLT = ToCameraPosition(DrawStartLT);
+	DrawStartLT = ToRenderPosition(DrawStartLT);
 
 	switch (DrawSpriteInfo->SpriteDrawType)
 	{
