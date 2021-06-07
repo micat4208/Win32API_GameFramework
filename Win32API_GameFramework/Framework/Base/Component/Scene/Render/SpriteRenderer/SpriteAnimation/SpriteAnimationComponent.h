@@ -51,6 +51,9 @@ public :
     /// - startIndex : 재생시킬 애니메이션 인덱스를 전달합니다.
     void PlaySpriteAnimation(tstring animationName, int32 startIndex = 0);
 
+    FORCEINLINE virtual void SetDrawSpriteInfo(FSpriteInfo* newSpriteInfo) override
+    { DrawSpriteInfo = newSpriteInfo; }
+
 
 };
 

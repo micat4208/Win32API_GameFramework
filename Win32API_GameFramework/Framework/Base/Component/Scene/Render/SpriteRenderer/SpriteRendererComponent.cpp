@@ -20,7 +20,7 @@ void CSpriteRendererComponent::Render(HDC hdc)
 
 	// 그려질 이미지 크기를 얻습니다.
 	/// - 컴포넌트의 크기를 적용시킵니다.
-	FVector drawSpriteImageSize = FVector(
+	DrawSpriteImageSize = FVector(
 		DrawSpriteInfo->SpriteImageSize.X * RelativeScale.X,
 		DrawSpriteInfo->SpriteImageSize.Y * RelativeScale.Y);
 
@@ -33,8 +33,8 @@ void CSpriteRendererComponent::Render(HDC hdc)
 	/// │ 3 │ 4 │
 	/// └───┴───┘
 	FVector ltOfPivotRectSize = FVector(
-		drawSpriteImageSize.X * DrawSpriteInfo->DrawPivot.X,
-		drawSpriteImageSize.Y * DrawSpriteInfo->DrawPivot.Y);
+		DrawSpriteImageSize.X * DrawSpriteInfo->DrawPivot.X,
+		DrawSpriteImageSize.Y * DrawSpriteInfo->DrawPivot.Y);
 
 	// 스프라이트 이미지를 그릴 좌측 상단 위치를 얻습니다.
 	/// - 컴포넌트 위치를 피벗의 위치이므로, 피벗을 기준으로 나눈 좌측 상단 사각형 크기를 빼서
@@ -53,7 +53,7 @@ void CSpriteRendererComponent::Render(HDC hdc)
 				DrawStartLT.X, DrawStartLT.Y,
 
 				// 그려질 이미지 크기
-				drawSpriteImageSize.X, drawSpriteImageSize.Y,
+				DrawSpriteImageSize.X, DrawSpriteImageSize.Y,
 
 				// 이미지 핸들
 				DrawSpriteInfo->GetDC(),
@@ -75,7 +75,7 @@ void CSpriteRendererComponent::Render(HDC hdc)
 				DrawStartLT.X, DrawStartLT.Y,
 
 				// 그려질 이미지 크기
-				drawSpriteImageSize.X, drawSpriteImageSize.Y,
+				DrawSpriteImageSize.X, DrawSpriteImageSize.Y,
 
 				// 이미지 핸들
 				DrawSpriteInfo->GetDC(),
@@ -96,6 +96,14 @@ void CSpriteRendererComponent::Render(HDC hdc)
 
 }
 
+void CSpriteRendererComponent::Release()
+{
+	if (DrawSpriteInfo)
+		CObject::DeleteObject(DrawSpriteInfo);
+
+	Super::Release();
+}
+
 void CSpriteRendererComponent::FlipXY(bool flipX, bool flipY)
 {
 	if (!DrawSpriteInfo) return;
@@ -104,4 +112,15 @@ void CSpriteRendererComponent::FlipXY(bool flipX, bool flipY)
 	bIsFlippedX = DrawSpriteInfo->GetLoadedBitmap()->bIsFlippedX = flipX;
 	bIsFlippedY = DrawSpriteInfo->GetLoadedBitmap()->bIsFlippedY = flipY;
 
+}
+
+void CSpriteRendererComponent::SetDrawSpriteInfo(FSpriteInfo* newSpriteInfo)
+{
+	if (DrawSpriteInfo)
+		CObject::DeleteObject(DrawSpriteInfo);
+
+	DrawSpriteInfo = newSpriteInfo;
+
+	if (DrawSpriteInfo)
+		DrawSpriteImageSize = DrawSpriteInfo->SpriteImageSize * RelativeScale;
 }

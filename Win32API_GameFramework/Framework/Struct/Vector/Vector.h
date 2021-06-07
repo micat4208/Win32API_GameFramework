@@ -13,6 +13,7 @@ public :
 
 public :
 	FVector();
+	FVector(float xy);
 	FVector(float x, float y);
 
 public :
@@ -89,6 +90,11 @@ public :
 	{ return FVector(X + value.X, Y + value.Y); }
 	FORCEINLINE FVector operator-(const FVector& value) const
 	{ return FVector(X - value.X, Y - value.Y); }
+	FORCEINLINE FVector operator*(const FVector& value) const
+	{ return FVector(X * value.X, Y * value.Y); }
+	FORCEINLINE FVector operator/(const FVector& value) const
+	{ return FVector(X / value.X, Y / value.Y); }
+
 	FORCEINLINE FVector operator+(const float& value) const
 	{ return FVector(X + value, Y + value); }
 	FORCEINLINE FVector operator-(const float& value) const
@@ -102,6 +108,11 @@ public :
 	{ return (*this = FVector(X + point.X, Y + point.Y) ); }
 	FORCEINLINE FVector& operator-=(const FVector& point)
 	{ return (*this = FVector(X - point.X, Y - point.Y) ); }
+	FORCEINLINE FVector& operator*=(const FVector& point)
+	{ return (*this = FVector(X * point.X, Y * point.Y) ); }
+	FORCEINLINE FVector& operator/=(const FVector& point)
+	{ return (*this = FVector(X / point.X, Y / point.Y) ); }
+
 	FORCEINLINE FVector& operator+=(const float& value)
 	{ return (*this = FVector(X + value, Y + value) ); }
 	FORCEINLINE FVector& operator-=(const float& value)

@@ -2,6 +2,7 @@
 
 
 FVector::FVector() : FVector(0.0f, 0.0f) { }
+FVector::FVector(float xy) : FVector(xy, xy) { }
 FVector::FVector(float x, float y) : X(x), Y(y) { }
 
 float FVector::Distance(const FVector& v1, const FVector& v2)

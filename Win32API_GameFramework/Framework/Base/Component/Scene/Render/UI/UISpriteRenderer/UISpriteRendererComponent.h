@@ -1,5 +1,6 @@
 #pragma once
 #include "Base/Component/Scene/Render/SpriteRenderer/SpriteRendererComponent.h"
+#include "Struct/Rect/Rect.h"
 #include "Interface/UIComponent.h"
 
 CLASS(CUISpriteRendererComponent, CSpriteRendererComponent)
@@ -14,18 +15,48 @@ private :
     FVector Anchor;
 
 public :
+    FRect Bounds;
+    FVector Pivot;
+    FVector Anchor;
+
+public :
     CUISpriteRendererComponent();
 
-    FORCEINLINE virtual void SetUIObject(class CUIObject* uiObject) override
-    { UIObject = uiObject; }
 
-    FORCEINLINE virtual class CUIObject* GetUIObject() const override
-    { return UIObject; }
+    virtual void UpdateUIComponentBoundary() override;
 
+    FORCEINLINE virtual void SetPivot(FVector newPivot)
+    {
+        Pivot = newPivot;
+        UpdateUIComponentBoundary();
+    }
+    FORCEINLINE virtual FVector GetPivot() const
+    { return Pivot; }
+
+    FORCEINLINE virtual void SetAnchor(FVector newAnchor)
+    {
+        Anchor = newAnchor;
+        UpdateUIComponentBoundary();
+    }
     FORCEINLINE virtual FVector GetAnchor() const override
     { return Anchor; }
 
-    virtual FVector GetComponentPosition() const override;
+    FORCEINLINE virtual FRect GetBounds() const
+    { return Bounds; }
+
+    FORCEINLINE virtual FVector GetComponentPosition() const override
+    { return Bounds.GetCenter(); }
+
+    FORCEINLINE virtual FVector ToRenderPosition(const FVector& scenePosition) const final override
+    { return Bounds.Min; }
+
+    FORCEINLINE virtual void SetDrawSpriteInfo(FSpriteInfo* newSpriteInfo) override
+    {
+        Super::SetDrawSpriteInfo(newSpriteInfo);
+
+        if (newSpriteInfo)
+            UpdateUIComponentBoundary();
+    }
 
 };
 
