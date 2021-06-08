@@ -33,6 +33,15 @@ public :
     // 화면을 기준으로 하는 UIObject 의 Boundary 를 갱신합니다.
     void UpdateUIObjectBoundary();
 
+    template<typename T>
+    T* AddUIComponent()
+    {
+        T* newUIComponent = AddComponent<T>();
+        UIComponents.push_back(newUIComponent);
+
+        return newUIComponent;
+    }
+
 
 public :
     FORCEINLINE void SetAnchor(FVector newAnchor)

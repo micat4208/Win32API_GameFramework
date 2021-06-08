@@ -1,5 +1,7 @@
 #include "SpriteRendererComponent.h"
 
+#include "Base/GameObject/GameObject.h"
+
 #include "Framework/Bitmap/Bitmap.h"
 
 CSpriteRendererComponent::CSpriteRendererComponent()
@@ -47,6 +49,11 @@ void CSpriteRendererComponent::Render(HDC hdc)
 	{
 		case ESpriteDrawType::UseTransparentBlt :
 		{
+			if (Owner->Name == TEXT("PlayerHUD"))
+			{
+			}
+
+
 			// 이미지를 그립니다.
 			TransparentBlt(hdc,
 				// 이미지를 그리기 시작할 위치

@@ -12,7 +12,6 @@ class CUISpriteRendererComponent :
 
 private :
     class CUIObject* UIObject;
-    FVector Anchor;
 
 public :
     FRect Bounds;
@@ -24,6 +23,18 @@ public :
 
 
     virtual void UpdateUIComponentBoundary() override;
+
+    FORCEINLINE void SetAnchorPivotPositionScale(
+        FVector anchor, 
+        FVector pivot, 
+        FVector relativePosition, 
+        FVector relativeScale = FVector(1.0f))
+    {
+        SetAnchor(anchor);
+        SetPivot(pivot);
+        RelativePosition = relativePosition;
+        RelativeScale = relativeScale;
+    }
 
     FORCEINLINE virtual void SetPivot(FVector newPivot)
     {

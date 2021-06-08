@@ -10,4 +10,5 @@ void CCharacter::Initialize()
 	super::Initialize();
 
 	Movement = AddComponent<CMovementComponent>();
+
 }

@@ -182,7 +182,7 @@
     <ClCompile Include="Game\GameObject\Character\Character.cpp" />
     <ClCompile Include="Game\GameObject\Character\PlayerCharacter\PlayerCharacter.cpp" />
     <ClCompile Include="Game\GameObject\TileMap\TileMap.cpp" />
-    <ClCompile Include="Game\GameObject\UIObject\PlayerUI\PlayerUI.cpp" />
+    <ClCompile Include="Game\GameObject\UIObject\PlayerHUD\PlayerHUD.cpp" />
     <ClCompile Include="Game\Scene\GameScene\GameScene.cpp" />
     <ClCompile Include="Game\Components\PlayerCharacterMovementHelper\PlayerCharacterMovementHelperComponent.cpp" />
     <ClCompile Include="Game\Scene\MapEditerScene\MapEditerScene.cpp" />
@@ -235,7 +235,7 @@
     <ClInclude Include="Game\GameObject\Character\Character.h" />
     <ClInclude Include="Game\GameObject\Character\PlayerCharacter\PlayerCharacter.h" />
     <ClInclude Include="Game\GameObject\TileMap\TileMap.h" />
-    <ClInclude Include="Game\GameObject\UIObject\PlayerUI\PlayerUI.h" />
+    <ClInclude Include="Game\GameObject\UIObject\PlayerHUD\PlayerHUD.h" />
     <ClInclude Include="Game\Scene\GameScene\GameScene.h" />
     <ClInclude Include="Game\Scene\MapEditerScene\MapEditerScene.h" />
     <ClInclude Include="Game\Struct\TileMapInfo\TileMapInfo.h" />

@@ -6,7 +6,7 @@ FSpriteInfo::FSpriteInfo()
 {
 	LoadedBitmap = nullptr;
 	SpriteDrawType = ESpriteDrawType::Hide;
-	CRTransparent = RGB(0, 0, 0);
+	CRTransparent = RGB(255, 0, 255);
 	DWRop = SRCCOPY;
 	DrawPivot = FVector::OneVector() * 0.5f;
 	LoadedSpriteImageSize = CropLT = SpriteImageSize = FVector::ZeroVector();
@@ -56,6 +56,16 @@ void FSpriteInfo::MakeSpriteInfos(
 
 		outSpriteInfos.push_back(newSpriteInfo);
 	}
+}
+
+FSpriteInfo* FSpriteInfo::MakeSpriteInfo(tstring imagePath, ESpriteDrawType spriteDrawType, FVector pivot)
+{
+	auto newSpriteInfo = CObject::NewObject<FSpriteInfo>();
+
+	newSpriteInfo->InitializeSpriteInfo(imagePath, spriteDrawType);
+	newSpriteInfo->DrawPivot = pivot;
+
+	return newSpriteInfo;
 }
 
 HDC FSpriteInfo::GetDC() const

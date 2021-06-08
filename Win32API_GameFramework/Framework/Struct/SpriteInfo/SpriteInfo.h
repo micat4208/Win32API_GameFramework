@@ -58,6 +58,7 @@ public :
     virtual void Release() override;
 
 public :
+
     // 여러개의 SpriteInfo 를 생성합니다.
     /// - outSpriteInfos : 생성된 SpriteInfo 들을 저장할 vector 을 전달합니다.
     /// - imagePaths : 이미지 경로들을 전달합니다.
@@ -72,6 +73,11 @@ public :
         FVector pivot = FVector(0.5f, 0.5f),
         COLORREF crTransparent = RGB(255, 0, 255),
         DWORD dwRop = SRCCOPY);
+
+    static FSpriteInfo* MakeSpriteInfo(
+        tstring imagePath,
+        ESpriteDrawType spriteDrawType,
+        FVector pivot = FVector(0.5f, 0.5f));
 
 public :
     HDC GetDC() const;
